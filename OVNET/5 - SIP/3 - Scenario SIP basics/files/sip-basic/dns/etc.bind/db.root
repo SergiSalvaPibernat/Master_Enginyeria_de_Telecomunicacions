@@ -1,0 +1,15 @@
+$TTL   60000    ; 16h40m default Time to Live of the DNS records
+.               IN      SOA     ROOT-SERVER.    admin-mail.ROOT-SERVER. (
+                        2006031201 ; serial
+                        28800 ; refresh
+                        14400 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+
+.                    IN   NS      ROOT-SERVER.
+ROOT-SERVER. 	     IN	  A	  203.0.113.4
+dns.example.com	     IN	  A	  203.0.113.4
+alice.example.com    IN   A       203.0.113.2
+bob.example.com      IN   A       203.0.113.3
+phyhost.example.com  IN   A       203.0.113.1

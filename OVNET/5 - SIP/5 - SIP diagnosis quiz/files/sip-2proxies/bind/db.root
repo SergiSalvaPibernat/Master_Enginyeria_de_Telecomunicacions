@@ -1,0 +1,23 @@
+$ORIGIN .
+$TTL 60000      ; 16 hours 40 minutes
+@             IN SOA  localhost. hostmaster.localhost. (
+                                20150428   ; serial
+                                28800      ; refresh (8 hours)
+                                14400      ; retry (4 hours)
+                                2419200    ; expire (4 weeks) 
+                                300        ; minimum (5 minutes)
+                                )
+                        NS	ROOT-SERVER-A
+                        NS      ROOT-SERVER-B
+ROOT-SERVER-A		3600000      A     203.0.113.1
+ROOT-SERVER-B		3600000      A     198.51.100.1
+example.org.		3600000  IN  NS    ns1.example.org.
+ns1.example.org.	3600000      A     203.0.113.1
+example.com.		3600000  IN  NS    ns1.example.com.
+ns1.example.com.	3600000      A     198.51.100.1
+nrenum.net.		3600000  IN  NS    ns1.example.com.
+nrenum.net.		3600000  IN  NS    ns1.example.org.
+e164.arpa.		3600000  IN  NS    ns1.example.com.
+e164.arpa.		3600000  IN  NS    ns1.example.org.
+in-addr.arpa.		3600000  IN  NS    ns1.example.com.
+in-addr.arpa.		3600000  IN  NS    ns1.example.org.

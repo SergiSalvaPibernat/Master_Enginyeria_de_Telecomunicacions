@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>Test Page for the iptunnel lab session</title>
+		<meta name="generator" content="Bluefish 1.0.7">
+		<meta name="description" content="A test page" >
+		<meta name="keywords" content="" >
+		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" >
+		<meta http-equiv="Content-Script-Type" content="text/javascript" >
+		<meta http-equiv="Content-Style-Type" content="text/css" >
+	</head>
+	<body link="#afaaf6" text="#fffb00" bgcolor="#000000">
+	<h2><a name="#fontlike_text">Test web page for the iptunnel lab session at host2, <b>192.168.0.2</b></a></h2>
+   <p> The size of this web page is 760 B:
+You can try to open this other bigger <a href=big.html> web page </a>, which has a size of 2.3 KB: 
+   </p>
+	</body>
+</html>

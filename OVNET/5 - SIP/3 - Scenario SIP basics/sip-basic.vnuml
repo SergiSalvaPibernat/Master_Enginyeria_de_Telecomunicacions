@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE vnuml SYSTEM "/usr/share/xml/vnuml/vnuml.dtd">
+
+<vnuml>
+  <global>
+    <version>1.8</version>
+    <simulation_name>sip-basic</simulation_name>
+    <automac/>
+    <vm_mgmt type="none" />
+    <vm_defaults exec_mode="mconsole">
+       <filesystem type="cow">/usr/share/vnuml/filesystems/debian6.fs</filesystem>
+       <kernel>/usr/share/vnuml/kernels/linux-3.3.8</kernel>
+    </vm_defaults>
+  </global>
+<net name="Net0" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net0.ctl"/>
+
+  <vm name="alice">
+    <console id="0">pts</console>
+    <console id="1">pts</console>
+    <if id="1" net="Net0">
+ 	<ipv4>203.0.113.2/24</ipv4>
+    </if>
+    <filetree root="/root" seq="start">./files/sip-basic/hosts/root</filetree>
+    <filetree root="/etc" seq="start">./files/sip-basic/hosts/etc</filetree>
+    <exec seq="start" type="verbatim"> route add default gw 203.0.113.1</exec>
+  </vm>
+
+  <vm name="bob">
+    <console id="0">pts</console>
+    <console id="1">pts</console>
+    <if id="1" net="Net0">
+ 	<ipv4>203.0.113.3/24</ipv4>
+    </if>
+    <filetree root="/root" seq="start">./files/sip-basic/hosts/root</filetree>
+    <filetree root="/etc" seq="start">./files/sip-basic/hosts/etc</filetree>
+    <exec seq="start" type="verbatim"> route add default gw 203.0.113.1</exec>
+  </vm>
+  <vm name="dns">
+    <console id="0">pts</console>
+    <if id="1" net="Net0">
+ 	<ipv4>203.0.113.4/24</ipv4>
+    </if>
+    <filetree root="/etc/bind" seq="start">./files/sip-basic/dns/etc.bind</filetree>
+    <exec seq="start" type="verbatim">/etc/init.d/bind9 restart &lt;/dev/null &gt;/dev/null 2&gt;&amp;1 &amp;</exec>
+  </vm>
+
+</vnuml>

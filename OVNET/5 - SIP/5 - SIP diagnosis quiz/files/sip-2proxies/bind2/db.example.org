@@ -1,0 +1,20 @@
+$TTL    60000
+@       IN      SOA     ns1.example.org. hostmaster.example.org. (
+                          20150427              ; Serial
+                          28800                 ; Refresh
+                          14400                 ; Retry
+                          2419200               ; Expire
+                          300 )                 ; Negative Cache TTL
+;
+@       IN      NS      ns1
+ns1     IN      A       203.0.113.1
+prox1   IN      A       203.0.113.2
+alice   IN      A       203.0.113.3
+user1   IN      CNAME   alice.example.org.
+
+example.org.           172800   IN   NAPTR  30  0  "s"   "SIP+D2U"   ""  _sip._udp.example.org.
+example.org.           172800   IN   NAPTR  20  0  "s"   "SIP+D2T"   ""  _sip._tcp.example.org.
+_sip._udp.example.org. 3600     IN   SRV 0 0 5060 prox1.example.org.
+_sip._tcp.example.org. 3600     IN   SRV 0 0 5060 prox1.example.org.
+
+

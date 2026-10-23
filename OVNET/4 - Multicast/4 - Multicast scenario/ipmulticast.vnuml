@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE vnuml SYSTEM "/usr/share/xml/vnuml/vnuml.dtd">
+
+<!--version 1.1 -->
+
+<vnuml>
+  <global>
+    <version>1.8</version>
+    <simulation_name>ipmulticast</simulation_name>
+    <automac/>
+    <vm_mgmt type="none" />
+    <vm_defaults exec_mode="mconsole">
+       <filesystem type="cow">/usr/share/vnuml/filesystems/debian5.fs</filesystem>
+       <kernel>/usr/share/vnuml/kernels/linux-3.3.8</kernel>
+	<console id="0">pts</console>
+    </vm_defaults>
+  </global>
+  <net name="Net0" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net0.ctl" />
+  <net name="Net1" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net1.ctl" />
+  <net name="Net2" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net2.ctl"/>
+  <net name="Net3" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net3.ctl"/>
+  <net name="Net4" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net4.ctl"/>
+  <net name="Net5" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net5.ctl"/>
+
+  <!-- Central Router for Backbone Network: RC -->
+  <vm name="RC">
+   <kernel>/usr/share/vnuml/kernels/linux-3.3.8</kernel>
+   <console id="0">pts</console>
+   <if id="1" net="Net1"><ipv4>192.0.2.1/24</ipv4></if>
+   <if id="2" net="Net2"><ipv4>198.51.100.1/24</ipv4></if>
+   <if id="3" net="Net4"><ipv4>203.0.113.1/24</ipv4></if>
+   <forwarding type="ip" />
+   <filetree root="/usr/local/sbin" seq="start">./files/multicast/smcrouter/</filetree>
+   <exec seq="start" type="verbatim">/usr/sbin/smcroute -k </exec>
+
+   <!-- Tree with no overlay -->
+   <exec seq="mcnooverlay" type="verbatim">smcroute -k</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -d</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth2 0.0.0.0 232.43.211.234 eth1 eth3</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth2 232.43.211.234</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth2 0.0.0.0 225.1.2.3 eth1 eth3</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth2 225.1.2.3</exec>
+
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth1 0.0.0.0 225.1.2.3 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth1 225.1.2.3</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth1 0.0.0.0 232.43.211.234 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth1 232.43.211.234</exec>
+
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth3 0.0.0.0 225.1.2.3 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth3 225.1.2.3</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth3 0.0.0.0 232.43.211.234 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth3 232.43.211.234</exec>
+
+
+  </vm>
+
+
+<!-- Router 2 with NAT -->
+  <vm name="R2">
+   <kernel>/usr/share/vnuml/kernels/linux-3.3.8</kernel>
+   <console id="0">pts</console>
+   <console id="1">pts</console>
+   <if id="2" net="Net2"><ipv4>198.51.100.2/24</ipv4></if>
+   <if id="1" net="Net3"><ipv4>172.16.1.1/24</ipv4></if>
+   <route type="ipv4" gw="198.51.100.1">default</route> 
+   <forwarding type="ip" />
+   <filetree root="/usr/local/sbin" seq="start">./files/multicast/smcrouter/</filetree>
+   <exec seq="start" type="verbatim">/usr/sbin/smcroute -k </exec>
+
+   <!-- clean the multicast configuration --> 
+   <exec seq="mcclean" type="verbatim">smcroute -k</exec>
+
+   <!-- create gre tunnels --> 
+    <exec seq="addtun" type="verbatim">ip tunnel add tunnel0 mode gre local 198.51.100.2 remote 192.0.2.2 ttl 64 dev eth2 &gt; /dev/null </exec>
+    <exec seq="addtun" type="verbatim">ip link set tunnel0 up multicast on</exec>
+    <exec seq="addtun" type="verbatim">ifconfig tunnel0 192.168.110.1 </exec>
+    <exec seq="addtun" type="verbatim">route add -net 192.168.0.0/24 dev tunnel0</exec>
+
+    <exec seq="addtun" type="verbatim">ip tunnel add tunnel1 mode gre local 198.51.100.2 remote 203.0.113.2 ttl 64 dev eth2 &gt; /dev/null </exec>
+    <exec seq="addtun" type="verbatim">ip link set tunnel1 up multicast on</exec>
+    <exec seq="addtun" type="verbatim">ifconfig tunnel1 192.168.110.2 </exec>
+    <exec seq="addtun" type="verbatim">route add -net 192.168.5.0/24 dev tunnel1</exec>
+
+   <!-- delete gre tunnels --> 
+    <exec seq="deltun" type="verbatim">ip tunnel del tunnel0 &gt; /dev/null </exec>
+    <exec seq="deltun" type="verbatim">ip tunnel del tunnel1 &gt; /dev/null </exec>
+
+   <!-- restore the multicast configuration (better do this after mcclean) --> 
+   <!-- forward multicast, from server to hosts -->
+   <exec seq="mcsetupfw" type="verbatim">smcroute -k</exec>
+   <exec seq="mcsetupfw" type="verbatim">smcroute -d</exec>
+
+   <exec seq="mcsetupfw" type="verbatim">smcroute -a eth1 0.0.0.0 232.43.211.234 tunnel0 tunnel1</exec>
+   <exec seq="mcsetupfw" type="verbatim">smcroute -j eth1 232.43.211.234</exec>
+
+   <exec seq="mcsetupfw" type="verbatim">smcroute -a eth1 0.0.0.0 225.1.2.3 tunnel0 tunnel1</exec>
+   <exec seq="mcsetupfw" type="verbatim">smcroute -j eth1 225.1.2.3</exec>
+
+  <!-- backward multicast, from hosts to server -->
+
+   <exec seq="mcsetupbw" type="verbatim">smcroute -a tunnel0 0.0.0.0 225.1.2.3 eth1</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -a tunnel1 0.0.0.0 225.1.2.3 eth1</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -j tunnel0 225.1.2.3</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -j tunnel1 225.1.2.3</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -a tunnel0 0.0.0.0 232.43.211.234 eth1</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -a tunnel1 0.0.0.0 232.43.211.234 eth1</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -j tunnel0 232.43.211.234</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -j tunnel1 232.43.211.234</exec>
+
+
+   <!-- Tree with no overlay -->
+   <exec seq="mcnooverlay" type="verbatim">smcroute -k</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -d</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth1 0.0.0.0 232.43.211.234 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth1 232.43.211.234</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth1 0.0.0.0 225.1.2.3 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth1 225.1.2.3</exec>
+
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth2 0.0.0.0 225.1.2.3 eth1</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth2 225.1.2.3</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth2 0.0.0.0 232.43.211.234 eth1</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth2 232.43.211.234</exec>
+
+  </vm>
+
+<!-- server in Net 3, used as server -->
+  <vm name="server">
+    <console id="0">pts</console>
+    <console id="1">pts</console>
+    <if id="1" net="Net3"><ipv4>172.16.1.3/24</ipv4></if>
+   <route type="ipv4" gw="172.16.1.1">default</route> 
+   <filetree root="/root" seq="start">./files/multicast/exchange/</filetree>
+   <filetree root="/root" seq="copy">./files/multicast/exchange/</filetree>
+   <exec seq="start" type="verbatim">/usr/sbin/smcroute -k </exec>
+   <exec seq="mcsetupfw" type="verbatim">echo 0 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts</exec>
+   <exec seq="mcsetupfw" type="verbatim">route add -net 224.0.0.0 netmask 240.0.0.0 dev eth1</exec>
+  </vm>
+
+
+
+<!-- Router 1 with NAT -->
+ <vm name="R1">
+   <kernel>/usr/share/vnuml/kernels/linux-3.3.8</kernel>
+   <console id="0">pts</console>
+   <console id="1">pts</console>
+
+   <if id="2" net="Net1"><ipv4>192.0.2.2/24</ipv4></if>
+   <if id="1" net="Net0"><ipv4>192.168.0.1/24</ipv4></if>
+   <route type="ipv4" gw="192.0.2.1">default</route> 
+   <forwarding type="ip" />
+   <filetree root="/usr/local/sbin" seq="start">./files/multicast/smcrouter/</filetree>
+
+   <exec seq="start" type="verbatim">/usr/sbin/smcroute -k </exec>
+
+
+   <!-- clean the multicast configuration --> 
+   <exec seq="mcclean" type="verbatim">smcroute -k</exec>
+
+   <!-- create gre tunnels --> 
+   <exec seq="addtun" type="verbatim">ip tunnel add tunnel0 mode gre local 192.0.2.2 remote 198.51.100.2 dev eth2 &gt; /dev/null </exec>
+   <exec seq="addtun" type="verbatim">ip link set tunnel0 up multicast on</exec>
+   <exec seq="addtun" type="verbatim">ifconfig tunnel0 192.168.110.3 </exec>
+   <exec seq="addtun" type="verbatim">route add -net 172.16.1.0/24 dev tunnel0</exec>
+
+   <!-- delete gre tunnels --> 
+    <exec seq="deltun" type="verbatim">ip tunnel del tunnel0 &gt; /dev/null </exec>
+
+   <!-- restore the multicast configuration (better do this after mcclean) --> 
+   <exec seq="mcsetupfw" type="verbatim">smcroute -k</exec>
+   <exec seq="mcsetupfw" type="verbatim">smcroute -d</exec>
+
+   <!-- forward multicast, from server to hosts -->
+   <exec seq="mcsetupfw" type="verbatim">smcroute -a tunnel0 0.0.0.0 232.43.211.234 eth1</exec>
+   <exec seq="mcsetupfw" type="verbatim">smcroute -j tunnel0 232.43.211.234</exec>
+
+   <exec seq="mcsetupfw" type="verbatim">smcroute -a tunnel0 0.0.0.0 225.1.2.3 eth1</exec>
+   <exec seq="mcsetupfw" type="verbatim">smcroute -j tunnel0 225.1.2.3</exec>
+
+
+  <!-- backward multicast, from hosts to server -->
+
+   <exec seq="mcsetupbw" type="verbatim">smcroute -a eth1 0.0.0.0 225.1.2.3 tunnel0</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -j eth1 225.1.2.3</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -a eth1 0.0.0.0 232.43.211.234 tunnel0</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -j eth1 232.43.211.234</exec>
+
+   <!-- Tree with no overlay -->
+   <exec seq="mcnooverlay" type="verbatim">smcroute -k</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -d</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth2 0.0.0.0 232.43.211.234 eth1</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth2 232.43.211.234</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth2 0.0.0.0 225.1.2.3 eth1</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth2 225.1.2.3</exec>
+
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth1 0.0.0.0 225.1.2.3 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth1 225.1.2.3</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth1 0.0.0.0 232.43.211.234 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth1 232.43.211.234</exec>
+
+
+  </vm>
+
+
+<!-- Internal host in Net0 -->
+  <vm name="host2">
+   <console id="0">pts</console>
+    <console id="1">pts</console>
+   <if id="1" net="Net0"><ipv4>192.168.0.2/24</ipv4></if>
+   <route type="ipv4" gw="192.168.0.1">default</route> 
+   <exec seq="start" type="verbatim">/usr/sbin/smcroute -k </exec>
+   <exec seq="mcsetupfw" type="verbatim">echo 0 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts</exec>
+   <exec seq="mcsetupfw" type="verbatim">route add -net 224.0.0.0 netmask 240.0.0.0 dev eth1</exec>
+  </vm>
+
+
+<!-- Router 3 with NAT -->
+ <vm name="R3">
+   <kernel>/usr/share/vnuml/kernels/linux-3.3.8</kernel>
+   <console id="0">pts</console>
+   <console id="1">pts</console>
+
+   <if id="2" net="Net4"><ipv4>203.0.113.2/24</ipv4></if>
+   <if id="1" net="Net5"><ipv4>192.168.5.1/24</ipv4></if>
+   <route type="ipv4" gw="203.0.113.1">default</route> 
+   <forwarding type="ip" />
+   <filetree root="/usr/local/sbin" seq="start">./files/multicast/smcrouter/</filetree>
+
+   <exec seq="start" type="verbatim">/usr/sbin/smcroute -k </exec>
+
+
+   <!-- clean the multicast configuration --> 
+   <exec seq="mcclean" type="verbatim">smcroute -k</exec>
+
+   <!-- create gre tunnels --> 
+   <exec seq="addtun" type="verbatim">ip tunnel add tunnel1 mode gre local 203.0.113.2 remote 198.51.100.2 dev eth2 &gt; /dev/null </exec>
+   <exec seq="addtun" type="verbatim">ip link set tunnel1 up multicast on</exec>
+   <exec seq="addtun" type="verbatim">ifconfig tunnel1 192.168.110.4 </exec>
+   <exec seq="addtun" type="verbatim">route add -net 172.16.1.0/24 dev tunnel1</exec>
+
+   <!-- delete gre tunnels --> 
+    <exec seq="deltun" type="verbatim">ip tunnel del tunnel1 &gt; /dev/null </exec>
+
+   <!-- restore the multicast configuration (better do this after mcclean) --> 
+   <exec seq="mcsetupfw" type="verbatim">smcroute -k</exec>
+   <exec seq="mcsetupfw" type="verbatim">smcroute -d</exec>
+
+   <!-- forward multicast, from server to hosts -->
+   <exec seq="mcsetupfw" type="verbatim">smcroute -a tunnel1 0.0.0.0 232.43.211.234 eth1</exec>
+   <exec seq="mcsetupfw" type="verbatim">smcroute -j tunnel1 232.43.211.234</exec>
+
+   <exec seq="mcsetupfw" type="verbatim">smcroute -a tunnel1 0.0.0.0 225.1.2.3 eth1</exec>
+   <exec seq="mcsetupfw" type="verbatim">smcroute -j tunnel1 225.1.2.3</exec>
+
+
+  <!-- backward multicast, from hosts to server -->
+
+   <exec seq="mcsetupbw" type="verbatim">smcroute -a eth1 0.0.0.0 225.1.2.3 tunnel1</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -j eth1 225.1.2.3</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -a eth1 0.0.0.0 232.43.211.234 tunnel1</exec>
+   <exec seq="mcsetupbw" type="verbatim">smcroute -j eth1 232.43.211.234</exec>
+
+   <!-- Tree with no overlay -->
+   <exec seq="mcnooverlay" type="verbatim">smcroute -k</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -d</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth2 0.0.0.0 232.43.211.234 eth1</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth2 232.43.211.234</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth2 0.0.0.0 225.1.2.3 eth1</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth2 225.1.2.3</exec>
+
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth1 0.0.0.0 225.1.2.3 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth1 225.1.2.3</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -a eth1 0.0.0.0 232.43.211.234 eth2</exec>
+   <exec seq="mcnooverlay" type="verbatim">smcroute -j eth1 232.43.211.234</exec>
+
+  </vm>
+
+<!-- Internal host in Net5 -->
+  <vm name="host4">
+   <console id="0">pts</console>
+    <console id="1">pts</console>
+   <if id="1" net="Net5"><ipv4>192.168.5.4/24</ipv4></if>
+   <route type="ipv4" gw="192.168.5.1">default</route> 
+   <exec seq="start" type="verbatim">/usr/sbin/smcroute -k </exec>
+   <exec seq="mcsetupfw" type="verbatim">echo 0 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts</exec>
+   <exec seq="mcsetupfw" type="verbatim">route add -net 224.0.0.0 netmask 240.0.0.0 dev eth1</exec>
+  </vm>
+
+
+
+
+
+
+
+</vnuml>
+
+
+
+
+
+
+
+
+

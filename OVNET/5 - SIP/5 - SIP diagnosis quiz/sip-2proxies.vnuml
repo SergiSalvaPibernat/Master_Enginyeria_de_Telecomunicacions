@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE vnuml SYSTEM "/usr/share/xml/vnuml/vnuml.dtd">
+
+<vnuml>
+  <global>
+    <version>1.8</version>
+    <simulation_name>sip-2proxies</simulation_name>
+    <automac/>
+    <vm_mgmt type="none" />
+    <vm_defaults exec_mode="mconsole">
+       <filesystem type="cow">/usr/share/vnuml/filesystems/debian6.fs</filesystem>
+       <kernel>/usr/share/vnuml/kernels/linux-3.3.8</kernel>
+       <!-- <console id="0">xterm</console> -->
+    </vm_defaults>
+  </global>
+<net name="Net0" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net0.ctl"/>
+<net name="Net1" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net1.ctl" />
+
+   <vm name="prox1">
+    <mem>128M</mem>
+    <console id="0">pts</console>
+    <console id="1">pts</console>
+    <if id="1" net="Net0">
+ 	<ipv4>203.0.113.2/25</ipv4>
+    </if>
+    <route type="ipv4" gw="203.0.113.1">default</route>
+    <filetree root="/tmp" seq="start">./files/sip-2proxies/prox1/tmp</filetree>
+    <filetree root="/etc/kamailio" seq="start">./files/sip-2proxies/prox1/etc.kamailio</filetree>
+    <filetree root="/etc/default" seq="start">./files/sip-2proxies/prox1/etc.default</filetree>
+    <exec seq="start" type="verbatim">echo -e "search example.org\nnameserver 203.0.113.1\n" > /etc/resolv.conf</exec>
+    <exec seq="start" type="verbatim">service mysql start</exec>
+    <exec seq="kamdb" type="verbatim">/tmp/kam_db_create.sh &amp;&amp; service kamailio restart &amp;&amp; /tmp/kam_alice_create.sh</exec>
+  </vm>
+
+  <vm name="prox2">
+    <mem>128M</mem>
+    <console id="0">pts</console>
+    <console id="1">pts</console>
+    <if id="1" net="Net1">
+ 	<ipv4>198.51.100.2/25</ipv4>
+    </if>
+    <route type="ipv4" gw="198.51.100.1">default</route>
+    <filetree root="/tmp" seq="start">./files/sip-2proxies/prox2/tmp</filetree>
+    <filetree root="/etc/kamailio" seq="start">./files/sip-2proxies/prox2/etc.kamailio</filetree>
+    <filetree root="/etc/default" seq="start">./files/sip-2proxies/prox2/etc.default</filetree> 
+    <exec seq="start" type="verbatim">echo -e "search example.com\nnameserver 198.51.100.1\n" > /etc/resolv.conf</exec>
+    <exec seq="start" type="verbatim">service mysql start</exec>
+    <exec seq="kamdb" type="verbatim">/tmp/kam_db_create.sh &amp;&amp; service kamailio restart &amp;&amp; /tmp/kam_bob_create.sh &amp;&amp; /tmp/kam_linphone_create.sh </exec>
+  </vm>
+
+  <vm name="alice">
+    <console id="0">pts</console>
+    <console id="1">pts</console>
+    <if id="1" net="Net0">
+ 	<ipv4>203.0.113.3/25</ipv4>
+    </if>
+    <route type="ipv4" gw="203.0.113.1">default</route>
+    <filetree root="/root" seq="start">./files/sip-2proxies/audio</filetree>
+    <exec seq="start" type="verbatim">echo -e "search example.org\nnameserver 203.0.113.1\n" > /etc/resolv.conf</exec>
+  </vm>
+
+  <vm name="bob">
+    <console id="0">pts</console>
+    <console id="1">pts</console>
+    <if id="1" net="Net1">
+ 	<ipv4>198.51.100.3/25</ipv4>
+    </if>
+    <route type="ipv4" gw="198.51.100.1">default</route>
+    <filetree root="/root" seq="start">./files/sip-2proxies/audio</filetree>
+    <exec seq="start" type="verbatim">echo -e "search example.com\nnameserver 198.51.100.1\n" > /etc/resolv.conf</exec>
+  </vm>
+
+  <vm name="router">
+    <console id="0">pts</console>
+    <console id="1">pts</console>
+    <if id="1" net="Net0">
+        <ipv4>203.0.113.1/25</ipv4>
+    </if>
+    <if id="2" net="Net1">
+        <ipv4>198.51.100.1/25</ipv4>
+    </if>
+    <forwarding type="ip"/>
+    <filetree root="/etc/bind/" seq="start">./files/sip-2proxies/bind</filetree>
+    <filetree root="/etc/bind/" seq="dns">./files/sip-2proxies/bind2</filetree>
+    <exec seq="dns" type="verbatim">/etc/init.d/bind9 restart</exec>
+    <exec seq="start" type="verbatim">echo -e "search example.org example.com\nnameserver 127.0.0.1\n" > /etc/resolv.conf</exec>
+    <exec seq="start" type="verbatim">/etc/init.d/bind9 restart</exec>
+  </vm>
+</vnuml>

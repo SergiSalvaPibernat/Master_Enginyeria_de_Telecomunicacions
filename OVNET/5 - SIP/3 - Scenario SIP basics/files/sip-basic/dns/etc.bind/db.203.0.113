@@ -1,0 +1,19 @@
+; reverse lookup database 
+$TTL    1
+@               IN      SOA     ROOT-SERVER.    admin-mail.ROOT-SERVER. (
+                        2006031201 ; serial
+                        28 ; refresh
+                        14 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl 
+                        )
+@                       IN      NS      ROOT-SERVER.
+
+4     IN      PTR        ROOT-SERVER.
+4     IN      PTR        dns.example.com.
+1     IN      PTR        phyhost.example.com.
+2     IN      PTR        alice.example.com.
+3     IN      PTR        bob.example.com.
+
+
+

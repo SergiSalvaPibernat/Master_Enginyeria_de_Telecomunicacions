@@ -1,0 +1,4 @@
+Instructions to install simtools (Lab software)
+Feu clic a l'enllaç https://simtools.upc.edu/ per obrir el recurs.
+Simtools using a web browser (RAVADA)
+Feu clic a l'enllaç https://rvd4.upc.edu/ per obrir el recurs.

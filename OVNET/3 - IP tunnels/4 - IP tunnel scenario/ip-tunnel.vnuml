@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE vnuml SYSTEM "/usr/share/xml/vnuml/vnuml.dtd">
+<!-- version 1.0 -->
+<vnuml>
+  <global>
+    <version>1.8</version>
+    <simulation_name>iptunnelreduced</simulation_name>
+    <automac/>
+    <vm_mgmt type="none" />
+    <vm_defaults exec_mode="mconsole">
+       <filesystem type="cow">/usr/share/vnuml/filesystems/root_fs_tutorial</filesystem>
+       <kernel>/usr/share/vnuml/kernels/linux</kernel>
+	<console id="0">pts</console>
+    </vm_defaults>
+  </global>
+  <net name="Net0" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net0.ctl" />
+  <net name="Net1" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net1.ctl" />
+  <net name="Net2" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net2.ctl" />
+  <net name="Net3" mode="uml_switch" hub="yes" sock="/var/run/vnuml/Net5.ctl" />
+
+  <!-- Central Router for Backbone Network: RC -->
+  <vm name="RC">
+   <console id="0">pts</console>
+   <if id="1" net="Net1"><ipv4>192.0.2.1/24</ipv4></if>
+   <if id="2" net="Net2"><ipv4>198.51.100.1/24</ipv4></if>
+   <forwarding type="ip" />
+    <exec seq="flushcache" type="verbatim">ip route flush cache &gt; /dev/null </exec>
+  </vm>
+
+<!-- Router at zone B with NAT -->
+  <vm name="R2">
+   <kernel>/usr/share/vnuml/kernels/linux-3.3.8</kernel>
+   <console id="0">pts</console>
+   <if id="2" net="Net2"><ipv4>198.51.100.2/24</ipv4></if>
+   <if id="1" net="Net3"><ipv4>172.16.1.1/24</ipv4></if>
+   <route type="ipv4" gw="198.51.100.1">default</route> 
+   <forwarding type="ip" />
+   <exec seq="start" type="verbatim">iptables -t nat -A POSTROUTING -o eth2 -j SNAT --to 198.51.100.2</exec>
+
+    <exec seq="addtun_nopmtu" type="verbatim">ip tunnel add tunnel0 mode ipip local 198.51.100.2 remote 192.0.2.2 ttl 0 nopmtudisc dev eth2 &gt; /dev/null </exec>
+    <exec seq="addtun_nopmtu" type="verbatim">ifconfig tunnel0 0.0.0.0 </exec>
+    <exec seq="addtun_nopmtu" type="verbatim">route add -net 192.168.0.0/24 dev tunnel0</exec>
+ 
+    <exec seq="addtun_pmtu" type="verbatim">ip tunnel add tunnel0 mode ipip local 198.51.100.2 remote 192.0.2.2 ttl 0 pmtudisc dev eth2 &gt; /dev/null </exec>
+    <exec seq="addtun_pmtu" type="verbatim">ifconfig tunnel0 0.0.0.0 </exec>
+    <exec seq="addtun_pmtu" type="verbatim">route add -net 192.168.0.0/24 dev tunnel0</exec>
+
+    <exec seq="deltun" type="verbatim">ip tunnel del tunnel0 &gt; /dev/null </exec>
+    <exec seq="flushcache" type="verbatim">ip route flush cache &gt; /dev/null </exec>
+
+  </vm>
+
+<!-- Internal host in zone B -->
+  <vm name="host3">
+    <console id="0">pts</console>
+    <if id="1" net="Net3"><ipv4>172.16.1.3/24</ipv4></if>
+   <route type="ipv4" gw="172.16.1.1">default</route> 
+    <exec seq="flushcache" type="verbatim">ip route flush cache &gt; /dev/null </exec>
+  </vm>
+
+
+<!-- Router with NAT at zone A -->
+ <vm name="R1">
+   <kernel>/usr/share/vnuml/kernels/linux-3.3.8</kernel>
+   <console id="0">pts</console>
+   <if id="2" net="Net1"><ipv4>192.0.2.2/24</ipv4></if>
+   <if id="1" net="Net0"><ipv4>192.168.0.1/24</ipv4></if>
+   <route type="ipv4" gw="192.0.2.1">default</route> 
+   <forwarding type="ip" />
+   <exec seq="start" type="verbatim">iptables -t nat -A POSTROUTING -o eth2 -j SNAT --to 192.0.2.2</exec>
+
+   <exec seq="addtun_nopmtu" type="verbatim">ip tunnel add tunnel0 mode ipip local 192.0.2.2 remote 198.51.100.2 ttl 0 nopmtudisc  dev eth2 &gt; /dev/null </exec>
+   <exec seq="addtun_nopmtu" type="verbatim">ifconfig tunnel0 0.0.0.0 </exec>
+   <exec seq="addtun_nopmtu" type="verbatim">route add -net 172.16.1.0/24 dev tunnel0</exec>
+
+   <exec seq="addtun_pmtu" type="verbatim">ip tunnel add tunnel0 mode ipip local 192.0.2.2 remote 198.51.100.2 ttl 0 pmtudisc  dev eth2 &gt; /dev/null </exec>
+   <exec seq="addtun_pmtu" type="verbatim">ifconfig tunnel0 0.0.0.0 </exec>
+   <exec seq="addtun_pmtu" type="verbatim">route add -net 172.16.1.0/24 dev tunnel0</exec>
+
+    <exec seq="deltun" type="verbatim">ip tunnel del tunnel0 &gt; /dev/null </exec>
+    <exec seq="flushcache" type="verbatim">ip route flush cache &gt; /dev/null </exec>
+
+  </vm>
+
+<!-- Internal host in zone A -->
+  <vm name="host2">
+   <console id="0">pts</console>
+   <if id="1" net="Net0"><ipv4>192.168.0.2/24</ipv4></if>
+   <route type="ipv4" gw="192.168.0.1">default</route> 
+   <filetree root="/var/www" seq="start">./files/iptunnel/host2/</filetree> 
+   <exec seq="flushcache" type="verbatim">ip route flush cache &gt; /dev/null </exec>
+   <exec seq="start" type="verbatim">sed -e 's/RedirectMatch/# RedirectMatch/' /etc/apache2/sites-available/default &gt; /etc/apache2/sites-available/disRedirect</exec>
+   <exec seq="start" type="verbatim">ln -sf /etc/apache2/sites-available/disRedirect /etc/apache2/sites-enabled/000-default</exec>
+   <exec seq="start" type="verbatim">/etc/init.d/apache2 start &gt;/dev/null 2&gt;&amp;1</exec>
+  </vm>
+
+</vnuml>
+
+
+
+
+
+
+
+
+
+
