@@ -1,0 +1,112 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity led_interface is
+	port(
+		clk, nrst, activate, game_over : in std_logic;
+		game_status : in std_logic_vector(1 downto 0);
+		lifes : in std_logic_vector(5 downto 0);
+		LR: out std_logic_vector(17 downto 0);
+		LG: out std_logic_vector(7 downto 0);
+		word_ready_out, game_status_out : out std_logic;
+		sev_seg : out std_logic_vector(29 downto 0)
+	);
+end led_interface;
+
+architecture main of led_interface is
+	type state_type is (s0_wait, s_wait_game, s_wait_status, s_lr, s_lg, s_game);
+	signal state : state_type;
+	signal l : integer;
+	signal lifesU, lifesT : std_logic_vector(5 downto 0);
+begin
+
+	process(clk)
+	begin
+	if(clk'event and clk = '1') then
+		if (nrst = '0') then
+			LR <= (others => '0');
+			LG <= (others => '0');
+			sev_seg <= (others => '0');
+			word_ready_out <= '0';
+		else
+			case state is
+				when s0_wait =>
+					if(activate = '1') then
+						state <= s_wait_game;
+					end if;
+				when s_wait_game =>
+					if (game_over = '0') then
+						state <= s_wait_status;
+					else
+						LR <= (others => '0');
+						LG <= (others => '0');
+						state <= s0_wait;
+					end if;
+				when s_wait_status =>
+					if (game_status = "00") then
+						state <= s_lg;
+					elsif (game_status = "01") then
+						state <= s_lr;
+					elsif (game_status ="10") then
+						state <= s_game;
+					end if;
+					l<= to_integer(unsigned(lifes));
+					lifesU(5 downto 0) <=   "00000" when lifes = "00000" else --0
+											"00001" when lifes (5 downto 0) = "00001" else --1
+											"00010" when lifes (5 downto 0) = "00010" else --2
+											"00011" when lifes (5 downto 0) = "00011" else --3
+											"00100" when lifes (5 downto 0) = "00100" else --4
+											"00101" when lifes (5 downto 0) = "00101" else --5
+											"00110" when lifes (5 downto 0) = "00110" else --6
+											"00111" when lifes (5 downto 0) = "00111" else --7
+											"01000" when lifes (5 downto 0) = "01000" else --8
+											"01001" when lifes (5 downto 0) = "01001" else --9
+											"00000" when lifes (5 downto 0) = "01010" else --10
+											"00001" when lifes (5 downto 0) = "01011" else --11
+											"00010" when lifes (5 downto 0) = "01100" else --12
+											"00011" when lifes (5 downto 0) = "01101" else --13
+											"00100" when lifes (5 downto 0) = "01110" else --14
+											"00101" when lifes (5 downto 0) = "01111" else --15
+											"00110" when lifes (5 downto 0) = "10000" else --16
+											"11111";
+					lifesT(5 downto 0) <=   "00000" when lifes (5 downto 0) = "00000" else --0
+											"00000" when lifes (5 downto 0) = "00001" else --1
+											"00000" when lifes (5 downto 0) = "00010" else --2
+											"00000" when lifes (5 downto 0) = "00011" else --3
+											"00000" when lifes (5 downto 0) = "00100" else --4
+											"00000" when lifes (5 downto 0) = "00101" else --5
+											"00000" when lifes (5 downto 0) = "00110" else --6
+											"00000" when lifes (5 downto 0) = "00111" else --7
+											"00000" when lifes (5 downto 0) = "01000" else --8
+											"00000" when lifes (5 downto 0) = "01001" else --9
+											"00001" when lifes (5 downto 0) = "01010" else --10
+											"00001" when lifes (5 downto 0) = "01011" else --11
+											"00001" when lifes (5 downto 0) = "01100" else --12
+											"00001" when lifes (5 downto 0) = "01101" else --13
+											"00001" when lifes (5 downto 0) = "01110" else --14
+											"00001" when lifes (5 downto 0) = "01111" else --15
+											"00001" when lifes (5 downto 0) = "10000" else --16
+											"11111";
+				when s_lr =>
+					game_status_out <= '0';
+					LR <= (others => '0');
+					sev_seg(19 downto 0) = "10100101011011010111";
+					state <= s0_wait;
+				when s_lg =>
+					game_status_out <= '1';
+					LG <= (others => '1');
+					LR(l downto 0) <= (others => '1');
+					sev_seg(19 downto 0) = "10000100011001010011";
+					state <= s0_wait;
+				when s_game =>
+					sev_seg(29 downto 25) <= lifesT;
+					sev_seg(24 downto 20) <= lifesU;
+					sev_seg(19 downto 0) <= (others => '1');
+					word_ready_out <= '1';
+					LR(l downto 0) <= (others => '1');
+			end case;
+		end if;
+	end if;
+end process;
+end;

@@ -1,0 +1,72 @@
+library work;
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity lifes_conversion is 
+   port( num : in std_logic_vector (4 downto 0);
+        HEX  : out std_logic_vector (6 downto 0);
+        lifes : in std_logic_vector(5 downto 0)
+         );
+end lifes_conversion;
+
+architecture behaviour of lifes_conversion is
+   signal lifesU, lifesT : std_logic_vector(4 downto 0);
+begin
+
+        HEX(6 downto 0) <=   "1000000" when num(4 downto 0) = "00000" else  --0
+							 "1111001" when num(4 downto 0) = "00001" else --1
+							 "0100100" when num(4 downto 0) = "00010" else --2
+							 "0110000" when num(4 downto 0) = "00011" else --3
+							 "0011001" when num(4 downto 0) = "00100" else --4
+							 "0010010" when num(4 downto 0) = "00101" else --5
+							 "0000010" when num(4 downto 0) = "00110" else --6
+							 "1111000" when num(4 downto 0) = "00111" else --7
+							 "0000000" when num(4 downto 0) = "01000" else --8
+							 "0010000" when num(4 downto 0) = "01001" else --9
+							 "1000011" when num(4 downto 0) = "10000" else --W
+							 "1100001" when num(4 downto 0) = "10001" else --W
+							 "1111001" when num(4 downto 0) = "10010" else --I
+							 "1001000" when num(4 downto 0) = "10011" else --N
+							 "1000111" when num(4 downto 0) = "10100" else --L
+							 "1000000" when num(4 downto 0) = "10101" else --O
+							 "0010010" when num(4 downto 0) = "10110" else --S
+							 "0000110" when num(4 downto 0) = "10111" else --E
+							 "1111111";
+							 
+		lifesU(4 downto 0) <=   "00000" when lifes = "00000" else --0
+								"00001" when lifes (5 downto 0) = "00001" else --1
+								"00010" when lifes (5 downto 0) = "00010" else --2
+								"00011" when lifes (5 downto 0) = "00011" else --3
+								"00100" when lifes (5 downto 0) = "00100" else --4
+								"00101" when lifes (5 downto 0) = "00101" else --5
+								"00110" when lifes (5 downto 0) = "00110" else --6
+								"00111" when lifes (5 downto 0) = "00111" else --7
+								"01000" when lifes (5 downto 0) = "01000" else --8
+								"01001" when lifes (5 downto 0) = "01001" else --9
+								"00000" when lifes (5 downto 0) = "01010" else --10
+								"00001" when lifes (5 downto 0) = "01011" else --11
+								"00010" when lifes (5 downto 0) = "01100" else --12
+								"00011" when lifes (5 downto 0) = "01101" else --13
+								"00100" when lifes (5 downto 0) = "01110" else --14
+								"00101" when lifes (5 downto 0) = "01111" else --15
+								"00110" when lifes (5 downto 0) = "10000" else --16
+								"11111";
+		lifesT(4 downto 0) <=   "00000" when lifes (5 downto 0) = "00000" else --0
+								"00000" when lifes (5 downto 0) = "00001" else --1
+								"00000" when lifes (5 downto 0) = "00010" else --2
+								"00000" when lifes (5 downto 0) = "00011" else --3
+								"00000" when lifes (5 downto 0) = "00100" else --4
+								"00000" when lifes (5 downto 0) = "00101" else --5
+								"00000" when lifes (5 downto 0) = "00110" else --6
+								"00000" when lifes (5 downto 0) = "00111" else --7
+								"00000" when lifes (5 downto 0) = "01000" else --8
+								"00000" when lifes (5 downto 0) = "01001" else --9
+								"00001" when lifes (5 downto 0) = "01010" else --10
+								"00001" when lifes (5 downto 0) = "01011" else --11
+								"00001" when lifes (5 downto 0) = "01100" else --12
+								"00001" when lifes (5 downto 0) = "01101" else --13
+								"00001" when lifes (5 downto 0) = "01110" else --14
+								"00001" when lifes (5 downto 0) = "01111" else --15
+								"00001" when lifes (5 downto 0) = "10000" else --16
+								"11111";						 
+end behaviour;

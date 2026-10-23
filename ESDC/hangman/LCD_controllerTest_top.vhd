@@ -1,0 +1,55 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity LCD_controllerTest_top is
+	port (
+		clk          : in  std_logic;
+		rst          : in  std_logic;
+		lcd_e        : out std_logic;
+		lcd_rs       : out std_logic;
+		lcd_on       : out std_logic;
+		lcd_rw       : out std_logic;
+		lcd_db       : out std_logic_vector(7 downto 0));
+		
+end LCD_controllerTest_top;
+
+architecture Behavioral of LCD_controllerTest_top is
+
+	COMPONENT lcd_controller IS
+	  PORT(
+		 clk        : IN    STD_LOGIC;  --system clock
+		 reset_n    : IN    STD_LOGIC;  --active low reinitializes lcd
+		 rw, rs, e, l_on  : OUT   STD_LOGIC;  --read/write, setup/data, and enable for lcd
+		 lcd_data   : OUT   STD_LOGIC_VECTOR(7 DOWNTO 0); --data signals for lcd
+		 line1_buffer : IN STD_LOGIC_VECTOR(127 downto 0); -- Data for the top line of the LCD
+		 line2_buffer : IN STD_LOGIC_VECTOR(127 downto 0)); -- Data for the bottom line of the LCD
+	END COMPONENT;
+	
+	-- These lines can be configured to be input from anything. 
+	-- 8 bits per character
+	signal top_line : std_logic_vector(127 downto 0); -- Translates to Mayur's FPGA
+	signal bottom_line : std_logic_vector(127 downto 0);begin
+
+LCD: lcd_controller port map(
+	clk => clk,
+	reset_n => rst,
+	e => lcd_e,
+	rs => lcd_rs,
+	rw => lcd_rw,
+	l_on =>lcd_on,
+	lcd_data => lcd_db,
+	line1_buffer => top_line,
+	line2_buffer => bottom_line 
+);
+top_line <=     x"486F6C61204A6F73657020416C746574";
+bottom_line  <= x"5445535420666f72204c434420202020";
+end Behavioral;

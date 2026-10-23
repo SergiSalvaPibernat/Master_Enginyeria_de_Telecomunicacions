@@ -1,0 +1,159 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
+
+entity user_interface is
+	port(
+		clk, nrst, activate, game_over : in std_logic;
+		game_status : in std_logic_vector(1 downto 0);
+		lifes : in std_logic_vector(3 downto 0);
+		LR: out std_logic_vector(16 downto 0);
+		LG: out std_logic_vector(7 downto 0);
+		word_ready_out, game_status_out : out std_logic;
+		sev_seg : out std_logic_vector(29 downto 0);
+		lost, winner : in std_logic
+	);
+end user_interface;
+
+architecture main of user_interface is
+	type state_type is (s0_wait, s_wait_game, s_wait_status, s_lr, s_lg, s_game);
+	signal state : state_type;
+	signal lifesU, lifesT : std_logic_vector(4 downto 0);
+	--signal leds : std_logic_vector(16 downto 0); 
+begin
+
+	process(clk)
+	begin
+	
+		if (nrst = '0') then
+			LR <= "00000000000000000";
+			LG <= "00000000";
+			sev_seg <= (others => '0');
+			word_ready_out <= '0';
+			game_status_out <= '0';
+			state <= s0_wait;
+		elsif(clk'event and clk = '1') then
+			case state is
+				when s0_wait =>
+					--if(activate = '1') then
+						state <= s_wait_game;
+					--end if;
+					--lifesU <= (others => '0');
+					--lifesT<= (others => '0');
+					--word_ready_out <= '1';
+				when s_wait_game =>
+					if (game_over = '0') then
+						state <= s_wait_status;
+					else
+						LR <= "00000000000000000";
+						LG <= "00000000";
+						state <= s0_wait;
+					end if;
+				when s_wait_status =>
+					if (game_status = "00" or winner ='1') then
+						state <= s_lg;
+					elsif (game_status = "01" or lost = '1') then
+						state <= s_lr;
+					elsif (game_status ="10") then
+						state <= s_game;
+					end if;
+					
+					if (lifes = "00000" ) then --0
+						lifesU <= "00000";
+						lifesT <= "00000";
+						--leds <= "00000000000000000";
+					elsif (lifes = "00001") then --1
+						lifesU <= "00001";
+						lifesT <= "00000";
+						--leds <= "00000000000000001";
+					elsif (lifes = "00010") then --2
+						lifesU <= "00010";
+						lifesT <= "00000";
+						--leds <= "00000000000000011";
+					elsif (lifes = "00011") then --3
+						lifesU <= "00011";
+						lifesT <= "00000";
+						--leds <= "00000000000000111";
+					elsif (lifes = "00100") then --4
+						lifesU <= "00100";
+						lifesT <= "00000";
+						--leds <= "00000000000001111";
+					elsif (lifes = "00101") then --5
+						lifesU <= "00101";
+						lifesT <= "00000";
+						--leds <= "00000000000011111";
+					elsif (lifes = "00110") then --6
+						lifesU <= "00110";
+						lifesT <= "00000";
+						--leds <= "00000000000111111";
+					elsif (lifes = "00111") then --7
+						lifesU <= "00111";
+						lifesT <= "00000";
+						--leds <= "00000000001111111";
+					elsif (lifes = "01000") then --8
+						lifesU <= "01000";
+						lifesT <= "00000";
+						--leds <= "00000000011111111";
+					elsif (lifes = "01001") then --9
+						lifesU <= "01001";
+						lifesT <= "00000";
+						--leds <= "00000000111111111";
+					elsif (lifes = "01010") then --10
+						lifesU <= "00000";
+						lifesT <= "00001";
+						--leds <= "00000001111111111";
+					elsif (lifes = "01011") then --11
+						lifesU <= "00001";
+						lifesT <= "00001";
+						--leds <= "00000011111111111";
+					elsif (lifes = "01100") then --12
+						lifesU <= "00010";
+						lifesT <= "00001";
+						--leds <= "00000111111111111";
+					elsif (lifes = "01101") then --13
+						lifesU <= "00011";
+						lifesT <= "00001";
+						--leds <= "00001111111111111";
+					elsif (lifes = "01110") then --14
+						lifesU <= "00100";
+						lifesT <= "00001";
+						--leds <= "00011111111111111";
+					elsif (lifes = "01111") then --15
+						lifesU <= "00101";
+						lifesT <= "00001";
+						--leds <= "00111111111111111";
+					elsif (lifes = "10000") then --16
+						lifesU <= "00110";
+						lifesT <= "00001";
+						--leds <= "01111111111111111";
+					else
+						lifesU <= "11111";
+						lifesT <= "11111";
+					end if;
+				when s_lr =>
+					--game_status_out <= '0';
+					LR <= "11111111111111111";
+					sev_seg(19 downto 0) <= "10100101011011010111";
+					state <= s0_wait;
+					sev_seg(29 downto 25) <= lifesT;
+					sev_seg(24 downto 20) <= lifesU;
+				when s_lg =>
+					--game_status_out <= '1';
+					LG <= "11111111";
+					LR <= "00000000000000000";
+					sev_seg(19 downto 0) <= "10000100011001010011";
+					state <= s0_wait;
+					sev_seg(29 downto 25) <= lifesT;
+					sev_seg(24 downto 20) <= lifesU;
+				when s_game =>
+					sev_seg(29 downto 25) <= lifesT;
+					sev_seg(24 downto 20) <= lifesU;
+					sev_seg(19 downto 0) <= (others => '1');
+					word_ready_out <= '1';
+					--LR <= leds;
+					state <= s0_wait;
+			end case;
+		end if;
+end process;
+end;

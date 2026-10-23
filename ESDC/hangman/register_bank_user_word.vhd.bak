@@ -1,0 +1,103 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity register_bank_user_word is
+	port(	clk50, nrst,char_flag, new_word: in std_logic;
+			char: in std_logic_vector (7 downto 0);
+			user_word: out std_logic_vector (127 downto 0);
+			key_read, bank_ready : out std_logic);
+end register_bank_user_word;
+
+architecture arc of register_bank_user_word is
+	type state_type is (s_wait,s_marranada, s_new_word, w_charflag, loadreg, s_end);
+	signal st : state_type;
+	signal buff	: std_logic_vector (127 downto 0);
+	signal J_BR : std_logic;
+	signal K_BR : std_logic;
+	signal ld	: std_logic;
+	signal clr	: std_logic;
+begin
+
+	-- States machine
+	process(clk50, nrst) begin 
+		if nrst = '0' then
+			st <= s_wait;
+		elsif clk50'event and clk50 = '1' then
+			case st is
+				when s_wait =>
+					if (new_word = '1') then
+						st <= s_marranada;
+					end if;
+				when s_marranada =>
+					st <= s_new_word;
+				when s_new_word =>
+					st <= w_charflag;
+				when w_charflag =>
+					if (char_flag = '1') then
+						if char /= x"0D" then 
+							st <= loadreg;
+						else
+							st <= s_end;
+						end if;
+					end if;
+				when loadreg =>
+					st <= w_charflag;
+				when s_end =>
+					st <= s_wait;
+			end case;
+		end if;
+	end process;
+	
+	-- Slicing 128-bit register
+	process(clk50,ld,nrst,clr)
+    begin
+        if nrst = '0' or clr = '1' then
+            buff <= x"00000000000000000000000000000000";
+        elsif (clk50'event and clk50 = '1') then
+			if clr = '1' then
+				buff <= x"00000000000000000000000000000000";
+			elsif ld = '1' then
+				buff(127 downto 120) <= buff(119 downto 112);
+				buff(119 downto 112) <= buff(111 downto 104);
+				buff(111 downto 104) <= buff(103 downto 96);
+				buff(103 downto 96) <= buff(95 downto 88);
+				buff(95 downto 88) <= buff(87 downto 80);
+				buff(87 downto 80) <= buff(79 downto 72);
+				buff(79 downto 72) <= buff(71 downto 64);
+				buff(71 downto 64) <= buff(63 downto 56);
+				buff(63 downto 56) <= buff(55 downto 48);
+				buff(55 downto 48) <= buff(47 downto 40);
+				buff(47 downto 40) <= buff(39 downto 32);
+				buff(39 downto 32) <= buff(31 downto 24);
+				buff(31 downto 24) <= buff(23 downto 16);
+				buff(23 downto 16) <= buff(15 downto 8);
+				buff(15 downto 8) <= buff(7 downto 0);
+				buff(7 downto 0) <= char;
+            end if;
+        end if;
+    end process;
+	
+	
+	-- JK flip-flop
+	process(clk50,nrst,new_word,J_BR)
+	begin
+		if nrst = '0' then
+			bank_ready <= '0';
+		elsif (clk50'event and clk50 = '1') then
+			if J_BR = '1' then
+				bank_ready <= '1';
+			elsif K_BR = '1' then
+				bank_ready <= '0';
+			end if;
+		end if;
+	end process;
+
+key_read <= '1' when st = w_charflag or st = s_marranada else '0';
+J_BR <= '1' when st = s_end else '0';
+K_BR <= '1' when st = s_new_word else '0';
+ld <= '1' when st = loadreg else '0';
+clr <= '1' when st = s_new_word else '0';
+user_word <= buff;
+
+end arc;

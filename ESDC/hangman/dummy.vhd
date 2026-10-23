@@ -1,0 +1,14 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+--ENTITY dummy IS
+--  PORT(
+--	line2_buffer : OUT STD_LOGIC_VECTOR(127 downto 0)); -- Data for the bottom line of the LCD
+--END dummy;
+
+--ARCHITECTURE c OF dummy IS
+	
+--	begin
+--	line2_buffer<= x"12345652442";
+--	end c;
+--end dummy;

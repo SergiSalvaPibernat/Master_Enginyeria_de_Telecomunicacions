@@ -1,0 +1,949 @@
+Analysis & Synthesis report for hangman
+Thu Dec 22 10:25:13 2022
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |hangman|user_interface:inst19|state
+  9. State Machine - |hangman|lcd:inst50|state
+ 10. State Machine - |hangman|register_bank_opponent_cv:inst18|st
+ 11. State Machine - |hangman|register_bank_opp_inc_word:inst17|st
+ 12. State Machine - |hangman|gen_op_inc_word:inst3|state
+ 13. State Machine - |hangman|cv_ack_generator:inst11|state
+ 14. State Machine - |hangman|rx_module:inst14|state
+ 15. State Machine - |hangman|rx_protocol:inst15|state
+ 16. State Machine - |hangman|generate_cv:inst5|st
+ 17. State Machine - |hangman|register_bank_guessing_char:inst10|st
+ 18. State Machine - |hangman|PS2_keyboard_interface:inst4|st
+ 19. State Machine - |hangman|register_bank_user_word:inst2|st
+ 20. State Machine - |hangman|main:inst6|st
+ 21. State Machine - |hangman|game:inst|st
+ 22. State Machine - |hangman|tx_protocol:inst12|st
+ 23. State Machine - |hangman|tx_module:inst13|state
+ 24. User-Specified and Inferred Latches
+ 25. Registers Removed During Synthesis
+ 26. Removed Registers Triggering Further Register Optimizations
+ 27. General Register Statistics
+ 28. Inverted Register Statistics
+ 29. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 30. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++------------------------------------+----------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Dec 22 10:25:13 2022        ;
+; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
+; Revision Name                      ; hangman                                      ;
+; Top-level Entity Name              ; hangman                                      ;
+; Family                             ; Cyclone II                                   ;
+; Total logic elements               ; 1,506                                        ;
+;     Total combinational functions  ; 1,148                                        ;
+;     Dedicated logic registers      ; 808                                          ;
+; Total registers                    ; 808                                          ;
+; Total pins                         ; 101                                          ;
+; Total virtual pins                 ; 0                                            ;
+; Total memory bits                  ; 0                                            ;
+; Embedded Multiplier 9-bit elements ; 0                                            ;
+; Total PLLs                         ; 0                                            ;
++------------------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; hangman            ; hangman            ;
+; Family name                                                                ; Cyclone II         ; Stratix II         ;
+; Use Generated Physical Constraints File                                    ; Off                ;                    ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                            ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                                                            ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+; gen_op_inc_word.vhd              ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/gen_op_inc_word.vhd             ;
+; clk_div_two.vhd                  ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/clk_div_two.vhd                 ;
+; clk_video.vhd                    ; yes             ; User Wizard-Generated File         ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/clk_video.vhd                   ;
+; register_bank_opponent_cv.vhd    ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/register_bank_opponent_cv.vhd   ;
+; tx_module.vhd                    ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/tx_module.vhd                   ;
+; register_bank_guessing_char.vhd  ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/register_bank_guessing_char.vhd ;
+; generate_cv.vhd                  ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/generate_cv.vhd                 ;
+; main.vhd                         ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/main.vhd                        ;
+; ps2_keyboard_interface.vhd       ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/ps2_keyboard_interface.vhd      ;
+; user_interface.vhd               ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/user_interface.vhd              ;
+; BCD7seg.vhd                      ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/BCD7seg.vhd                     ;
+; hex_disps.vhd                    ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/hex_disps.vhd                   ;
+; PS2_keyboard.vhd                 ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/PS2_keyboard.vhd                ;
+; register_bank_user_word.vhd      ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/register_bank_user_word.vhd     ;
+; cv_ack_generator.vhd             ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/cv_ack_generator.vhd            ;
+; game.vhd                         ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/game.vhd                        ;
+; tx_protocol.vhd                  ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/tx_protocol.vhd                 ;
+; register_bank_opp_inc_word.vhd   ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/register_bank_opp_inc_word.vhd  ;
+; rx_module.vhd                    ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/rx_module.vhd                   ;
+; rx_protocol.vhd                  ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/rx_protocol.vhd                 ;
+; lcd.vhd                          ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/lcd.vhd                         ;
+; hangman.bdf                      ; yes             ; User Block Diagram/Schematic File  ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/ESDC Project/Sergi/hangman_11122022/hangman/hangman.bdf                     ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                                                    ;
++---------------------------------------------+--------------------------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                                            ;
++---------------------------------------------+--------------------------------------------------------------------------------------------------+
+; Estimated Total logic elements              ; 1,506                                                                                            ;
+;                                             ;                                                                                                  ;
+; Total combinational functions               ; 1148                                                                                             ;
+; Logic element usage by number of LUT inputs ;                                                                                                  ;
+;     -- 4 input functions                    ; 654                                                                                              ;
+;     -- 3 input functions                    ; 302                                                                                              ;
+;     -- <=2 input functions                  ; 192                                                                                              ;
+;                                             ;                                                                                                  ;
+; Logic elements by mode                      ;                                                                                                  ;
+;     -- normal mode                          ; 1058                                                                                             ;
+;     -- arithmetic mode                      ; 90                                                                                               ;
+;                                             ;                                                                                                  ;
+; Total registers                             ; 808                                                                                              ;
+;     -- Dedicated logic registers            ; 808                                                                                              ;
+;     -- I/O registers                        ; 0                                                                                                ;
+;                                             ;                                                                                                  ;
+; I/O pins                                    ; 101                                                                                              ;
+; Maximum fan-out node                        ; clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk ;
+; Maximum fan-out                             ; 783                                                                                              ;
+; Total fan-out                               ; 6856                                                                                             ;
+; Average fan-out                             ; 3.33                                                                                             ;
++---------------------------------------------+--------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                   ;
++---------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                                          ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                  ; Library Name ;
++---------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------+--------------+
+; |hangman                                                            ; 1148 (1)          ; 808 (0)      ; 0           ; 0            ; 0       ; 0         ; 101  ; 0            ; |hangman                                                                             ; work         ;
+;    |PS2_keyboard:inst1|                                             ; 16 (16)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|PS2_keyboard:inst1                                                          ;              ;
+;    |PS2_keyboard_interface:inst4|                                   ; 86 (86)           ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|PS2_keyboard_interface:inst4                                                ;              ;
+;    |clk_div_two:inst7|                                              ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|clk_div_two:inst7                                                           ;              ;
+;    |clk_video:inst8|                                                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|clk_video:inst8                                                             ;              ;
+;       |clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component ;              ;
+;    |cv_ack_generator:inst11|                                        ; 98 (98)           ; 20 (20)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|cv_ack_generator:inst11                                                     ;              ;
+;    |game:inst|                                                      ; 86 (86)           ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|game:inst                                                                   ;              ;
+;    |gen_op_inc_word:inst3|                                          ; 171 (171)         ; 139 (139)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|gen_op_inc_word:inst3                                                       ;              ;
+;    |generate_cv:inst5|                                              ; 34 (34)           ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|generate_cv:inst5                                                           ;              ;
+;    |hex_disps:inst47|                                               ; 20 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|hex_disps:inst47                                                            ;              ;
+;       |BCD7seg:display0|                                            ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|hex_disps:inst47|BCD7seg:display0                                           ;              ;
+;       |BCD7seg:display1|                                            ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|hex_disps:inst47|BCD7seg:display1                                           ;              ;
+;       |BCD7seg:display2|                                            ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|hex_disps:inst47|BCD7seg:display2                                           ;              ;
+;       |BCD7seg:display3|                                            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|hex_disps:inst47|BCD7seg:display3                                           ;              ;
+;       |BCD7seg:display4|                                            ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|hex_disps:inst47|BCD7seg:display4                                           ;              ;
+;    |lcd:inst50|                                                     ; 367 (367)         ; 54 (54)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|lcd:inst50                                                                  ;              ;
+;    |main:inst6|                                                     ; 14 (14)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|main:inst6                                                                  ;              ;
+;    |register_bank_guessing_char:inst10|                             ; 9 (9)             ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|register_bank_guessing_char:inst10                                          ;              ;
+;    |register_bank_opp_inc_word:inst17|                              ; 3 (3)             ; 117 (117)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|register_bank_opp_inc_word:inst17                                           ;              ;
+;    |register_bank_opponent_cv:inst18|                               ; 2 (2)             ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|register_bank_opponent_cv:inst18                                            ;              ;
+;    |register_bank_user_word:inst2|                                  ; 8 (8)             ; 119 (119)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|register_bank_user_word:inst2                                               ;              ;
+;    |rx_module:inst14|                                               ; 59 (59)           ; 29 (29)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|rx_module:inst14                                                            ;              ;
+;    |rx_protocol:inst15|                                             ; 41 (41)           ; 74 (74)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|rx_protocol:inst15                                                          ;              ;
+;    |tx_module:inst13|                                               ; 52 (52)           ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|tx_module:inst13                                                            ;              ;
+;    |tx_protocol:inst12|                                             ; 57 (57)           ; 30 (30)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|tx_protocol:inst12                                                          ;              ;
+;    |user_interface:inst19|                                          ; 23 (23)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |hangman|user_interface:inst19                                                       ;              ;
++---------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |hangman|user_interface:inst19|state                                                                   ;
++---------------------+--------------+------------+------------+---------------------+-------------------+---------------+
+; Name                ; state.s_game ; state.s_lg ; state.s_lr ; state.s_wait_status ; state.s_wait_game ; state.s0_wait ;
++---------------------+--------------+------------+------------+---------------------+-------------------+---------------+
+; state.s0_wait       ; 0            ; 0          ; 0          ; 0                   ; 0                 ; 0             ;
+; state.s_wait_game   ; 0            ; 0          ; 0          ; 0                   ; 1                 ; 1             ;
+; state.s_wait_status ; 0            ; 0          ; 0          ; 1                   ; 0                 ; 1             ;
+; state.s_lr          ; 0            ; 0          ; 1          ; 0                   ; 0                 ; 1             ;
+; state.s_lg          ; 0            ; 1          ; 0          ; 0                   ; 0                 ; 1             ;
+; state.s_game        ; 1            ; 0          ; 0          ; 0                   ; 0                 ; 1             ;
++---------------------+--------------+------------+------------+---------------------+-------------------+---------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------+
+; State Machine - |hangman|lcd:inst50|state                                                                       ;
++------------------+------------+-------------+-------------+-----------------+------------------+----------------+
+; Name             ; state.send ; state.line2 ; state.line1 ; state.RESETLINE ; state.initialize ; state.power_up ;
++------------------+------------+-------------+-------------+-----------------+------------------+----------------+
+; state.power_up   ; 0          ; 0           ; 0           ; 0               ; 0                ; 0              ;
+; state.initialize ; 0          ; 0           ; 0           ; 0               ; 1                ; 1              ;
+; state.RESETLINE  ; 0          ; 0           ; 0           ; 1               ; 0                ; 1              ;
+; state.line1      ; 0          ; 0           ; 1           ; 0               ; 0                ; 1              ;
+; state.line2      ; 0          ; 1           ; 0           ; 0               ; 0                ; 1              ;
+; state.send       ; 1          ; 0           ; 0           ; 0               ; 0                ; 1              ;
++------------------+------------+-------------+-------------+-----------------+------------------+----------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------+
+; State Machine - |hangman|register_bank_opponent_cv:inst18|st ;
++------------+----------+------------+-------------------------+
+; Name       ; st.s_end ; st.loadreg ; st.s_wait               ;
++------------+----------+------------+-------------------------+
+; st.s_wait  ; 0        ; 0          ; 0                       ;
+; st.loadreg ; 0        ; 1          ; 1                       ;
+; st.s_end   ; 1        ; 0          ; 1                       ;
++------------+----------+------------+-------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------+
+; State Machine - |hangman|register_bank_opp_inc_word:inst17|st ;
++-------+-------+-------+-------+-------------------------------+
+; Name  ; st.s3 ; st.s2 ; st.s1 ; st.s0                         ;
++-------+-------+-------+-------+-------------------------------+
+; st.s0 ; 0     ; 0     ; 0     ; 0                             ;
+; st.s1 ; 0     ; 0     ; 1     ; 1                             ;
+; st.s2 ; 0     ; 1     ; 0     ; 1                             ;
+; st.s3 ; 1     ; 0     ; 0     ; 1                             ;
++-------+-------+-------+-------+-------------------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |hangman|gen_op_inc_word:inst3|state                                                                                                                                                              ;
++----------------------+-------------+----------------+--------------------+--------------------+-------------------+------------+----------------------+--------------+---------------------+----------------------+
+; Name                 ; state.s_end ; state.s_winner ; state.s_compare_cv ; state.s_compute_cv ; state.s_save_word ; state.w_rb ; state.s_compute_word ; state.s_miss ; state.s_check_cvack ; state.w_gen_inc_word ;
++----------------------+-------------+----------------+--------------------+--------------------+-------------------+------------+----------------------+--------------+---------------------+----------------------+
+; state.w_gen_inc_word ; 0           ; 0              ; 0                  ; 0                  ; 0                 ; 0          ; 0                    ; 0            ; 0                   ; 0                    ;
+; state.s_check_cvack  ; 0           ; 0              ; 0                  ; 0                  ; 0                 ; 0          ; 0                    ; 0            ; 1                   ; 1                    ;
+; state.s_miss         ; 0           ; 0              ; 0                  ; 0                  ; 0                 ; 0          ; 0                    ; 1            ; 0                   ; 1                    ;
+; state.s_compute_word ; 0           ; 0              ; 0                  ; 0                  ; 0                 ; 0          ; 1                    ; 0            ; 0                   ; 1                    ;
+; state.w_rb           ; 0           ; 0              ; 0                  ; 0                  ; 0                 ; 1          ; 0                    ; 0            ; 0                   ; 1                    ;
+; state.s_save_word    ; 0           ; 0              ; 0                  ; 0                  ; 1                 ; 0          ; 0                    ; 0            ; 0                   ; 1                    ;
+; state.s_compute_cv   ; 0           ; 0              ; 0                  ; 1                  ; 0                 ; 0          ; 0                    ; 0            ; 0                   ; 1                    ;
+; state.s_compare_cv   ; 0           ; 0              ; 1                  ; 0                  ; 0                 ; 0          ; 0                    ; 0            ; 0                   ; 1                    ;
+; state.s_winner       ; 0           ; 1              ; 0                  ; 0                  ; 0                 ; 0          ; 0                    ; 0            ; 0                   ; 1                    ;
+; state.s_end          ; 1           ; 0              ; 0                  ; 0                  ; 0                 ; 0          ; 0                    ; 0            ; 0                   ; 1                    ;
++----------------------+-------------+----------------+--------------------+--------------------+-------------------+------------+----------------------+--------------+---------------------+----------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------+
+; State Machine - |hangman|cv_ack_generator:inst11|state                             ;
++------------------+-------------+--------------+-----------------+------------------+
+; Name             ; state.s_end ; state.s_save ; state.s_compute ; state.w_activate ;
++------------------+-------------+--------------+-----------------+------------------+
+; state.w_activate ; 0           ; 0            ; 0               ; 0                ;
+; state.s_compute  ; 0           ; 0            ; 1               ; 1                ;
+; state.s_save     ; 0           ; 1            ; 0               ; 1                ;
+; state.s_end      ; 1           ; 0            ; 0               ; 1                ;
++------------------+-------------+--------------+-----------------+------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------+
+; State Machine - |hangman|rx_module:inst14|state                                  ;
++----------------+---------------+----------------+----------------+---------------+
+; Name           ; state.rx_stop ; state.rx_shift ; state.rx_start ; state.rx_idle ;
++----------------+---------------+----------------+----------------+---------------+
+; state.rx_idle  ; 0             ; 0              ; 0              ; 0             ;
+; state.rx_start ; 0             ; 0              ; 1              ; 1             ;
+; state.rx_shift ; 0             ; 1              ; 0              ; 1             ;
+; state.rx_stop  ; 1             ; 0              ; 0              ; 1             ;
++----------------+---------------+----------------+----------------+---------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |hangman|rx_protocol:inst15|state                                                                                                                                                                                                                                                                                                                                                       ;
++-------------------+---------------+---------------+---------------+------------------+-------------------+-------------------+-------------------+-------------------+------------------+-------------------+-------------------+-------------------+-------------------+-------------------+------------------+-----------------+-------------+-------------+-------------+-------------+--------------+
+; Name              ; state.pr_s_gc ; state.pr_r_gc ; state.pr_w_gc ; state.pr_s_cvack ; state.pr_r_cvack2 ; state.pr_w_cvack2 ; state.pr_r_cvack1 ; state.pr_w_cvack1 ; state.pr_s_ready ; state.pr_r_ready2 ; state.pr_w_ready2 ; state.pr_r_ready1 ; state.pr_w_ready1 ; state.pr_s_winner ; state.pr_s_loser ; state.pr_f_type ; state.pr_r2 ; state.pr_w2 ; state.pr_r1 ; state.pr_w1 ; state.pr_ini ;
++-------------------+---------------+---------------+---------------+------------------+-------------------+-------------------+-------------------+-------------------+------------------+-------------------+-------------------+-------------------+-------------------+-------------------+------------------+-----------------+-------------+-------------+-------------+-------------+--------------+
+; state.pr_ini      ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 0            ;
+; state.pr_w1       ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 1           ; 1            ;
+; state.pr_r1       ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 1           ; 0           ; 1            ;
+; state.pr_w2       ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 1           ; 0           ; 0           ; 1            ;
+; state.pr_r2       ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 1           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_f_type   ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 1               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_loser  ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_winner ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w_ready1 ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r_ready1 ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w_ready2 ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r_ready2 ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_ready  ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 1                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w_cvack1 ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 1                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r_cvack1 ; 0             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 1                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w_cvack2 ; 0             ; 0             ; 0             ; 0                ; 0                 ; 1                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r_cvack2 ; 0             ; 0             ; 0             ; 0                ; 1                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_cvack  ; 0             ; 0             ; 0             ; 1                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w_gc     ; 0             ; 0             ; 1             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r_gc     ; 0             ; 1             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_gc     ; 1             ; 0             ; 0             ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
++-------------------+---------------+---------------+---------------+------------------+-------------------+-------------------+-------------------+-------------------+------------------+-------------------+-------------------+-------------------+-------------------+-------------------+------------------+-----------------+-------------+-------------+-------------+-------------+--------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------+
+; State Machine - |hangman|generate_cv:inst5|st                       ;
++---------------+----------+-----------+--------------+---------------+
+; Name          ; st.s_end ; st.s_save ; st.s_compute ; st.w_activate ;
++---------------+----------+-----------+--------------+---------------+
+; st.w_activate ; 0        ; 0         ; 0            ; 0             ;
+; st.s_compute  ; 0        ; 0         ; 1            ; 1             ;
+; st.s_save     ; 0        ; 1         ; 0            ; 1             ;
+; st.s_end      ; 1        ; 0         ; 0            ; 1             ;
++---------------+----------+-----------+--------------+---------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------+
+; State Machine - |hangman|register_bank_guessing_char:inst10|st    ;
++---------------+----------+------------+---------------+-----------+
+; Name          ; st.s_end ; st.loadreg ; st.w_charflag ; st.s_wait ;
++---------------+----------+------------+---------------+-----------+
+; st.s_wait     ; 0        ; 0          ; 0             ; 0         ;
+; st.w_charflag ; 0        ; 0          ; 1             ; 1         ;
+; st.loadreg    ; 0        ; 1          ; 0             ; 1         ;
+; st.s_end      ; 1        ; 0          ; 0             ; 1         ;
++---------------+----------+------------+---------------+-----------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------+
+; State Machine - |hangman|PS2_keyboard_interface:inst4|st                                                           ;
++------------------+------------------+----------+---------+----------+-------------+-----------------+--------------+
+; Name             ; st.activate_flag ; st.w_sc3 ; st.ack2 ; st.w_sc2 ; st.load_reg ; st.w_scan_ready ; st.w_newcode ;
++------------------+------------------+----------+---------+----------+-------------+-----------------+--------------+
+; st.w_newcode     ; 0                ; 0        ; 0       ; 0        ; 0           ; 0               ; 0            ;
+; st.w_scan_ready  ; 0                ; 0        ; 0       ; 0        ; 0           ; 1               ; 1            ;
+; st.load_reg      ; 0                ; 0        ; 0       ; 0        ; 1           ; 0               ; 1            ;
+; st.w_sc2         ; 0                ; 0        ; 0       ; 1        ; 0           ; 0               ; 1            ;
+; st.ack2          ; 0                ; 0        ; 1       ; 0        ; 0           ; 0               ; 1            ;
+; st.w_sc3         ; 0                ; 1        ; 0       ; 0        ; 0           ; 0               ; 1            ;
+; st.activate_flag ; 1                ; 0        ; 0       ; 0        ; 0           ; 0               ; 1            ;
++------------------+------------------+----------+---------+----------+-------------+-----------------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------+
+; State Machine - |hangman|register_bank_user_word:inst2|st                                           ;
++----------------+----------+------------+---------------+---------------+----------------+-----------+
+; Name           ; st.s_end ; st.loadreg ; st.w_charflag ; st.s_new_word ; st.s_marranada ; st.s_wait ;
++----------------+----------+------------+---------------+---------------+----------------+-----------+
+; st.s_wait      ; 0        ; 0          ; 0             ; 0             ; 0              ; 0         ;
+; st.s_marranada ; 0        ; 0          ; 0             ; 0             ; 1              ; 1         ;
+; st.s_new_word  ; 0        ; 0          ; 0             ; 1             ; 0              ; 1         ;
+; st.w_charflag  ; 0        ; 0          ; 1             ; 0             ; 0              ; 1         ;
+; st.loadreg     ; 0        ; 1          ; 0             ; 0             ; 0              ; 1         ;
+; st.s_end       ; 1        ; 0          ; 0             ; 0             ; 0              ; 1         ;
++----------------+----------+------------+---------------+---------------+----------------+-----------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------+
+; State Machine - |hangman|main:inst6|st                                                                            ;
++-----------------+----------+-----------+-----------------+----------------+---------------+----------+------------+
+; Name            ; st.s_end ; st.w_game ; st.s_start_game ; st.w_user_word ; st.enter_code ; st.s_ack ; st.w_start ;
++-----------------+----------+-----------+-----------------+----------------+---------------+----------+------------+
+; st.w_start      ; 0        ; 0         ; 0               ; 0              ; 0             ; 0        ; 0          ;
+; st.s_ack        ; 0        ; 0         ; 0               ; 0              ; 0             ; 1        ; 1          ;
+; st.enter_code   ; 0        ; 0         ; 0               ; 0              ; 1             ; 0        ; 1          ;
+; st.w_user_word  ; 0        ; 0         ; 0               ; 1              ; 0             ; 0        ; 1          ;
+; st.s_start_game ; 0        ; 0         ; 1               ; 0              ; 0             ; 0        ; 1          ;
+; st.w_game       ; 0        ; 1         ; 0               ; 0              ; 0             ; 0        ; 1          ;
+; st.s_end        ; 1        ; 0         ; 0               ; 0              ; 0             ; 0        ; 1          ;
++-----------------+----------+-----------+-----------------+----------------+---------------+----------+------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |hangman|game:inst|st                                                                                                                                                                                                                                                                                                                                                   ;
++--------------------+-----------------+------------------+----------+----------+--------------------+----------+-----------------+-------------+---------------+-----------------+----------+------------+----------------+--------------+--------------+----------+-----------------+-----------------+---------------+-----------------+----------+---------+-------------+------------+
+; Name               ; st.s_send_loser ; st.s_send_winner ; st.w_tx5 ; st.w_tx4 ; st.s_game_veredict ; st.s_lcd ; st.w_word_ready ; st.s_gen_iw ; st.w_rx_cvack ; st.s_send_cvack ; st.w_tx3 ; st.w_cvack ; st.s_gen_cvack ; st.w_op_char ; st.s_send_gc ; st.w_tx2 ; st.w_guess_char ; st.s_guess_char ; st.w_op_ready ; st.s_send_ready ; st.w_tx1 ; st.w_cv ; st.s_gen_cv ; st.w_start ;
++--------------------+-----------------+------------------+----------+----------+--------------------+----------+-----------------+-------------+---------------+-----------------+----------+------------+----------------+--------------+--------------+----------+-----------------+-----------------+---------------+-----------------+----------+---------+-------------+------------+
+; st.w_start         ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 0          ;
+; st.s_gen_cv        ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 1           ; 1          ;
+; st.w_cv            ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 1       ; 0           ; 1          ;
+; st.w_tx1           ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 1        ; 0       ; 0           ; 1          ;
+; st.s_send_ready    ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 1               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_op_ready      ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 1             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.s_guess_char    ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 1               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_guess_char    ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 1               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_tx2           ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 1        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.s_send_gc       ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 1            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_op_char       ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 1            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.s_gen_cvack     ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 1              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_cvack         ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 1          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_tx3           ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 1        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.s_send_cvack    ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 1               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_rx_cvack      ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 1             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.s_gen_iw        ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 1           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_word_ready    ; 0               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 1               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.s_lcd           ; 0               ; 0                ; 0        ; 0        ; 0                  ; 1        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.s_game_veredict ; 0               ; 0                ; 0        ; 0        ; 1                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_tx4           ; 0               ; 0                ; 0        ; 1        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.w_tx5           ; 0               ; 0                ; 1        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.s_send_winner   ; 0               ; 1                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
+; st.s_send_loser    ; 1               ; 0                ; 0        ; 0        ; 0                  ; 0        ; 0               ; 0           ; 0             ; 0               ; 0        ; 0          ; 0              ; 0            ; 0            ; 0        ; 0               ; 0               ; 0             ; 0               ; 0        ; 0       ; 0           ; 1          ;
++--------------------+-----------------+------------------+----------+----------+--------------------+----------+-----------------+-------------+---------------+-----------------+----------+------------+----------------+--------------+--------------+----------+-----------------+-----------------+---------------+-----------------+----------+---------+-------------+------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |hangman|tx_protocol:inst12|st                                                                                                                                                                                                             ;
++-----------------+----------+---------+-------------+----------------+-------------+----------+----------------+----------+---------------+----------------+-----------------+----------------+---------------+----------------+----------+-----------------+
+; Name            ; st.s_end ; st.s_gc ; st.s_cvack2 ; st.w_tx_empty5 ; st.s_cvack1 ; st.s_cv2 ; st.w_tx_empty4 ; st.s_cv1 ; st.s_decision ; st.w_tx_empty3 ; st.s_frame_type ; st.w_tx_empty2 ; st.s_frame_id ; st.w_tx_empty1 ; st.s_rdy ; st.w_frame_code ;
++-----------------+----------+---------+-------------+----------------+-------------+----------+----------------+----------+---------------+----------------+-----------------+----------------+---------------+----------------+----------+-----------------+
+; st.w_frame_code ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 0               ;
+; st.s_rdy        ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 1        ; 1               ;
+; st.w_tx_empty1  ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 1              ; 0        ; 1               ;
+; st.s_frame_id   ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 1             ; 0              ; 0        ; 1               ;
+; st.w_tx_empty2  ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 1              ; 0             ; 0              ; 0        ; 1               ;
+; st.s_frame_type ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 1               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.w_tx_empty3  ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 1              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.s_decision   ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 1             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.s_cv1        ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 1        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.w_tx_empty4  ; 0        ; 0       ; 0           ; 0              ; 0           ; 0        ; 1              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.s_cv2        ; 0        ; 0       ; 0           ; 0              ; 0           ; 1        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.s_cvack1     ; 0        ; 0       ; 0           ; 0              ; 1           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.w_tx_empty5  ; 0        ; 0       ; 0           ; 1              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.s_cvack2     ; 0        ; 0       ; 1           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.s_gc         ; 0        ; 1       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
+; st.s_end        ; 1        ; 0       ; 0           ; 0              ; 0           ; 0        ; 0              ; 0        ; 0             ; 0              ; 0               ; 0              ; 0             ; 0              ; 0        ; 1               ;
++-----------------+----------+---------+-------------+----------------+-------------+----------+----------------+----------+---------------+----------------+-----------------+----------------+---------------+----------------+----------+-----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------+
+; State Machine - |hangman|tx_module:inst13|state                                  ;
++----------------+---------------+----------------+----------------+---------------+
+; Name           ; state.tx_stop ; state.tx_shift ; state.tx_start ; state.tx_idle ;
++----------------+---------------+----------------+----------------+---------------+
+; state.tx_idle  ; 0             ; 0              ; 0              ; 0             ;
+; state.tx_start ; 0             ; 0              ; 1              ; 1             ;
+; state.tx_shift ; 0             ; 1              ; 0              ; 1             ;
+; state.tx_stop  ; 1             ; 0              ; 0              ; 1             ;
++----------------+---------------+----------------+----------------+---------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                    ;
++-----------------------------------------------------+-----------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                     ; Free of Timing Hazards ;
++-----------------------------------------------------+-----------------------------------------+------------------------+
+; cv_ack_generator:inst11|cvack_int[1]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[9]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[2]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[10]               ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[0]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[8]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[3]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[11]               ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[6]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[14]               ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[5]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[13]               ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[4]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[12]               ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[7]                ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; cv_ack_generator:inst11|cvack_int[15]               ; cv_ack_generator:inst11|state.s_compute ; yes                    ;
+; PS2_keyboard_interface:inst4|ascii[6]               ; PS2_keyboard_interface:inst4|Mux1       ; yes                    ;
+; PS2_keyboard_interface:inst4|ascii[5]               ; PS2_keyboard_interface:inst4|Mux1       ; yes                    ;
+; PS2_keyboard_interface:inst4|ascii[4]               ; PS2_keyboard_interface:inst4|Mux1       ; yes                    ;
+; PS2_keyboard_interface:inst4|ascii[3]               ; PS2_keyboard_interface:inst4|Mux1       ; yes                    ;
+; PS2_keyboard_interface:inst4|ascii[2]               ; PS2_keyboard_interface:inst4|Mux1       ; yes                    ;
+; PS2_keyboard_interface:inst4|ascii[1]               ; PS2_keyboard_interface:inst4|Mux1       ; yes                    ;
+; PS2_keyboard_interface:inst4|ascii[0]               ; PS2_keyboard_interface:inst4|Mux1       ; yes                    ;
+; main:inst6|start                                    ; main:inst6|st.w_start                   ; yes                    ;
+; Number of user-specified and inferred latches = 24  ;                                         ;                        ;
++-----------------------------------------------------+-----------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                              ;
++-------------------------------------------------------------------------------------------------+-----------------------------------------------+
+; Register name                                                                                   ; Reason for Removal                            ;
++-------------------------------------------------------------------------------------------------+-----------------------------------------------+
+; lcd:inst50|l_on                                                                                 ; Stuck at VCC due to stuck port data_in        ;
+; user_interface:inst19|sev_seg[0]                                                                ; Merged with user_interface:inst19|sev_seg[1]  ;
+; user_interface:inst19|sev_seg[1]                                                                ; Merged with user_interface:inst19|sev_seg[4]  ;
+; user_interface:inst19|sev_seg[4]                                                                ; Merged with user_interface:inst19|sev_seg[6]  ;
+; user_interface:inst19|sev_seg[6]                                                                ; Merged with user_interface:inst19|sev_seg[9]  ;
+; user_interface:inst19|sev_seg[9]                                                                ; Merged with user_interface:inst19|sev_seg[10] ;
+; user_interface:inst19|sev_seg[10]                                                               ; Merged with user_interface:inst19|sev_seg[14] ;
+; user_interface:inst19|sev_seg[14]                                                               ; Merged with user_interface:inst19|sev_seg[19] ;
+; tx_protocol:inst12|frame_code[2]                                                                ; Merged with tx_protocol:inst12|frame_code[3]  ;
+; tx_protocol:inst12|frame_code[3]                                                                ; Stuck at GND due to stuck port data_in        ;
+; PS2_keyboard_interface:inst4|keycode[7]                                                         ; Stuck at GND due to stuck port data_in        ;
+; register_bank_guessing_char:inst10|buff_char[7]                                                 ; Stuck at GND due to stuck port data_in        ;
+; register_bank_user_word:inst2|buff[7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,127]          ; Stuck at GND due to stuck port data_in        ;
+; user_interface:inst19|LR[0..15]                                                                 ; Merged with user_interface:inst19|LR[16]      ;
+; user_interface:inst19|LG[0..6]                                                                  ; Merged with user_interface:inst19|LG[7]       ;
+; user_interface:inst19|sev_seg[3,5,8,11,13,15..16]                                               ; Merged with user_interface:inst19|sev_seg[18] ;
+; user_interface:inst19|sev_seg[2,7,12]                                                           ; Merged with user_interface:inst19|sev_seg[17] ;
+; user_interface:inst19|lifesT[1..4]                                                              ; Merged with user_interface:inst19|lifesU[4]   ;
+; user_interface:inst19|sev_seg[24,26..28]                                                        ; Merged with user_interface:inst19|sev_seg[29] ;
+; gen_op_inc_word:inst3|word_buff[7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,127]             ; Stuck at GND due to stuck port data_in        ;
+; register_bank_opp_inc_word:inst17|buff_word[7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,127] ; Stuck at GND due to stuck port data_in        ;
+; tx_protocol:inst12|frame_code[7]                                                                ; Stuck at VCC due to stuck port data_in        ;
+; lcd:inst50|rw                                                                                   ; Stuck at GND due to stuck port data_in        ;
+; user_interface:inst19|lifesU[4]                                                                 ; Stuck at GND due to stuck port data_in        ;
+; user_interface:inst19|sev_seg[29]                                                               ; Stuck at GND due to stuck port data_in        ;
+; tx_protocol:inst12|frame_code[5]                                                                ; Merged with tx_protocol:inst12|frame_code[6]  ;
+; Total Number of Removed Registers = 106                                                         ;                                               ;
++-------------------------------------------------------------------------------------------------+-----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                              ;
++-----------------------------------------+---------------------------+------------------------------------------------------------------------------------+
+; Register name                           ; Reason for Removal        ; Registers Removed due to This Register                                             ;
++-----------------------------------------+---------------------------+------------------------------------------------------------------------------------+
+; PS2_keyboard_interface:inst4|keycode[7] ; Stuck at GND              ; register_bank_guessing_char:inst10|buff_char[7],                                   ;
+;                                         ; due to stuck port data_in ; gen_op_inc_word:inst3|word_buff[7], register_bank_opp_inc_word:inst17|buff_word[7] ;
+; gen_op_inc_word:inst3|word_buff[127]    ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[127]                                   ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[119]    ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[119]                                   ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[111]    ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[111]                                   ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[103]    ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[103]                                   ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[95]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[95]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[87]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[87]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[79]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[79]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[71]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[71]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[63]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[63]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[55]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[55]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[47]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[47]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[39]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[39]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[31]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[31]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[23]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[23]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; gen_op_inc_word:inst3|word_buff[15]     ; Stuck at GND              ; register_bank_opp_inc_word:inst17|buff_word[15]                                    ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
+; user_interface:inst19|lifesU[4]         ; Stuck at GND              ; user_interface:inst19|sev_seg[29]                                                  ;
+;                                         ; due to stuck port data_in ;                                                                                    ;
++-----------------------------------------+---------------------------+------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 808   ;
+; Number of registers using Synchronous Clear  ; 22    ;
+; Number of registers using Synchronous Load   ; 9     ;
+; Number of registers using Asynchronous Clear ; 644   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 590   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------+
+; Inverted Register Statistics                            ;
++-----------------------------------------------+---------+
+; Inverted Register                             ; Fan out ;
++-----------------------------------------------+---------+
+; tx_module:inst13|tx                           ; 1       ;
+; lcd:inst50|ptr[1]                             ; 54      ;
+; lcd:inst50|ptr[0]                             ; 55      ;
+; lcd:inst50|ptr[3]                             ; 54      ;
+; lcd:inst50|ptr[2]                             ; 55      ;
+; lcd:inst50|line                               ; 5       ;
+; main:inst6|game_over                          ; 7       ;
+; game:inst|int_game_veredict[1]                ; 7       ;
+; tx_protocol:inst12|ready_to_tx                ; 8       ;
+; register_bank_guessing_char:inst10|bank_ready ; 4       ;
+; tx_module:inst13|tx_empty                     ; 11      ;
+; game:inst|int_lifes[4]                        ; 2       ;
+; register_bank_opp_inc_word:inst17|bank_ready  ; 4       ;
+; Total number of inverted registers = 13       ;         ;
++-----------------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; 4:1                ; 112 bits  ; 224 LEs       ; 112 LEs              ; 112 LEs                ; Yes        ; |hangman|register_bank_user_word:inst2|buff[96]       ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; Yes        ; |hangman|user_interface:inst19|lifesU[1]              ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |hangman|PS2_keyboard:inst1|INCNT[0]                  ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; Yes        ; |hangman|tx_protocol:inst12|frame_code[7]             ;
+; 6:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |hangman|rx_module:inst14|baud[6]                     ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |hangman|tx_protocol:inst12|tx_data[3]                ;
+; 8:1                ; 5 bits    ; 25 LEs        ; 25 LEs               ; 0 LEs                  ; Yes        ; |hangman|tx_protocol:inst12|tx_data[5]                ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 3 LEs                ; 15 LEs                 ; Yes        ; |hangman|rx_module:inst14|bit_count[1]                ;
+; 14:1               ; 31 bits   ; 279 LEs       ; 31 LEs               ; 248 LEs                ; Yes        ; |hangman|lcd:inst50|clk_count[21]                     ;
+; 45:1               ; 6 bits    ; 180 LEs       ; 168 LEs              ; 12 LEs                 ; Yes        ; |hangman|lcd:inst50|lcd_data[5]                       ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |hangman|lcd:inst50|ptr                               ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |hangman|tx_module:inst13|bit_count                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |hangman|user_interface:inst19|state                  ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |hangman|hex_disps:inst47|BCD7seg:display2|HEX[0]     ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 9 LEs                ; 0 LEs                  ; No         ; |hangman|user_interface:inst19|state                  ;
+; 32:1               ; 2 bits    ; 42 LEs        ; 16 LEs               ; 26 LEs                 ; No         ; |hangman|hex_disps:inst47|BCD7seg:display4|HEX[2]     ;
+; 32:1               ; 2 bits    ; 42 LEs        ; 18 LEs               ; 24 LEs                 ; No         ; |hangman|hex_disps:inst47|BCD7seg:display4|HEX[1]     ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |hangman|gen_op_inc_word:inst3|Selector2              ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |hangman|register_bank_guessing_char:inst10|Selector0 ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; No         ; |hangman|main:inst6|Selector4                         ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 2 LEs                ; 8 LEs                  ; No         ; |hangman|lcd:inst50|state                             ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |hangman|tx_module:inst13|Selector20                  ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |hangman|rx_module:inst14|Selector17                  ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |hangman|rx_module:inst14|Selector16                  ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |hangman|tx_module:inst13|Selector19                  ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; No         ; |hangman|rx_protocol:inst15|Selector18                ;
+; 19:1               ; 7 bits    ; 84 LEs        ; 42 LEs               ; 42 LEs                 ; No         ; |hangman|game:inst|Selector3                          ;
+; 21:1               ; 2 bits    ; 28 LEs        ; 4 LEs                ; 24 LEs                 ; No         ; |hangman|game:inst|Selector21                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Thu Dec 22 10:24:52 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off hangman -c hangman
+Info: Found 2 design units, including 1 entities, in source file gen_op_inc_word.vhd
+    Info: Found design unit 1: gen_op_inc_word-arc
+    Info: Found entity 1: gen_op_inc_word
+Info: Found 2 design units, including 1 entities, in source file clk_div_two.vhd
+    Info: Found design unit 1: clk_div_two-simple
+    Info: Found entity 1: clk_div_two
+Info: Found 4 design units, including 2 entities, in source file clk_video.vhd
+    Info: Found design unit 1: clk_video_altclkctrl_6df-RTL
+    Info: Found design unit 2: clk_video-RTL
+    Info: Found entity 1: clk_video_altclkctrl_6df
+    Info: Found entity 2: clk_video
+Info: Found 2 design units, including 1 entities, in source file register_bank_opponent_cv.vhd
+    Info: Found design unit 1: register_bank_opponent_cv-arc
+    Info: Found entity 1: register_bank_opponent_cv
+Info: Found 1 design units, including 1 entities, in source file opponent_incomplete_word_test.bdf
+    Info: Found entity 1: opponent_incomplete_word_test
+Info: Found 2 design units, including 1 entities, in source file tx_module.vhd
+    Info: Found design unit 1: tx_module-main
+    Info: Found entity 1: tx_module
+Info: Found 2 design units, including 1 entities, in source file register_bank_guessing_char.vhd
+    Info: Found design unit 1: register_bank_guessing_char-arc
+    Info: Found entity 1: register_bank_guessing_char
+Info: Found 2 design units, including 1 entities, in source file generate_cv.vhd
+    Info: Found design unit 1: generate_cv-arc
+    Info: Found entity 1: generate_cv
+Info: Found 1 design units, including 1 entities, in source file keyboard_interface_test.bdf
+    Info: Found entity 1: keyboard_interface_test
+Info: Found 1 design units, including 1 entities, in source file keyboard_ip_test.bdf
+    Info: Found entity 1: keyboard_ip_test
+Info: Found 2 design units, including 1 entities, in source file main.vhd
+    Info: Found design unit 1: main-arc
+    Info: Found entity 1: main
+Info: Found 2 design units, including 1 entities, in source file ps2_keyboard2.vhd
+    Info: Found design unit 1: ps2_keyboard2-logic
+    Info: Found entity 1: ps2_keyboard2
+Info: Found 1 design units, including 1 entities, in source file keyboard_test.bdf
+    Info: Found entity 1: keyboard_test
+Info: Found 2 design units, including 1 entities, in source file ps2_keyboard_interface.vhd
+    Info: Found design unit 1: PS2_keyboard_interface-main
+    Info: Found entity 1: PS2_keyboard_interface
+Info: Found 2 design units, including 1 entities, in source file user_interface.vhd
+    Info: Found design unit 1: user_interface-main
+    Info: Found entity 1: user_interface
+Info: Found 2 design units, including 1 entities, in source file bcd7seg.vhd
+    Info: Found design unit 1: BCD7seg-behaviour
+    Info: Found entity 1: BCD7seg
+Info: Found 2 design units, including 2 entities, in source file clk_lock.v
+    Info: Found entity 1: CLK_LOCK_altclkctrl_tb8
+    Info: Found entity 2: CLK_LOCK
+Info: Found 2 design units, including 1 entities, in source file count4b.vhd
+    Info: Found design unit 1: count4b-arc_count4b
+    Info: Found entity 1: count4b
+Info: Found 2 design units, including 1 entities, in source file hex_disps.vhd
+    Info: Found design unit 1: hex_disps-behav_display
+    Info: Found entity 1: hex_disps
+Info: Found 2 design units, including 1 entities, in source file keypad.vhd
+    Info: Found design unit 1: keypad-arc_keypad
+    Info: Found entity 1: keypad
+Info: Found 2 design units, including 1 entities, in source file ps2_keyboard.vhd
+    Info: Found design unit 1: PS2_keyboard-a
+    Info: Found entity 1: PS2_keyboard
+Info: Found 2 design units, including 1 entities, in source file lcd_controller.vhd
+    Info: Found design unit 1: lcd_controller-controller
+    Info: Found entity 1: lcd_controller
+Info: Found 2 design units, including 1 entities, in source file lcd_int.vhd
+    Info: Found design unit 1: LCD_int-behaviour
+    Info: Found entity 1: LCD_int
+Info: Found 2 design units, including 1 entities, in source file lcd_controllertest_top.vhd
+    Info: Found design unit 1: LCD_controllerTest_top-Behavioral
+    Info: Found entity 1: LCD_controllerTest_top
+Info: Found 2 design units, including 1 entities, in source file lifes_conversion.vhd
+    Info: Found design unit 1: lifes_conversion-behaviour
+    Info: Found entity 1: lifes_conversion
+Info: Found 1 design units, including 1 entities, in source file user_interface_tes.bdf
+    Info: Found entity 1: user_interface_tes
+Info: Found 2 design units, including 1 entities, in source file register_bank_user_word.vhd
+    Info: Found design unit 1: register_bank_user_word-arc
+    Info: Found entity 1: register_bank_user_word
+Info: Found 2 design units, including 1 entities, in source file cv_ack_generator.vhd
+    Info: Found design unit 1: cv_ack_generator-arc
+    Info: Found entity 1: cv_ack_generator
+Info: Found 2 design units, including 1 entities, in source file game.vhd
+    Info: Found design unit 1: game-arc
+    Info: Found entity 1: game
+Info: Found 2 design units, including 1 entities, in source file tx_protocol.vhd
+    Info: Found design unit 1: tx_protocol-arc
+    Info: Found entity 1: tx_protocol
+Info: Found 2 design units, including 1 entities, in source file op_incomplete_word_generator.vhd
+    Info: Found design unit 1: op_incomplete_word_generator-arc
+    Info: Found entity 1: op_incomplete_word_generator
+Info: Found 2 design units, including 1 entities, in source file register_bank_opp_inc_word.vhd
+    Info: Found design unit 1: register_bank_opp_inc_word-arc
+    Info: Found entity 1: register_bank_opp_inc_word
+Info: Found 2 design units, including 1 entities, in source file rx_module.vhd
+    Info: Found design unit 1: rx_module-main
+    Info: Found entity 1: rx_module
+Info: Found 2 design units, including 1 entities, in source file rx_protocol.vhd
+    Info: Found design unit 1: rx_protocol-main
+    Info: Found entity 1: rx_protocol
+Info: Found 2 design units, including 1 entities, in source file lcd.vhd
+    Info: Found design unit 1: lcd-controller
+    Info: Found entity 1: lcd
+Info: Found 1 design units, including 1 entities, in source file hangman.bdf
+    Info: Found entity 1: hangman
+Info: Found 1 design units, including 1 entities, in source file tx_rx_test.bdf
+    Info: Found entity 1: tx_rx_test
+Info: Found 1 design units, including 1 entities, in source file hangman_sim.bdf
+    Info: Found entity 1: hangman_sim
+Info: Elaborating entity "hangman" for the top level hierarchy
+Info: Elaborating entity "tx_module" for hierarchy "tx_module:inst13"
+Info: Elaborating entity "clk_video" for hierarchy "clk_video:inst8"
+Info: Elaborating entity "clk_video_altclkctrl_6df" for hierarchy "clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component"
+Info: Elaborating entity "clk_div_two" for hierarchy "clk_div_two:inst7"
+Info: Elaborating entity "tx_protocol" for hierarchy "tx_protocol:inst12"
+Info: Elaborating entity "game" for hierarchy "game:inst"
+Info: Elaborating entity "main" for hierarchy "main:inst6"
+Warning (10492): VHDL Process Statement warning at main.vhd(54): signal "st" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at main.vhd(52): inferring latch(es) for signal or variable "start", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "start" at main.vhd(52)
+Info: Elaborating entity "register_bank_user_word" for hierarchy "register_bank_user_word:inst2"
+Info: Elaborating entity "PS2_keyboard_interface" for hierarchy "PS2_keyboard_interface:inst4"
+Warning (10631): VHDL Process Statement warning at ps2_keyboard_interface.vhd(89): inferring latch(es) for signal or variable "ascii", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "ascii[0]" at ps2_keyboard_interface.vhd(89)
+Info (10041): Inferred latch for "ascii[1]" at ps2_keyboard_interface.vhd(89)
+Info (10041): Inferred latch for "ascii[2]" at ps2_keyboard_interface.vhd(89)
+Info (10041): Inferred latch for "ascii[3]" at ps2_keyboard_interface.vhd(89)
+Info (10041): Inferred latch for "ascii[4]" at ps2_keyboard_interface.vhd(89)
+Info (10041): Inferred latch for "ascii[5]" at ps2_keyboard_interface.vhd(89)
+Info (10041): Inferred latch for "ascii[6]" at ps2_keyboard_interface.vhd(89)
+Info (10041): Inferred latch for "ascii[7]" at ps2_keyboard_interface.vhd(89)
+Info: Elaborating entity "PS2_keyboard" for hierarchy "PS2_keyboard:inst1"
+Info: Elaborating entity "register_bank_guessing_char" for hierarchy "register_bank_guessing_char:inst10"
+Info: Elaborating entity "generate_cv" for hierarchy "generate_cv:inst5"
+Warning (10036): Verilog HDL or VHDL warning at generate_cv.vhd(16): object "compute" assigned a value but never read
+Info: Elaborating entity "rx_protocol" for hierarchy "rx_protocol:inst15"
+Info: Elaborating entity "rx_module" for hierarchy "rx_module:inst14"
+Info: Elaborating entity "cv_ack_generator" for hierarchy "cv_ack_generator:inst11"
+Warning (10492): VHDL Process Statement warning at cv_ack_generator.vhd(43): signal "state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at cv_ack_generator.vhd(41): inferring latch(es) for signal or variable "cvack_int", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "cvack_int[0]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[1]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[2]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[3]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[4]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[5]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[6]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[7]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[8]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[9]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[10]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[11]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[12]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[13]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[14]" at cv_ack_generator.vhd(41)
+Info (10041): Inferred latch for "cvack_int[15]" at cv_ack_generator.vhd(41)
+Info: Elaborating entity "gen_op_inc_word" for hierarchy "gen_op_inc_word:inst3"
+Info: Elaborating entity "register_bank_opp_inc_word" for hierarchy "register_bank_opp_inc_word:inst17"
+Info: Elaborating entity "register_bank_opponent_cv" for hierarchy "register_bank_opponent_cv:inst18"
+Warning (10541): VHDL Signal Declaration warning at register_bank_opponent_cv.vhd(9): used implicit default value for signal "key_read" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info: Elaborating entity "lcd" for hierarchy "lcd:inst50"
+Info: Elaborating entity "hex_disps" for hierarchy "hex_disps:inst47"
+Info: Elaborating entity "BCD7seg" for hierarchy "hex_disps:inst47|BCD7seg:display0"
+Info: Elaborating entity "user_interface" for hierarchy "user_interface:inst19"
+Warning (10492): VHDL Process Statement warning at user_interface.vhd(29): signal "nrst" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at user_interface.vhd(26): inferring latch(es) for signal or variable "game_status_out", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "game_status_out" at user_interface.vhd(26)
+Warning: Latch PS2_keyboard_interface:inst4|ascii[6] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal PS2_keyboard:inst1|scan_code[6]
+Warning: Latch PS2_keyboard_interface:inst4|ascii[5] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal PS2_keyboard:inst1|scan_code[5]
+Warning: Latch PS2_keyboard_interface:inst4|ascii[4] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal PS2_keyboard:inst1|scan_code[2]
+Warning: Latch PS2_keyboard_interface:inst4|ascii[3] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal PS2_keyboard:inst1|scan_code[6]
+Warning: Latch PS2_keyboard_interface:inst4|ascii[2] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal PS2_keyboard:inst1|scan_code[6]
+Warning: Latch PS2_keyboard_interface:inst4|ascii[1] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal PS2_keyboard:inst1|scan_code[6]
+Warning: Latch PS2_keyboard_interface:inst4|ascii[0] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal PS2_keyboard:inst1|scan_code[2]
+Info: Registers with preset signals will power-up high
+Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LCD_RW" is stuck at GND
+    Warning (13410): Pin "LCD_ON" is stuck at VCC
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC
+    Warning (13410): Pin "HEX5[2]" is stuck at GND
+    Warning (13410): Pin "HEX5[1]" is stuck at GND
+    Warning (13410): Pin "HEX6[6]" is stuck at VCC
+    Warning (13410): Pin "HEX6[5]" is stuck at VCC
+    Warning (13410): Pin "HEX6[4]" is stuck at VCC
+    Warning (13410): Pin "HEX6[3]" is stuck at VCC
+    Warning (13410): Pin "HEX6[2]" is stuck at VCC
+    Warning (13410): Pin "HEX6[1]" is stuck at VCC
+    Warning (13410): Pin "HEX6[0]" is stuck at VCC
+    Warning (13410): Pin "HEX7[6]" is stuck at VCC
+    Warning (13410): Pin "HEX7[5]" is stuck at VCC
+    Warning (13410): Pin "HEX7[4]" is stuck at VCC
+    Warning (13410): Pin "HEX7[3]" is stuck at VCC
+    Warning (13410): Pin "HEX7[2]" is stuck at VCC
+    Warning (13410): Pin "HEX7[1]" is stuck at VCC
+    Warning (13410): Pin "HEX7[0]" is stuck at VCC
+    Warning (13410): Pin "LED_GREEN[8]" is stuck at GND
+Critical Warning: Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register game:inst|int_lifes[0] will power up to Low
+    Critical Warning (18010): Register game:inst|int_lifes[4] will power up to High
+    Critical Warning (18010): Register game:inst|int_lifes[31] will power up to Low
+Info: Implemented 1633 device resources after synthesis - the final resource count might be different
+    Info: Implemented 5 input pins
+    Info: Implemented 96 output pins
+    Info: Implemented 1531 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 48 warnings
+    Info: Peak virtual memory: 257 megabytes
+    Info: Processing ended: Thu Dec 22 10:25:13 2022
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:08
+
+

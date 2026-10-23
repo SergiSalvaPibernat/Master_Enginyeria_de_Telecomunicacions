@@ -1,0 +1,116 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity op_incomplete_word_generator is
+	port(	clk50, nrst, generate_inc_word, old_word_ready, bank_done_inc_word: in std_logic;
+			old_word: in std_logic_vector (127 downto 0);
+			guess_char: in std_logic_vector(7 downto 0);
+			received_cvack, op_cv, bank_done_op_cv: in std_logic_vector (15 downto 0);
+			ask_old_word, word_ready, f_new, decrease_life, winner: out std_logic;
+			new_word : out std_logic_vector (127 downto 0));
+end op_incomplete_word_generator;
+
+architecture arc of op_incomplete_word_generator is
+	type state_type is (s0_wait, s1, s2, s3, s4, s5);
+	signal state : state_type;
+	signal word : std_logic_vector (127 downto 0);
+	signal cv : std_logic_vector (15 downto 0);
+	signal len: integer;
+	signal incomplete : std_logic;
+	
+	begin process(clk50, nrst) begin 
+		if nrst = '0' then
+			state <= s0_wait;
+			ask_old_word <= '0';
+			word_ready <= '0';
+			decrease_life <= '0';
+			winner <= '0';
+			new_word <= (others => '0');
+			cv <= (others => '0');
+			word <= (others => '0');
+		elsif clk50'event and clk50 = '1' then
+			case state is
+				when s0_wait =>
+					if(generate_inc_word = '1' and bank_done_op_cv = '1') then
+						state <= s1;
+					end if;
+					decrease_life <= '0';
+				when s1 =>
+					state <= s2;
+					word_ready <= '0';
+					ask_old_word <= '1';
+					word <= (others => '0');
+					incomplete <= '0';
+					if(op_cv = "0000000000000000") then
+						len <= 0;
+					elsif(op_cv = "1000000000000000") then
+						len <= 1;
+					elsif(op_cv = "1100000000000000") then
+						len <= 2;
+					elsif(op_cv = "1110000000000000") then
+						len <= 3;
+					elsif(op_cv = "1111000000000000") then
+						len <= 4;
+					elsif(op_cv = "1111100000000000") then
+						len <= 5;
+					elsif(op_cv = "1111110000000000") then
+						len <= 6;
+					elsif(op_cv = "1111111000000000") then
+						len <= 7;
+					elsif(op_cv = "1111111100000000") then
+						len <= 8;
+					elsif(op_cv = "1111111110000000") then
+						len <= 9;
+					elsif(op_cv ="1111111111000000") then
+						len <= 10;
+					elsif(op_cv ="1111111111100000") then
+						len <= 11;
+					elsif(op_cv ="1111111111110000") then
+						len <= 12;
+					elsif(op_cv ="1111111111111000") then
+						len <= 13;
+					elsif(op_cv ="1111111111111100") then
+						len <= 14;
+					elsif(op_cv ="1111111111111110") then
+						len <= 15;
+					elsif(op_cv ="1111111111111111") then
+						len <= 16;
+					end if;
+						
+				when s2 =>
+					if(old_word_ready = '1') then
+						state <= s3;
+					end if;
+				when s3 =>
+					state <= s4;
+					ask_old_word <= '0';
+					for count in 0 to 15 loop
+						if(received_cvack(count)= '1') then
+							word(((count*8)+7) downto (count*8)) <= guess_char;
+							cv(count) <= '1';
+						elsif(received_cvack(count)= '0') then
+							word(((count*8)+7) downto (count*8)) <= old_word(((count*8)+7) downto (count*8));
+						end if;
+					end loop;
+				when s4 =>
+					new_word <= word;
+					state <= s5;
+					if(cv = op_cv) then 
+						winner <='1';
+						cv<= (others => '0');
+					end if;
+					if(old_word = word) then 
+						decrease_life <= '1';
+					end if;
+				when s5 =>
+					if(bank_done_inc_word = '1') then
+						state <= s0_wait;
+						word_ready <= '1';
+						state <= s0_wait;
+					end if;
+			end case;
+		end if;
+	end process;
+f_new <= '1' when state = s4 else '0';
+end arc;

@@ -1,0 +1,595 @@
+Design Assistant report for hangman
+Thu Dec 22 10:25:47 2022
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Design Assistant Summary
+  3. Design Assistant Settings
+  4. High Violations
+  5. Medium Violations
+  6. Information only Violations
+  7. Design Assistant Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Design Assistant Summary                                                ;
++-----------------------------------+-------------------------------------+
+; Design Assistant Status           ; Analyzed - Thu Dec 22 10:25:47 2022 ;
+; Revision Name                     ; hangman                             ;
+; Top-level Entity Name             ; hangman                             ;
+; Family                            ; Cyclone II                          ;
+; Total Critical Violations         ; 0                                   ;
+; Total High Violations             ; 138                                 ;
+; - Rule A108                       ; 24                                  ;
+; - Rule R101                       ; 2                                   ;
+; - Rule S102                       ; 112                                 ;
+; Total Medium Violations           ; 5                                   ;
+; - Rule A104                       ; 1                                   ;
+; - Rule C104                       ; 3                                   ;
+; - Rule R102                       ; 1                                   ;
+; Total Information only Violations ; 65                                  ;
+; - Rule T101                       ; 15                                  ;
+; - Rule T102                       ; 50                                  ;
++-----------------------------------+-------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Design Assistant Settings                                                                                                                                                                                                                                                                                ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Option                                                                                                                                                                                                                                                                               ; Setting      ; To ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Design Assistant mode                                                                                                                                                                                                                                                                ; Post-Fitting ;    ;
+; Threshold value for clock net not mapped to clock spines rule                                                                                                                                                                                                                        ; 25           ;    ;
+; Minimum number of clock port feed by gated clocks                                                                                                                                                                                                                                    ; 30           ;    ;
+; Minimum number of node fan-out                                                                                                                                                                                                                                                       ; 30           ;    ;
+; Maximum number of nodes to report                                                                                                                                                                                                                                                    ; 50           ;    ;
+; Rule C101: Gated clock should be implemented according to the Altera standard scheme                                                                                                                                                                                                 ; On           ;    ;
+; Rule C102: Logic cell should not be used to generate an inverted clock signal                                                                                                                                                                                                        ; On           ;    ;
+; Rule C103: Gated clock does not feed at least a pre-defined number of clock ports to effectively save power                                                                                                                                                                          ; On           ;    ;
+; Rule C104: Clock signal source should drive only clock input ports                                                                                                                                                                                                                   ; On           ;    ;
+; Rule C105: Clock signal should be a global signal (Rule applies during post-fitting analysis. This rule applies during both post-fitting analysis and post-synthesis analysis if the design targets a MAX 3000 or MAX 7000 device. For more information, see the Help for the rule.) ; On           ;    ;
+; Rule C106: Clock signal source should not drive registers triggered by different clock edges                                                                                                                                                                                         ; On           ;    ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                                                                                                                                                                                         ; On           ;    ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers                                                                                                                                                                                                ; On           ;    ;
+; Rule R103: External reset signal should be correctly synchronized                                                                                                                                                                                                                    ; On           ;    ;
+; Rule R104: The reset signal that is generated in one clock domain and used in another clock domain should be correctly synchronized                                                                                                                                                  ; On           ;    ;
+; Rule R105: The reset signal that is generated in one clock domain and used in another clock domain should be synchronized                                                                                                                                                            ; On           ;    ;
+; Rule T101: Nodes with more than the specified number of fan-outs                                                                                                                                                                                                                     ; On           ;    ;
+; Rule T102: Top nodes with the highest number of fan-outs                                                                                                                                                                                                                             ; On           ;    ;
+; Rule A101: Design should not contain combinational loops                                                                                                                                                                                                                             ; On           ;    ;
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic                                                                                                                                                                           ; On           ;    ;
+; Rule A103: Design should not contain delay chains                                                                                                                                                                                                                                    ; On           ;    ;
+; Rule A104: Design should not contain ripple clock structures                                                                                                                                                                                                                         ; On           ;    ;
+; Rule A105: Pulses should not be implemented asynchronously                                                                                                                                                                                                                           ; On           ;    ;
+; Rule A106: Multiple pulses should not be generated in design                                                                                                                                                                                                                         ; On           ;    ;
+; Rule A107: Design should not contain SR latches                                                                                                                                                                                                                                      ; On           ;    ;
+; Rule A108: Design should not contain latches                                                                                                                                                                                                                                         ; On           ;    ;
+; Rule S101: Output enable and input of the same tri-state node should not be driven by same signal source                                                                                                                                                                             ; On           ;    ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                                                                                                                                ; On           ;    ;
+; Rule S103: More than one asynchronous port of a register should not be driven by the same signal source                                                                                                                                                                              ; On           ;    ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                                                                                                                                                                                ; On           ;    ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains                                                                                                                                                                                        ; On           ;    ;
+; Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain                                                                                                                 ; On           ;    ;
+; Rule D103: Data bits are not correctly synchronized when transferred between asynchronous clock domains                                                                                                                                                                              ; On           ;    ;
+; Rule M101: Data bits are not synchronized when transferred to the state machine of asynchronous clock domains                                                                                                                                                                        ; On           ;    ;
+; Rule M102: No reset signal defined to initialize the state machine                                                                                                                                                                                                                   ; On           ;    ;
+; Rule M103: State machine should not contain an unreachable state                                                                                                                                                                                                                     ; On           ;    ;
+; Rule M104: State machine should not contain a deadlock state                                                                                                                                                                                                                         ; On           ;    ;
+; Rule M105: State machine should not contain a dead transition                                                                                                                                                                                                                        ; On           ;    ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; High Violations                                                                                                                                                     ;
++-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
+; Rule name                                                                                                             ; Name                                        ;
++-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
+; Rule A108: Design should not contain latches - Latch 1                                                                ;                                             ;
+;  Latch 1                                                                                                              ; PS2_keyboard_interface:inst4|ascii[5]       ;
+; Rule A108: Design should not contain latches - Latch 2                                                                ;                                             ;
+;  Latch 2                                                                                                              ; PS2_keyboard_interface:inst4|ascii[3]       ;
+; Rule A108: Design should not contain latches - Latch 3                                                                ;                                             ;
+;  Latch 3                                                                                                              ; PS2_keyboard_interface:inst4|ascii[4]       ;
+; Rule A108: Design should not contain latches - Latch 4                                                                ;                                             ;
+;  Latch 4                                                                                                              ; PS2_keyboard_interface:inst4|ascii[2]       ;
+; Rule A108: Design should not contain latches - Latch 5                                                                ;                                             ;
+;  Latch 5                                                                                                              ; PS2_keyboard_interface:inst4|ascii[1]       ;
+; Rule A108: Design should not contain latches - Latch 6                                                                ;                                             ;
+;  Latch 6                                                                                                              ; PS2_keyboard_interface:inst4|ascii[0]       ;
+; Rule A108: Design should not contain latches - Latch 7                                                                ;                                             ;
+;  Latch 7                                                                                                              ; PS2_keyboard_interface:inst4|ascii[6]       ;
+; Rule A108: Design should not contain latches - Latch 8                                                                ;                                             ;
+;  Latch 8                                                                                                              ; main:inst6|start                            ;
+; Rule A108: Design should not contain latches - Latch 9                                                                ;                                             ;
+;  Latch 9                                                                                                              ; cv_ack_generator:inst11|cvack_int[14]       ;
+; Rule A108: Design should not contain latches - Latch 10                                                               ;                                             ;
+;  Latch 10                                                                                                             ; cv_ack_generator:inst11|cvack_int[6]        ;
+; Rule A108: Design should not contain latches - Latch 11                                                               ;                                             ;
+;  Latch 11                                                                                                             ; cv_ack_generator:inst11|cvack_int[15]       ;
+; Rule A108: Design should not contain latches - Latch 12                                                               ;                                             ;
+;  Latch 12                                                                                                             ; cv_ack_generator:inst11|cvack_int[9]        ;
+; Rule A108: Design should not contain latches - Latch 13                                                               ;                                             ;
+;  Latch 13                                                                                                             ; cv_ack_generator:inst11|cvack_int[1]        ;
+; Rule A108: Design should not contain latches - Latch 14                                                               ;                                             ;
+;  Latch 14                                                                                                             ; cv_ack_generator:inst11|cvack_int[3]        ;
+; Rule A108: Design should not contain latches - Latch 15                                                               ;                                             ;
+;  Latch 15                                                                                                             ; cv_ack_generator:inst11|cvack_int[11]       ;
+; Rule A108: Design should not contain latches - Latch 16                                                               ;                                             ;
+;  Latch 16                                                                                                             ; cv_ack_generator:inst11|cvack_int[4]        ;
+; Rule A108: Design should not contain latches - Latch 17                                                               ;                                             ;
+;  Latch 17                                                                                                             ; cv_ack_generator:inst11|cvack_int[12]       ;
+; Rule A108: Design should not contain latches - Latch 18                                                               ;                                             ;
+;  Latch 18                                                                                                             ; cv_ack_generator:inst11|cvack_int[5]        ;
+; Rule A108: Design should not contain latches - Latch 19                                                               ;                                             ;
+;  Latch 19                                                                                                             ; cv_ack_generator:inst11|cvack_int[13]       ;
+; Rule A108: Design should not contain latches - Latch 20                                                               ;                                             ;
+;  Latch 20                                                                                                             ; cv_ack_generator:inst11|cvack_int[7]        ;
+; Rule A108: Design should not contain latches - Latch 21                                                               ;                                             ;
+;  Latch 21                                                                                                             ; cv_ack_generator:inst11|cvack_int[2]        ;
+; Rule A108: Design should not contain latches - Latch 22                                                               ;                                             ;
+;  Latch 22                                                                                                             ; cv_ack_generator:inst11|cvack_int[10]       ;
+; Rule A108: Design should not contain latches - Latch 23                                                               ;                                             ;
+;  Latch 23                                                                                                             ; cv_ack_generator:inst11|cvack_int[8]        ;
+; Rule A108: Design should not contain latches - Latch 24                                                               ;                                             ;
+;  Latch 24                                                                                                             ; cv_ack_generator:inst11|cvack_int[0]        ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                          ; register_bank_user_word:inst2|process_1~0   ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[86]      ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[22]      ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[6]       ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[70]      ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[102]     ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[38]      ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[46]      ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[110]     ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[94]      ;
+;  Reset signal destination node(s) list                                                                                ; register_bank_user_word:inst2|buff[30]      ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                          ; PS2_keyboard_interface:inst4|in_read~0      ;
+;  Reset signal destination node(s) list                                                                                ; PS2_keyboard:inst1|scan_ready               ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[45]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[61]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[13]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[29]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[37]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[53]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[117]     ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[125]     ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[85]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[93]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[5]       ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[21]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[109]     ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[101]     ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[77]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[69]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[20]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[28]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[76]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[92]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[108]     ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[124]     ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[60]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[52]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[12]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[4]       ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[68]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[84]      ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[100]     ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[116]     ;
+;  Synchronous and reset port source node(s) list                                                                       ; register_bank_user_word:inst2|st.s_new_word ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[44]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[36]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[83]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[91]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[123]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[115]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[75]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[67]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[99]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[107]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[11]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[27]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[59]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[43]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[3]       ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[19]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[51]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[35]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[106]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[122]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[58]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[50]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[74]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[90]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[18]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[26]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[98]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[114]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[42]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[34]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[66]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[82]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[2]       ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[10]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[81]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[89]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[113]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[121]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[73]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[65]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[105]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[97]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[41]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[57]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[9]       ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[25]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[33]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[49]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[1]       ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[17]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[104]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[120]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[56]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[48]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[88]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[72]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[24]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[16]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[96]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[112]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[40]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[32]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[80]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[64]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[8]       ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[0]       ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[118]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[54]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[126]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[62]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[78]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[14]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[30]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[94]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[110]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[46]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[38]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[102]     ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[70]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[6]       ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[22]      ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; register_bank_user_word:inst2|buff[86]      ;
++-----------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Medium Violations                                                                                                                  ;
++---------------------------------------------------------------------------------------+--------------------------------------------+
+; Rule name                                                                             ; Name                                       ;
++---------------------------------------------------------------------------------------+--------------------------------------------+
+; Rule A104: Design should not contain ripple clock structures - Structure 1            ;                                            ;
+;  Structure 1                                                                          ; clk_div_two:inst7|clk_int                  ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|scan_code[5]            ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|scan_code[4]            ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|scan_code[6]            ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|scan_ready              ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|scan_code[2]            ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|keyboard_clk_filtered   ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|SHIFTIN[5]              ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|SHIFTIN[4]              ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|SHIFTIN[6]              ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|scan_code[0]            ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|scan_code[1]            ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|scan_code[3]            ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|scan_code[7]            ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|ready_set               ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|SHIFTIN[2]              ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|READ_CHAR               ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|SHIFTIN[7]              ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|SHIFTIN[0]              ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|SHIFTIN[1]              ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|SHIFTIN[3]              ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|INCNT[2]                ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|INCNT[3]                ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|INCNT[1]                ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|INCNT[0]                ;
+;  Structure 1                                                                          ; PS2_keyboard:inst1|SHIFTIN[8]              ;
+; Rule C104: Clock signal source should drive only clock input ports                    ; clk_div_two:inst7|clk_int                  ;
+;  Clock ports destination node(s) list                                                 ; user_interface:inst19|LR[16]               ;
+;  Clock ports destination node(s) list                                                 ; game:inst|led_red                          ;
+;  Clock ports destination node(s) list                                                 ; user_interface:inst19|LG[7]                ;
+;  Clock ports destination node(s) list                                                 ; lcd:inst50|lcd_data[6]                     ;
+;  Clock ports destination node(s) list                                                 ; lcd:inst50|lcd_data[7]                     ;
+;  Clock ports destination node(s) list                                                 ; user_interface:inst19|lifesT[0]            ;
+;  Clock ports destination node(s) list                                                 ; user_interface:inst19|sev_seg[25]          ;
+;  Clock ports destination node(s) list                                                 ; user_interface:inst19|lifesU[0]            ;
+;  Clock ports destination node(s) list                                                 ; user_interface:inst19|sev_seg[20]          ;
+;  Clock ports destination node(s) list                                                 ; user_interface:inst19|lifesU[1]            ;
+; Rule C104: Clock signal source should drive only clock input ports                    ; PS2_keyboard:inst1|keyboard_clk_filtered   ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|ready_set               ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|scan_code[7]            ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|scan_code[3]            ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|scan_code[1]            ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|scan_code[0]            ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|scan_code[2]            ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|scan_code[6]            ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|scan_code[4]            ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|scan_code[5]            ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|SHIFTIN[8]              ;
+;  Non-clock ports destination node(s) list                                             ; PS2_keyboard:inst1|keyboard_clk_filtered~1 ;
+;  Non-clock ports destination node(s) list                                             ; PS2_keyboard:inst1|keyboard_clk_filtered~2 ;
+;  Non-clock ports destination node(s) list                                             ; PS2_keyboard:inst1|keyboard_clk_filtered~3 ;
+; Rule C104: Clock signal source should drive only clock input ports                    ; PS2_keyboard:inst1|ready_set               ;
+;  Clock ports destination node(s) list                                                 ; PS2_keyboard:inst1|scan_ready              ;
+;  Non-clock ports destination node(s) list                                             ; PS2_keyboard:inst1|ready_set~0             ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers ; KEY[0]                                     ;
+;  Reset signal destination node(s) list                                                ; user_interface:inst19|sev_seg[19]          ;
+;  Reset signal destination node(s) list                                                ; user_interface:inst19|LR[16]               ;
+;  Reset signal destination node(s) list                                                ; game:inst|led_red                          ;
+;  Reset signal destination node(s) list                                                ; user_interface:inst19|LG[7]                ;
+;  Reset signal destination node(s) list                                                ; user_interface:inst19|sev_seg[25]          ;
+;  Reset signal destination node(s) list                                                ; user_interface:inst19|sev_seg[20]          ;
+;  Reset signal destination node(s) list                                                ; user_interface:inst19|sev_seg[21]          ;
+;  Reset signal destination node(s) list                                                ; user_interface:inst19|sev_seg[22]          ;
+;  Reset signal destination node(s) list                                                ; user_interface:inst19|sev_seg[23]          ;
+;  Reset signal destination node(s) list                                                ; user_interface:inst19|sev_seg[18]          ;
++---------------------------------------------------------------------------------------+--------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Information only Violations                                                                                                                                                   ;
++------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+---------+
+; Rule name                                                        ; Name                                                                                             ; Fan-Out ;
++------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+---------+
+; Rule T101: Nodes with more than the specified number of fan-outs ; clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk ; 783     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; lcd:inst50|ptr[0]                                                                                ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; KEY[0]                                                                                           ; 567     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; lcd:inst50|ptr[3]                                                                                ; 54      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; lcd:inst50|ptr[1]                                                                                ; 54      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; lcd:inst50|ptr[2]                                                                                ; 55      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; register_bank_opp_inc_word:inst17|st.s2                                                          ; 114     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; lcd:inst50|Selector34~0                                                                          ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; gen_op_inc_word:inst3|state.s_compute_word                                                       ; 113     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; register_bank_user_word:inst2|process_1~0clkctrl                                                 ; 112     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; register_bank_user_word:inst2|buff[96]~0                                                         ; 112     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; lcd:inst50|Selector8~3                                                                           ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; lcd:inst50|clk_count[21]~4                                                                       ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; gen_op_inc_word:inst3|state.s_miss                                                               ; 35      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; PS2_keyboard:inst1|scan_code[0]                                                                  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk ; 783     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[0]                                                                                           ; 567     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_opp_inc_word:inst17|st.s2                                                          ; 114     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; gen_op_inc_word:inst3|state.s_compute_word                                                       ; 113     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_user_word:inst2|process_1~0clkctrl                                                 ; 112     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_user_word:inst2|buff[96]~0                                                         ; 112     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lcd:inst50|ptr[0]                                                                                ; 55      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lcd:inst50|ptr[2]                                                                                ; 55      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lcd:inst50|ptr[3]                                                                                ; 54      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lcd:inst50|ptr[1]                                                                                ; 54      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; gen_op_inc_word:inst3|state.s_miss                                                               ; 35      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lcd:inst50|Selector34~0                                                                          ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PS2_keyboard:inst1|scan_code[0]                                                                  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lcd:inst50|clk_count[21]~4                                                                       ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lcd:inst50|Selector8~3                                                                           ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PS2_keyboard:inst1|scan_code[3]                                                                  ; 30      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PS2_keyboard:inst1|scan_code[1]                                                                  ; 30      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PS2_keyboard:inst1|scan_code[2]                                                                  ; 28      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PS2_keyboard:inst1|scan_code[4]                                                                  ; 27      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PS2_keyboard:inst1|scan_code[5]                                                                  ; 23      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lcd:inst50|state.send                                                                            ; 22      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PS2_keyboard:inst1|scan_code[6]                                                                  ; 21      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; user_interface:inst19|LR[16]                                                                     ; 18      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; tx_module:inst13|state.tx_idle                                                                   ; 18      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; cv_ack_generator:inst11|state.s_save                                                             ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; user_interface:inst19|sev_seg[18]                                                                ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_guessing_char:inst10|buff_char[3]                                                  ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_guessing_char:inst10|buff_char[2]                                                  ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_guessing_char:inst10|buff_char[4]                                                  ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; generate_cv:inst5|st.s_compute                                                                   ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_guessing_char:inst10|buff_char[1]                                                  ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_guessing_char:inst10|buff_char[5]                                                  ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_opponent_cv:inst18|st.loadreg                                                      ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; generate_cv:inst5|st.s_save                                                                      ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_guessing_char:inst10|buff_char[6]                                                  ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; gen_op_inc_word:inst3|state.s_compute_cv                                                         ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank_guessing_char:inst10|buff_char[0]                                                  ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_protocol:inst15|op_char[2]                                                                    ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_protocol:inst15|op_char[6]                                                                    ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_protocol:inst15|op_char[1]                                                                    ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; cv_ack_generator:inst11|state.s_compute~clkctrl                                                  ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; tx_module:inst13|Equal0~3                                                                        ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_protocol:inst15|op_char[7]                                                                    ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_protocol:inst15|op_char[0]                                                                    ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_protocol:inst15|op_char[3]                                                                    ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_protocol:inst15|op_char[5]                                                                    ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_protocol:inst15|op_char[4]                                                                    ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; lcd:inst50|Add0~60                                                                               ; 15      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UART_RXD                                                                                         ; 14      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; PS2_keyboard:inst1|keyboard_clk_filtered~clkctrl                                                 ; 14      ;
++------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------+
+; Design Assistant Messages ;
++---------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Design Assistant
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Thu Dec 22 10:25:45 2022
+Info: Command: quartus_drc --read_settings_files=off --write_settings_files=off hangman -c hangman
+Critical Warning: (High) Rule A108: Design should not contain latches. Found 24 latch(es) related to this rule.
+    Critical Warning: Node  "PS2_keyboard_interface:inst4|ascii[5]"
+    Critical Warning: Node  "PS2_keyboard_interface:inst4|ascii[3]"
+    Critical Warning: Node  "PS2_keyboard_interface:inst4|ascii[4]"
+    Critical Warning: Node  "PS2_keyboard_interface:inst4|ascii[2]"
+    Critical Warning: Node  "PS2_keyboard_interface:inst4|ascii[1]"
+    Critical Warning: Node  "PS2_keyboard_interface:inst4|ascii[0]"
+    Critical Warning: Node  "PS2_keyboard_interface:inst4|ascii[6]"
+    Critical Warning: Node  "main:inst6|start"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[14]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[6]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[15]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[9]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[1]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[3]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[11]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[4]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[12]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[5]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[13]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[7]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[2]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[10]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[8]"
+    Critical Warning: Node  "cv_ack_generator:inst11|cvack_int[0]"
+Critical Warning: (High) Rule R101: Combinational logic used as a reset signal should be synchronized. Found 2 node(s) related to this rule.
+    Critical Warning: Node  "register_bank_user_word:inst2|process_1~0"
+    Critical Warning: Node  "PS2_keyboard_interface:inst4|in_read~0"
+Critical Warning: (High) Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source. Found 112 node(s) related to this rule.
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[45]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[61]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[13]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[29]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[37]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[53]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[117]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[125]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[85]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[93]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[5]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[21]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[109]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[101]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[77]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[69]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[20]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[28]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[76]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[92]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[108]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[124]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[60]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[52]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[12]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[4]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[68]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[84]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[100]"
+    Critical Warning: Node  "register_bank_user_word:inst2|buff[116]"
+    Info: Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Warning: (Medium) Rule A104: Design should not contain ripple clock structures. Found 1 ripple clock structure(s) related to this rule.
+    Warning: Node  "clk_div_two:inst7|clk_int"
+Warning: (Medium) Rule C104: Clock signal source should drive only clock input ports. Found 3 nodes related to this rule.
+    Warning: Node  "clk_div_two:inst7|clk_int"
+    Warning: Node  "PS2_keyboard:inst1|keyboard_clk_filtered"
+    Warning: Node  "PS2_keyboard:inst1|ready_set"
+Warning: (Medium) Rule R102: External reset signals should be synchronized using two cascaded registers. Found 1 node(s) related to this rule.
+    Warning: Node  "KEY[0]"
+Info: (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 15 node(s) with highest fan-out.
+    Info: Node  "clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk"
+    Info: Node  "lcd:inst50|ptr[0]"
+    Info: Node  "KEY[0]"
+    Info: Node  "lcd:inst50|ptr[3]"
+    Info: Node  "lcd:inst50|ptr[1]"
+    Info: Node  "lcd:inst50|ptr[2]"
+    Info: Node  "register_bank_opp_inc_word:inst17|st.s2"
+    Info: Node  "lcd:inst50|Selector34~0"
+    Info: Node  "gen_op_inc_word:inst3|state.s_compute_word"
+    Info: Node  "register_bank_user_word:inst2|process_1~0clkctrl"
+    Info: Node  "register_bank_user_word:inst2|buff[96]~0"
+    Info: Node  "lcd:inst50|Selector8~3"
+    Info: Node  "lcd:inst50|clk_count[21]~4"
+    Info: Node  "gen_op_inc_word:inst3|state.s_miss"
+    Info: Node  "PS2_keyboard:inst1|scan_code[0]"
+Info: (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
+    Info: Node  "clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk"
+    Info: Node  "KEY[0]"
+    Info: Node  "register_bank_opp_inc_word:inst17|st.s2"
+    Info: Node  "gen_op_inc_word:inst3|state.s_compute_word"
+    Info: Node  "register_bank_user_word:inst2|process_1~0clkctrl"
+    Info: Node  "register_bank_user_word:inst2|buff[96]~0"
+    Info: Node  "lcd:inst50|ptr[0]"
+    Info: Node  "lcd:inst50|ptr[2]"
+    Info: Node  "lcd:inst50|ptr[3]"
+    Info: Node  "lcd:inst50|ptr[1]"
+    Info: Node  "gen_op_inc_word:inst3|state.s_miss"
+    Info: Node  "lcd:inst50|Selector34~0"
+    Info: Node  "PS2_keyboard:inst1|scan_code[0]"
+    Info: Node  "lcd:inst50|clk_count[21]~4"
+    Info: Node  "lcd:inst50|Selector8~3"
+    Info: Node  "PS2_keyboard:inst1|scan_code[3]"
+    Info: Node  "PS2_keyboard:inst1|scan_code[1]"
+    Info: Node  "PS2_keyboard:inst1|scan_code[2]"
+    Info: Node  "PS2_keyboard:inst1|scan_code[4]"
+    Info: Node  "PS2_keyboard:inst1|scan_code[5]"
+    Info: Node  "lcd:inst50|state.send"
+    Info: Node  "PS2_keyboard:inst1|scan_code[6]"
+    Info: Node  "user_interface:inst19|LR[16]"
+    Info: Node  "tx_module:inst13|state.tx_idle"
+    Info: Node  "cv_ack_generator:inst11|state.s_save"
+    Info: Node  "user_interface:inst19|sev_seg[18]"
+    Info: Node  "register_bank_guessing_char:inst10|buff_char[3]"
+    Info: Node  "register_bank_guessing_char:inst10|buff_char[2]"
+    Info: Node  "register_bank_guessing_char:inst10|buff_char[4]"
+    Info: Node  "generate_cv:inst5|st.s_compute"
+    Info: Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info: Design Assistant information: finished post-fitting analysis of current design -- generated 65 information messages and 143 warning messages
+Info: Quartus II Design Assistant was successful. 0 errors, 67 warnings
+    Info: Peak virtual memory: 204 megabytes
+    Info: Processing ended: Thu Dec 22 10:25:47 2022
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+

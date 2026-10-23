@@ -1,0 +1,166 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity rx_protocol is
+	port (
+		clk50, nrst, frame_read, rx_new : in std_logic;
+		rx_data : in std_logic_vector(7 downto 0);
+		data_read, new_frame : out std_logic;
+		loser, winner, new_cv, new_op_char, new_op_cv : out std_logic;
+		op_char : out std_logic_vector (7 downto 0);
+		op_cv, cv_ack : out std_logic_vector (15 downto 0));
+end rx_protocol;
+
+architecture main of rx_protocol is
+	type state_type is (pr_ini, pr_w1, pr_r1, pr_w2, pr_r2, pr_f_type, pr_s_loser, pr_s_winner, pr_w_ready1, pr_r_ready1,
+						pr_w_ready2, pr_r_ready2, pr_s_ready, pr_w_cvack1, pr_r_cvack1, pr_w_cvack2, pr_r_cvack2, 
+						pr_s_cvack, pr_w_gc, pr_r_gc, pr_s_gc);
+	signal state : state_type;	 
+	 -- Definition of the diferent FRAME TYPE
+	constant FT_READY : std_logic_vector(7 downto 0) := x"A1";
+	constant FT_CV_ACK : std_logic_vector(7 downto 0) := x"B1";
+	constant FT_GC : std_logic_vector(7 downto 0) := x"C1";
+	constant FT_LOSER : std_logic_vector(7 downto 0) := x"D1";
+	constant FT_WINNER : std_logic_vector(7 downto 0) := x"D2";
+	constant FRAME_ID : std_logic_vector(7 downto 0) := x"AA";
+	-- Definition of the registers in the process unit
+	signal frame_type: std_logic_vector(7 downto 0);
+	-- Signals to activate the output flags
+	signal set_LOSER, set_WINNER, set_NEW_CV, set_NEW_OP_CHAR, set_NEW_OP_CV : std_logic;
+	signal set_new_frame : std_logic;
+	
+begin
+
+PROTOCOL_FSM : process (clk50, nrst) begin
+	if nrst = '0' then
+		state <= pr_ini;
+
+	elsif clk50'EVENT and clk50 = '1' then
+		case state is
+			when pr_ini => 
+				state <= pr_w1;
+			
+			-- Waiting for frame_ID to arrive
+			when pr_w1 =>
+				if rx_new = '1' then state <= pr_r1;
+				end if;
+
+			-- Frame ID arrived. We do not check it..	
+			-- Data_read should be activated within a combinational system
+			when pr_r1 => 
+				state <= pr_w2;
+				
+			-- Waiting for FRAME TYPE to arive
+			when pr_w2 => 
+				if rx_new = '1' then state <= pr_r2;
+				end if;	
+			-- FRAME TYPE ARRIVED. 
+			-- Data Read should be activated within a combinational system	
+			when pr_r2 => 
+				frame_type <= rx_data;
+				state <= pr_f_type;
+				
+			-- Checking frame type. If type contains data the system read the extra bytes.	
+			when pr_f_type => 
+				if frame_type = FT_READY then state <= pr_w_ready1;
+				elsif frame_type = FT_CV_ACK then state <= pr_w_cvack1;
+				elsif frame_type = FT_GC then state <= pr_w_gc;
+				elsif frame_type = FT_LOSER then state <= pr_s_loser;
+				elsif frame_type = FT_WINNER then state <= pr_s_winner;
+				end if;
+				
+			when pr_s_loser =>
+				state <= pr_ini;
+				
+			when pr_s_winner =>
+				state <= pr_ini;
+				
+			when pr_w_ready1 =>
+				if rx_new = '1' then state <= pr_r_ready1;
+				end if;
+				
+			when pr_r_ready1 =>
+				op_cv(15 downto 8) <= rx_data;
+				state <= pr_w_ready2;
+				
+			when pr_w_ready2 =>
+				if rx_new = '1' then state <= pr_r_ready2;
+				end if;
+				
+			when pr_r_ready2 =>
+				op_cv(7 downto 0) <= rx_data;
+				state <= pr_s_ready;
+				
+			when pr_s_ready =>
+				state <= pr_w1;
+			
+			when pr_w_cvack1 =>
+				if rx_new = '1' then state <= pr_r_cvack1;
+				end if;
+				
+			when pr_r_cvack1 =>
+				cv_ack(15 downto 8) <= rx_data;
+				state <= pr_w_ready2;
+				
+			when pr_w_cvack2 =>
+				if rx_new = '1' then state <= pr_r_cvack2;
+				end if;
+				
+			when pr_r_cvack2 =>
+				cv_ack(7 downto 0) <= rx_data;
+				state <= pr_s_cvack;
+				
+			when pr_s_cvack =>
+				state <= pr_w1;
+				
+			when pr_w_gc =>
+				if rx_new = '1' then state <= pr_r_gc;
+				end if;
+				
+			when pr_r_gc =>
+				op_char <= rx_data;
+				state <= pr_s_gc;
+				
+			when pr_s_gc =>
+				state <= pr_w1;
+			
+			when others =>
+				end case;
+	end if;
+end process;
+
+-- Combinational system for the signals that activate
+set_LOSER <= '1' when state = pr_s_loser else '0'; 
+set_WINNER <= '1' when state = pr_s_winner else '0';
+set_NEW_CV <= '1' when state = pr_s_ready else '0';
+set_NEW_OP_CHAR <= '1' when state = pr_s_gc else '0';
+set_NEW_OP_CV <= '1' when state = pr_s_cvack else '0';
+data_read <= '1' when state = pr_r1 or state = pr_r2 or state = pr_r_ready1 or 
+	state = pr_r_ready2 or state = pr_r_cvack1 or state = pr_r_cvack2 or state = pr_r_gc else '0';
+
+JK: process(clk50, nrst) begin
+		if nrst = '0' then
+			loser <= '0'; 
+			winner <= '0';
+			new_cv <= '0';
+			new_op_char <= '0';
+			new_op_cv <= '0'; 
+			new_frame <= '0';
+		elsif clk50'EVENT and clk50 = '1' then 
+			if set_LOSER = '1' then loser <= '1'; new_frame <= '1'; end if;
+			if set_WINNER = '1' then winner <= '1'; new_frame <= '1'; end if;
+			if set_NEW_CV = '1' then new_cv <= '1'; new_frame <= '1'; end if;
+			if set_NEW_OP_CHAR = '1' then new_op_char <= '1'; new_frame <= '1'; end if;
+			if set_NEW_OP_CV = '1' then new_op_cv <= '1'; new_frame <= '1'; end if;
+			if frame_read = '1' then
+				loser <= '0'; 
+				winner <= '0';
+				new_cv <= '0';
+				new_op_char <= '0';
+				new_op_cv <= '0'; 
+				new_frame <= '0';
+			end if;
+		end if;
+	end process;
+		
+end;

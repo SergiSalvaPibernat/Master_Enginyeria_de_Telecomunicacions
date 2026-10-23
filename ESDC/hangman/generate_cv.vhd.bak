@@ -1,0 +1,152 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity generate_cv is
+	port(	clk, nrst, activate: in std_logic;
+			word: in std_logic_vector (127 downto 0);
+			cv: out std_logic_vector (15 downto 0);
+			done : out std_logic);
+end generate_cv;
+
+architecture arc of generate_cv is
+	type state_type is (w_activate, s_compute, s_save, s_end);
+	signal st : state_type;
+	signal ld		: std_logic;
+	signal compute 	: std_logic;
+	signal cv_int	: std_logic_vector (15 downto 0);
+	signal found	: std_logic;
+begin
+
+	-- States machine
+	process(clk, nrst) begin 
+		if nrst = '0' then
+			st <= w_activate;
+		elsif clk'event and clk = '1' then
+			case st is
+				when w_activate =>
+					if (activate = '1') then
+						st <= s_compute;
+					end if;
+				when s_compute =>
+					st <= s_save;
+				when s_save =>
+					st <= s_end;
+				when s_end =>
+					--st <= w_activate;
+			end case;
+		end if;
+	end process;
+	
+	
+	-- Combinacional circuit to compute
+	-- the CV from the user word
+	process(clk, nrst, word,cv_int)
+	begin
+		if nrst = '0' then
+			cv_int <= x"0000";
+		elsif clk'event and clk = '1' then
+			if st = s_compute then
+				if word(7 downto 0) = x"00" then
+					cv_int(0) <= '0';
+				else
+					cv_int(0) <= '1';
+				end if;
+				if word(15 downto 8) = x"00" then
+					cv_int(1) <= '0';
+				else
+					cv_int(1) <= '1';
+				end if;
+				if word(23 downto 16) = x"00" then
+					cv_int(2) <= '0';
+				else
+					cv_int(2) <= '1';
+				end if;
+				if word(31 downto 24) = x"00" then
+					cv_int(3) <= '0';
+				else
+					cv_int(3) <= '1';
+				end if;
+				if word(39 downto 32) = x"00" then
+					cv_int(4) <= '0';
+				else
+					cv_int(4) <= '1';
+				end if;
+				if word(47 downto 40) = x"00" then
+					cv_int(5) <= '0';
+				else
+					cv_int(5) <= '1';
+				end if;
+				if word(55 downto 48) = x"00" then
+					cv_int(6) <= '0';
+				else
+					cv_int(6) <= '1';
+				end if;
+				if word(63 downto 56) = x"00" then
+					cv_int(7) <= '0';
+				else
+					cv_int(7) <= '1';
+				end if;
+				if word(71 downto 64) = x"00" then
+					cv_int(8) <= '0';
+				else
+					cv_int(8) <= '1';
+				end if;
+				if word(79 downto 72) = x"00" then
+					cv_int(9) <= '0';
+				else
+					cv_int(9) <= '1';
+				end if;
+				if word(87 downto 80) = x"00" then
+					cv_int(10) <= '0';
+				else
+					cv_int(10) <= '1';
+				end if;
+				if word(95 downto 88) = x"00" then
+					cv_int(11) <= '0';
+				else
+					cv_int(11) <= '1';
+				end if;
+				if word(103 downto 96) = x"00" then
+					cv_int(12) <= '0';
+				else
+					cv_int(12) <= '1';
+				end if;
+				if word(111 downto 104) = x"00" then
+					cv_int(13) <= '0';
+				else
+					cv_int(13) <= '1';
+				end if;
+				if word(119 downto 112) = x"00" then
+					cv_int(14) <= '0';
+				else
+					cv_int(14) <= '1';
+				end if;
+				if word(127 downto 120) = x"00" then
+					cv_int(15) <= '0';
+				else
+					cv_int(15) <= '1';
+				end if;
+			end if;
+		end if;
+	end process;
+	
+	
+	-- Register to save the CV
+	process(clk,ld,nrst)
+    begin
+        if nrst = '0' then
+            cv <= x"0000";
+        elsif (clk'event and clk = '1') then
+            if ld = '1' then
+				cv <= cv_int;
+            end if;
+        end if;
+    end process;
+
+
+compute <= '1' when st = s_compute else '0';
+ld <= '1' when st = s_save else '0';
+done <= '1' when st = s_end else '0';
+	
+end arc;

@@ -1,0 +1,178 @@
+
+State Machine - |hangman|user_interface:inst19|state
+Name state.s_game state.s_lg state.s_lr state.s_wait_status state.s_wait_game state.s0_wait 
+state.s0_wait 0 0 0 0 0 0 
+state.s_wait_game 0 0 0 0 1 1 
+state.s_wait_status 0 0 0 1 0 1 
+state.s_lr 0 0 1 0 0 1 
+state.s_lg 0 1 0 0 0 1 
+state.s_game 1 0 0 0 0 1 
+
+State Machine - |hangman|lcd:inst50|state
+Name state.send state.line2 state.line1 state.RESETLINE state.initialize state.power_up 
+state.power_up 0 0 0 0 0 0 
+state.initialize 0 0 0 0 1 1 
+state.RESETLINE 0 0 0 1 0 1 
+state.line1 0 0 1 0 0 1 
+state.line2 0 1 0 0 0 1 
+state.send 1 0 0 0 0 1 
+
+State Machine - |hangman|register_bank_opponent_cv:inst18|st
+Name st.s_end st.loadreg st.s_wait 
+st.s_wait 0 0 0 
+st.loadreg 0 1 1 
+st.s_end 1 0 1 
+
+State Machine - |hangman|register_bank_opp_inc_word:inst17|st
+Name st.s3 st.s2 st.s1 st.s0 
+st.s0 0 0 0 0 
+st.s1 0 0 1 1 
+st.s2 0 1 0 1 
+st.s3 1 0 0 1 
+
+State Machine - |hangman|gen_op_inc_word:inst3|state
+Name state.s_end state.s_winner state.s_compare_cv state.s_compute_cv state.s_save_word state.w_rb state.s_compute_word state.s_miss state.s_check_cvack state.w_gen_inc_word 
+state.w_gen_inc_word 0 0 0 0 0 0 0 0 0 0 
+state.s_check_cvack 0 0 0 0 0 0 0 0 1 1 
+state.s_miss 0 0 0 0 0 0 0 1 0 1 
+state.s_compute_word 0 0 0 0 0 0 1 0 0 1 
+state.w_rb 0 0 0 0 0 1 0 0 0 1 
+state.s_save_word 0 0 0 0 1 0 0 0 0 1 
+state.s_compute_cv 0 0 0 1 0 0 0 0 0 1 
+state.s_compare_cv 0 0 1 0 0 0 0 0 0 1 
+state.s_winner 0 1 0 0 0 0 0 0 0 1 
+state.s_end 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |hangman|cv_ack_generator:inst11|state
+Name state.s_end state.s_save state.s_compute state.w_activate 
+state.w_activate 0 0 0 0 
+state.s_compute 0 0 1 1 
+state.s_save 0 1 0 1 
+state.s_end 1 0 0 1 
+
+State Machine - |hangman|rx_module:inst14|state
+Name state.rx_stop state.rx_shift state.rx_start state.rx_idle 
+state.rx_idle 0 0 0 0 
+state.rx_start 0 0 1 1 
+state.rx_shift 0 1 0 1 
+state.rx_stop 1 0 0 1 
+
+State Machine - |hangman|rx_protocol:inst15|state
+Name state.pr_s_gc state.pr_r_gc state.pr_w_gc state.pr_s_cvack state.pr_r_cvack2 state.pr_w_cvack2 state.pr_r_cvack1 state.pr_w_cvack1 state.pr_s_ready state.pr_r_ready2 state.pr_w_ready2 state.pr_r_ready1 state.pr_w_ready1 state.pr_s_winner state.pr_s_loser state.pr_f_type state.pr_r2 state.pr_w2 state.pr_r1 state.pr_w1 state.pr_ini 
+state.pr_ini 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.pr_w1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.pr_r1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.pr_w2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.pr_r2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.pr_f_type 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.pr_s_loser 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.pr_s_winner 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.pr_w_ready1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.pr_r_ready1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.pr_w_ready2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.pr_r_ready2 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_s_ready 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_w_cvack1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_r_cvack1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_w_cvack2 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_r_cvack2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_s_cvack 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_w_gc 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_r_gc 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_s_gc 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |hangman|generate_cv:inst5|st
+Name st.s_end st.s_save st.s_compute st.w_activate 
+st.w_activate 0 0 0 0 
+st.s_compute 0 0 1 1 
+st.s_save 0 1 0 1 
+st.s_end 1 0 0 1 
+
+State Machine - |hangman|register_bank_guessing_char:inst10|st
+Name st.s_end st.loadreg st.w_charflag st.s_wait 
+st.s_wait 0 0 0 0 
+st.w_charflag 0 0 1 1 
+st.loadreg 0 1 0 1 
+st.s_end 1 0 0 1 
+
+State Machine - |hangman|PS2_keyboard_interface:inst4|st
+Name st.activate_flag st.w_sc3 st.ack2 st.w_sc2 st.load_reg st.w_scan_ready st.w_newcode 
+st.w_newcode 0 0 0 0 0 0 0 
+st.w_scan_ready 0 0 0 0 0 1 1 
+st.load_reg 0 0 0 0 1 0 1 
+st.w_sc2 0 0 0 1 0 0 1 
+st.ack2 0 0 1 0 0 0 1 
+st.w_sc3 0 1 0 0 0 0 1 
+st.activate_flag 1 0 0 0 0 0 1 
+
+State Machine - |hangman|register_bank_user_word:inst2|st
+Name st.s_end st.loadreg st.w_charflag st.s_new_word st.s_marranada st.s_wait 
+st.s_wait 0 0 0 0 0 0 
+st.s_marranada 0 0 0 0 1 1 
+st.s_new_word 0 0 0 1 0 1 
+st.w_charflag 0 0 1 0 0 1 
+st.loadreg 0 1 0 0 0 1 
+st.s_end 1 0 0 0 0 1 
+
+State Machine - |hangman|main:inst6|st
+Name st.s_end st.w_game st.s_start_game st.w_user_word st.enter_code st.s_ack st.w_start 
+st.w_start 0 0 0 0 0 0 0 
+st.s_ack 0 0 0 0 0 1 1 
+st.enter_code 0 0 0 0 1 0 1 
+st.w_user_word 0 0 0 1 0 0 1 
+st.s_start_game 0 0 1 0 0 0 1 
+st.w_game 0 1 0 0 0 0 1 
+st.s_end 1 0 0 0 0 0 1 
+
+State Machine - |hangman|game:inst|st
+Name st.s_send_loser st.s_send_winner st.w_tx5 st.w_tx4 st.s_game_veredict st.s_lcd st.w_word_ready st.s_gen_iw st.w_rx_cvack st.s_send_cvack st.w_tx3 st.w_cvack st.s_gen_cvack st.w_op_char st.s_send_gc st.w_tx2 st.w_guess_char st.s_guess_char st.w_op_ready st.s_send_ready st.w_tx1 st.w_cv st.s_gen_cv st.w_start 
+st.w_start 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+st.s_gen_cv 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+st.w_cv 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+st.w_tx1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+st.s_send_ready 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+st.w_op_ready 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+st.s_guess_char 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+st.w_guess_char 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+st.w_tx2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+st.s_send_gc 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+st.w_op_char 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+st.s_gen_cvack 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+st.w_cvack 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+st.w_tx3 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.s_send_cvack 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.w_rx_cvack 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.s_gen_iw 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.w_word_ready 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.s_lcd 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.s_game_veredict 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.w_tx4 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.w_tx5 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.s_send_winner 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.s_send_loser 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |hangman|tx_protocol:inst12|st
+Name st.s_end st.s_gc st.s_cvack2 st.w_tx_empty5 st.s_cvack1 st.s_cv2 st.w_tx_empty4 st.s_cv1 st.s_decision st.w_tx_empty3 st.s_frame_type st.w_tx_empty2 st.s_frame_id st.w_tx_empty1 st.s_rdy st.w_frame_code 
+st.w_frame_code 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+st.s_rdy 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+st.w_tx_empty1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+st.s_frame_id 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+st.w_tx_empty2 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+st.s_frame_type 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+st.w_tx_empty3 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+st.s_decision 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+st.s_cv1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+st.w_tx_empty4 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+st.s_cv2 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+st.s_cvack1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+st.w_tx_empty5 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+st.s_cvack2 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.s_gc 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+st.s_end 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |hangman|tx_module:inst13|state
+Name state.tx_stop state.tx_shift state.tx_start state.tx_idle 
+state.tx_idle 0 0 0 0 
+state.tx_start 0 0 1 1 
+state.tx_shift 0 1 0 1 
+state.tx_stop 1 0 0 1 

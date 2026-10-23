@@ -1,0 +1,1153 @@
+Classic Timing Analyzer report for hangman
+Thu Dec 22 10:25:42 2022
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'OSC_50'
+  7. Clock Hold: 'OSC_50'
+  8. tsu
+  9. tco
+ 10. th
+ 11. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                                             ;
++------------------------------+------------------------------------------+---------------+----------------------------------+---------------------------------------+-----------------------------------------+------------+----------+--------------+
+; Type                         ; Slack                                    ; Required Time ; Actual Time                      ; From                                  ; To                                      ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+------------------------------------------+---------------+----------------------------------+---------------------------------------+-----------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A                                      ; None          ; 5.103 ns                         ; UART_RXD                              ; rx_module:inst14|bit_count[1]           ; --         ; OSC_50   ; 0            ;
+; Worst-case tco               ; N/A                                      ; None          ; 12.321 ns                        ; user_interface:inst19|sev_seg[17]     ; HEX0[3]                                 ; OSC_50     ; --       ; 0            ;
+; Worst-case th                ; N/A                                      ; None          ; 1.228 ns                         ; KEY[0]                                ; PS2_keyboard:inst1|INCNT[0]             ; --         ; OSC_50   ; 0            ;
+; Clock Setup: 'OSC_50'        ; N/A                                      ; None          ; 57.57 MHz ( period = 17.370 ns ) ; PS2_keyboard_interface:inst4|ascii[0] ; PS2_keyboard_interface:inst4|keycode[0] ; OSC_50     ; OSC_50   ; 0            ;
+; Clock Hold: 'OSC_50'         ; Not operational: Clock Skew > Data Delay ; None          ; N/A                              ; PS2_keyboard:inst1|scan_code[5]       ; PS2_keyboard_interface:inst4|ascii[6]   ; OSC_50     ; OSC_50   ; 285          ;
+; Total number of failed paths ;                                          ;               ;                                  ;                                       ;                                         ;            ;          ; 285          ;
++------------------------------+------------------------------------------+---------------+----------------------------------+---------------------------------------+-----------------------------------------+------------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EP2C35F672C6       ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                                                    ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                                                    ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                                                           ; Near End           ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; OSC_50          ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'OSC_50'                                                                                                                                                                                                                                                                       ;
++-----------------------------------------+-----------------------------------------------------+---------------------------------------+-----------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                                  ; To                                      ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+---------------------------------------+-----------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 57.57 MHz ( period = 17.370 ns )                    ; PS2_keyboard_interface:inst4|ascii[0] ; PS2_keyboard_interface:inst4|keycode[0] ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.827 ns                ;
+; N/A                                     ; 58.81 MHz ( period = 17.004 ns )                    ; PS2_keyboard_interface:inst4|ascii[3] ; PS2_keyboard_interface:inst4|keycode[3] ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.622 ns                ;
+; N/A                                     ; 58.90 MHz ( period = 16.978 ns )                    ; PS2_keyboard_interface:inst4|ascii[6] ; PS2_keyboard_interface:inst4|keycode[6] ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.632 ns                ;
+; N/A                                     ; 58.91 MHz ( period = 16.976 ns )                    ; PS2_keyboard_interface:inst4|ascii[1] ; PS2_keyboard_interface:inst4|keycode[1] ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.632 ns                ;
+; N/A                                     ; 62.04 MHz ( period = 16.118 ns )                    ; PS2_keyboard_interface:inst4|ascii[5] ; PS2_keyboard_interface:inst4|keycode[5] ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 62.77 MHz ( period = 15.930 ns )                    ; PS2_keyboard_interface:inst4|ascii[4] ; PS2_keyboard_interface:inst4|keycode[4] ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 62.77 MHz ( period = 15.930 ns )                    ; PS2_keyboard_interface:inst4|ascii[2] ; PS2_keyboard_interface:inst4|keycode[2] ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 100.04 MHz ( period = 9.996 ns )                    ; cv_ack_generator:inst11|cvack_int[8]  ; cv_ack_generator:inst11|op_cvack[8]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 100.16 MHz ( period = 9.984 ns )                    ; cv_ack_generator:inst11|cvack_int[7]  ; cv_ack_generator:inst11|op_cvack[7]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 100.16 MHz ( period = 9.984 ns )                    ; cv_ack_generator:inst11|cvack_int[10] ; cv_ack_generator:inst11|op_cvack[10]    ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 100.36 MHz ( period = 9.964 ns )                    ; cv_ack_generator:inst11|cvack_int[6]  ; cv_ack_generator:inst11|op_cvack[6]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.19 MHz ( period = 9.786 ns )                    ; cv_ack_generator:inst11|cvack_int[11] ; cv_ack_generator:inst11|op_cvack[11]    ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.21 MHz ( period = 9.784 ns )                    ; cv_ack_generator:inst11|cvack_int[9]  ; cv_ack_generator:inst11|op_cvack[9]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.21 MHz ( period = 9.784 ns )                    ; cv_ack_generator:inst11|cvack_int[3]  ; cv_ack_generator:inst11|op_cvack[3]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.23 MHz ( period = 9.782 ns )                    ; cv_ack_generator:inst11|cvack_int[4]  ; cv_ack_generator:inst11|op_cvack[4]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.23 MHz ( period = 9.782 ns )                    ; cv_ack_generator:inst11|cvack_int[13] ; cv_ack_generator:inst11|op_cvack[13]    ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.25 MHz ( period = 9.780 ns )                    ; cv_ack_generator:inst11|cvack_int[12] ; cv_ack_generator:inst11|op_cvack[12]    ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.27 MHz ( period = 9.778 ns )                    ; cv_ack_generator:inst11|cvack_int[15] ; cv_ack_generator:inst11|op_cvack[15]    ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.56 MHz ( period = 9.750 ns )                    ; cv_ack_generator:inst11|cvack_int[14] ; cv_ack_generator:inst11|op_cvack[14]    ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.56 MHz ( period = 9.750 ns )                    ; cv_ack_generator:inst11|cvack_int[0]  ; cv_ack_generator:inst11|op_cvack[0]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.59 MHz ( period = 9.748 ns )                    ; cv_ack_generator:inst11|cvack_int[1]  ; cv_ack_generator:inst11|op_cvack[1]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 102.59 MHz ( period = 9.748 ns )                    ; cv_ack_generator:inst11|cvack_int[5]  ; cv_ack_generator:inst11|op_cvack[5]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 103.14 MHz ( period = 9.696 ns )                    ; cv_ack_generator:inst11|cvack_int[2]  ; cv_ack_generator:inst11|op_cvack[2]     ; OSC_50     ; OSC_50   ; None                        ; None                      ; 0.084 ns                ;
+; N/A                                     ; 112.22 MHz ( period = 8.911 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|lcd_data[2]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.692 ns                ;
+; N/A                                     ; 112.36 MHz ( period = 8.900 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|lcd_data[5]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.683 ns                ;
+; N/A                                     ; 112.36 MHz ( period = 8.900 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|lcd_data[1]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.683 ns                ;
+; N/A                                     ; 112.84 MHz ( period = 8.862 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|lcd_data[3]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.642 ns                ;
+; N/A                                     ; 112.84 MHz ( period = 8.862 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|lcd_data[0]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.642 ns                ;
+; N/A                                     ; 112.85 MHz ( period = 8.861 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|lcd_data[2]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.642 ns                ;
+; N/A                                     ; 112.99 MHz ( period = 8.850 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|lcd_data[5]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.633 ns                ;
+; N/A                                     ; 112.99 MHz ( period = 8.850 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|lcd_data[1]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.633 ns                ;
+; N/A                                     ; 113.48 MHz ( period = 8.812 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|lcd_data[3]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.592 ns                ;
+; N/A                                     ; 113.48 MHz ( period = 8.812 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|lcd_data[0]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.592 ns                ;
+; N/A                                     ; 113.51 MHz ( period = 8.810 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|lcd_data[4]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.587 ns                ;
+; N/A                                     ; 113.70 MHz ( period = 8.795 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|lcd_data[2]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.576 ns                ;
+; N/A                                     ; 113.84 MHz ( period = 8.784 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|lcd_data[5]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.567 ns                ;
+; N/A                                     ; 113.84 MHz ( period = 8.784 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|lcd_data[1]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.567 ns                ;
+; N/A                                     ; 114.16 MHz ( period = 8.760 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|lcd_data[4]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.537 ns                ;
+; N/A                                     ; 114.34 MHz ( period = 8.746 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|lcd_data[3]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.526 ns                ;
+; N/A                                     ; 114.34 MHz ( period = 8.746 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|lcd_data[0]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.526 ns                ;
+; N/A                                     ; 115.02 MHz ( period = 8.694 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|lcd_data[4]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.471 ns                ;
+; N/A                                     ; 115.69 MHz ( period = 8.644 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[10]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.430 ns                ;
+; N/A                                     ; 115.69 MHz ( period = 8.644 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[16]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.430 ns                ;
+; N/A                                     ; 115.71 MHz ( period = 8.642 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[15]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.428 ns                ;
+; N/A                                     ; 115.74 MHz ( period = 8.640 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[22]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.426 ns                ;
+; N/A                                     ; 115.75 MHz ( period = 8.639 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[5]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.425 ns                ;
+; N/A                                     ; 115.78 MHz ( period = 8.637 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[0]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.423 ns                ;
+; N/A                                     ; 115.79 MHz ( period = 8.636 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[1]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.422 ns                ;
+; N/A                                     ; 115.83 MHz ( period = 8.633 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[9]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.411 ns                ;
+; N/A                                     ; 115.86 MHz ( period = 8.631 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[24]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.409 ns                ;
+; N/A                                     ; 115.86 MHz ( period = 8.631 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[23]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.409 ns                ;
+; N/A                                     ; 115.87 MHz ( period = 8.630 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[25]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.408 ns                ;
+; N/A                                     ; 115.89 MHz ( period = 8.629 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[7]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.407 ns                ;
+; N/A                                     ; 115.98 MHz ( period = 8.622 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[8]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.400 ns                ;
+; N/A                                     ; 116.36 MHz ( period = 8.594 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[10]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.380 ns                ;
+; N/A                                     ; 116.36 MHz ( period = 8.594 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[16]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.380 ns                ;
+; N/A                                     ; 116.39 MHz ( period = 8.592 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[15]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.378 ns                ;
+; N/A                                     ; 116.41 MHz ( period = 8.590 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[22]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.376 ns                ;
+; N/A                                     ; 116.43 MHz ( period = 8.589 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[5]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.375 ns                ;
+; N/A                                     ; 116.46 MHz ( period = 8.587 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[0]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.373 ns                ;
+; N/A                                     ; 116.47 MHz ( period = 8.586 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[1]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.372 ns                ;
+; N/A                                     ; 116.51 MHz ( period = 8.583 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[9]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.361 ns                ;
+; N/A                                     ; 116.54 MHz ( period = 8.581 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[24]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.359 ns                ;
+; N/A                                     ; 116.54 MHz ( period = 8.581 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[23]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.359 ns                ;
+; N/A                                     ; 116.55 MHz ( period = 8.580 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[25]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.358 ns                ;
+; N/A                                     ; 116.56 MHz ( period = 8.579 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[7]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.357 ns                ;
+; N/A                                     ; 116.66 MHz ( period = 8.572 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[8]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.350 ns                ;
+; N/A                                     ; 116.66 MHz ( period = 8.572 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|lcd_data[2]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.363 ns                ;
+; N/A                                     ; 116.81 MHz ( period = 8.561 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|lcd_data[5]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.354 ns                ;
+; N/A                                     ; 116.81 MHz ( period = 8.561 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|lcd_data[1]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.354 ns                ;
+; N/A                                     ; 116.84 MHz ( period = 8.559 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|lcd_data[2]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.340 ns                ;
+; N/A                                     ; 116.99 MHz ( period = 8.548 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|lcd_data[5]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.331 ns                ;
+; N/A                                     ; 116.99 MHz ( period = 8.548 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|lcd_data[1]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.331 ns                ;
+; N/A                                     ; 116.99 MHz ( period = 8.548 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|e                            ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.329 ns                ;
+; N/A                                     ; 117.01 MHz ( period = 8.546 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[27]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.327 ns                ;
+; N/A                                     ; 117.26 MHz ( period = 8.528 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[10]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.314 ns                ;
+; N/A                                     ; 117.26 MHz ( period = 8.528 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[16]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.314 ns                ;
+; N/A                                     ; 117.29 MHz ( period = 8.526 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[15]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.312 ns                ;
+; N/A                                     ; 117.32 MHz ( period = 8.524 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[22]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.310 ns                ;
+; N/A                                     ; 117.33 MHz ( period = 8.523 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[5]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.309 ns                ;
+; N/A                                     ; 117.33 MHz ( period = 8.523 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|lcd_data[3]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.313 ns                ;
+; N/A                                     ; 117.33 MHz ( period = 8.523 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|lcd_data[0]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.313 ns                ;
+; N/A                                     ; 117.34 MHz ( period = 8.522 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[28]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.303 ns                ;
+; N/A                                     ; 117.36 MHz ( period = 8.521 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[0]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.307 ns                ;
+; N/A                                     ; 117.37 MHz ( period = 8.520 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[1]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.306 ns                ;
+; N/A                                     ; 117.41 MHz ( period = 8.517 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[9]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.295 ns                ;
+; N/A                                     ; 117.44 MHz ( period = 8.515 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[24]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.293 ns                ;
+; N/A                                     ; 117.44 MHz ( period = 8.515 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[23]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.293 ns                ;
+; N/A                                     ; 117.44 MHz ( period = 8.515 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[17]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.296 ns                ;
+; N/A                                     ; 117.45 MHz ( period = 8.514 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[30]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.295 ns                ;
+; N/A                                     ; 117.45 MHz ( period = 8.514 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[25]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.292 ns                ;
+; N/A                                     ; 117.47 MHz ( period = 8.513 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[7]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.291 ns                ;
+; N/A                                     ; 117.51 MHz ( period = 8.510 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|lcd_data[3]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.290 ns                ;
+; N/A                                     ; 117.51 MHz ( period = 8.510 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|lcd_data[0]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.290 ns                ;
+; N/A                                     ; 117.56 MHz ( period = 8.506 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[8]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.284 ns                ;
+; N/A                                     ; 117.67 MHz ( period = 8.498 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|e                            ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.279 ns                ;
+; N/A                                     ; 117.70 MHz ( period = 8.496 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[27]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.277 ns                ;
+; N/A                                     ; 117.94 MHz ( period = 8.479 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[18]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.262 ns                ;
+; N/A                                     ; 117.95 MHz ( period = 8.478 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[19]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.261 ns                ;
+; N/A                                     ; 117.99 MHz ( period = 8.475 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[2]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.261 ns                ;
+; N/A                                     ; 118.01 MHz ( period = 8.474 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[11]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.260 ns                ;
+; N/A                                     ; 118.01 MHz ( period = 8.474 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[12]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.260 ns                ;
+; N/A                                     ; 118.02 MHz ( period = 8.473 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[6]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.249 ns                ;
+; N/A                                     ; 118.04 MHz ( period = 8.472 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[28]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.253 ns                ;
+; N/A                                     ; 118.05 MHz ( period = 8.471 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|lcd_data[4]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.258 ns                ;
+; N/A                                     ; 118.06 MHz ( period = 8.470 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[3]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.246 ns                ;
+; N/A                                     ; 118.06 MHz ( period = 8.470 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[4]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.246 ns                ;
+; N/A                                     ; 118.13 MHz ( period = 8.465 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[17]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.246 ns                ;
+; N/A                                     ; 118.15 MHz ( period = 8.464 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[30]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.245 ns                ;
+; N/A                                     ; 118.23 MHz ( period = 8.458 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|lcd_data[4]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.235 ns                ;
+; N/A                                     ; 118.60 MHz ( period = 8.432 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|e                            ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.213 ns                ;
+; N/A                                     ; 118.62 MHz ( period = 8.430 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[27]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.211 ns                ;
+; N/A                                     ; 118.64 MHz ( period = 8.429 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[18]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.212 ns                ;
+; N/A                                     ; 118.65 MHz ( period = 8.428 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[19]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.211 ns                ;
+; N/A                                     ; 118.69 MHz ( period = 8.425 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[2]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.211 ns                ;
+; N/A                                     ; 118.71 MHz ( period = 8.424 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[11]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.210 ns                ;
+; N/A                                     ; 118.71 MHz ( period = 8.424 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[12]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.210 ns                ;
+; N/A                                     ; 118.72 MHz ( period = 8.423 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[6]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.199 ns                ;
+; N/A                                     ; 118.76 MHz ( period = 8.420 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[3]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.196 ns                ;
+; N/A                                     ; 118.76 MHz ( period = 8.420 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[4]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.196 ns                ;
+; N/A                                     ; 118.96 MHz ( period = 8.406 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[28]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.187 ns                ;
+; N/A                                     ; 119.06 MHz ( period = 8.399 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[17]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.180 ns                ;
+; N/A                                     ; 119.08 MHz ( period = 8.398 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[30]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.179 ns                ;
+; N/A                                     ; 119.08 MHz ( period = 8.398 ns )                    ; lcd:inst50|clk_count[3]               ; lcd:inst50|lcd_data[2]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.189 ns                ;
+; N/A                                     ; 119.23 MHz ( period = 8.387 ns )                    ; lcd:inst50|clk_count[3]               ; lcd:inst50|lcd_data[5]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.180 ns                ;
+; N/A                                     ; 119.23 MHz ( period = 8.387 ns )                    ; lcd:inst50|clk_count[3]               ; lcd:inst50|lcd_data[1]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.180 ns                ;
+; N/A                                     ; 119.57 MHz ( period = 8.363 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[18]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.146 ns                ;
+; N/A                                     ; 119.59 MHz ( period = 8.362 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[19]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.145 ns                ;
+; N/A                                     ; 119.63 MHz ( period = 8.359 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[2]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.145 ns                ;
+; N/A                                     ; 119.65 MHz ( period = 8.358 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[11]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.144 ns                ;
+; N/A                                     ; 119.65 MHz ( period = 8.358 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[12]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.144 ns                ;
+; N/A                                     ; 119.66 MHz ( period = 8.357 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[6]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.133 ns                ;
+; N/A                                     ; 119.70 MHz ( period = 8.354 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[3]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.130 ns                ;
+; N/A                                     ; 119.70 MHz ( period = 8.354 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[4]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.130 ns                ;
+; N/A                                     ; 119.77 MHz ( period = 8.349 ns )                    ; lcd:inst50|clk_count[3]               ; lcd:inst50|lcd_data[3]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.139 ns                ;
+; N/A                                     ; 119.77 MHz ( period = 8.349 ns )                    ; lcd:inst50|clk_count[3]               ; lcd:inst50|lcd_data[0]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.139 ns                ;
+; N/A                                     ; 119.93 MHz ( period = 8.338 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[21]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.121 ns                ;
+; N/A                                     ; 119.95 MHz ( period = 8.337 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[20]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.120 ns                ;
+; N/A                                     ; 120.41 MHz ( period = 8.305 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[10]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.101 ns                ;
+; N/A                                     ; 120.41 MHz ( period = 8.305 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[16]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.101 ns                ;
+; N/A                                     ; 120.44 MHz ( period = 8.303 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[15]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.099 ns                ;
+; N/A                                     ; 120.47 MHz ( period = 8.301 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[22]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.097 ns                ;
+; N/A                                     ; 120.48 MHz ( period = 8.300 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[5]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.096 ns                ;
+; N/A                                     ; 120.51 MHz ( period = 8.298 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[0]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.094 ns                ;
+; N/A                                     ; 120.53 MHz ( period = 8.297 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[1]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.093 ns                ;
+; N/A                                     ; 120.53 MHz ( period = 8.297 ns )                    ; lcd:inst50|clk_count[3]               ; lcd:inst50|lcd_data[4]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.084 ns                ;
+; N/A                                     ; 120.57 MHz ( period = 8.294 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[9]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.082 ns                ;
+; N/A                                     ; 120.60 MHz ( period = 8.292 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[24]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.080 ns                ;
+; N/A                                     ; 120.60 MHz ( period = 8.292 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[23]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.080 ns                ;
+; N/A                                     ; 120.60 MHz ( period = 8.292 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[10]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.078 ns                ;
+; N/A                                     ; 120.60 MHz ( period = 8.292 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[16]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.078 ns                ;
+; N/A                                     ; 120.61 MHz ( period = 8.291 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[25]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.079 ns                ;
+; N/A                                     ; 120.63 MHz ( period = 8.290 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[15]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.076 ns                ;
+; N/A                                     ; 120.63 MHz ( period = 8.290 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[7]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.078 ns                ;
+; N/A                                     ; 120.66 MHz ( period = 8.288 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[22]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.074 ns                ;
+; N/A                                     ; 120.66 MHz ( period = 8.288 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[21]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.071 ns                ;
+; N/A                                     ; 120.67 MHz ( period = 8.287 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[20]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.070 ns                ;
+; N/A                                     ; 120.67 MHz ( period = 8.287 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[5]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.073 ns                ;
+; N/A                                     ; 120.70 MHz ( period = 8.285 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[0]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.071 ns                ;
+; N/A                                     ; 120.71 MHz ( period = 8.284 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[1]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.070 ns                ;
+; N/A                                     ; 120.73 MHz ( period = 8.283 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[8]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.071 ns                ;
+; N/A                                     ; 120.76 MHz ( period = 8.281 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[9]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.059 ns                ;
+; N/A                                     ; 120.79 MHz ( period = 8.279 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[24]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.057 ns                ;
+; N/A                                     ; 120.79 MHz ( period = 8.279 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[23]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.057 ns                ;
+; N/A                                     ; 120.80 MHz ( period = 8.278 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[25]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.056 ns                ;
+; N/A                                     ; 120.82 MHz ( period = 8.277 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[7]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.055 ns                ;
+; N/A                                     ; 120.92 MHz ( period = 8.270 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[8]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.048 ns                ;
+; N/A                                     ; 121.36 MHz ( period = 8.240 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[29]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.021 ns                ;
+; N/A                                     ; 121.37 MHz ( period = 8.239 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[26]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.020 ns                ;
+; N/A                                     ; 121.43 MHz ( period = 8.235 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[14]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.016 ns                ;
+; N/A                                     ; 121.46 MHz ( period = 8.233 ns )                    ; lcd:inst50|clk_count[0]               ; lcd:inst50|clk_count[13]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.014 ns                ;
+; N/A                                     ; 121.62 MHz ( period = 8.222 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[21]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.005 ns                ;
+; N/A                                     ; 121.64 MHz ( period = 8.221 ns )                    ; lcd:inst50|clk_count[2]               ; lcd:inst50|clk_count[20]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.004 ns                ;
+; N/A                                     ; 121.82 MHz ( period = 8.209 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|e                            ; OSC_50     ; OSC_50   ; None                        ; None                      ; 8.000 ns                ;
+; N/A                                     ; 121.85 MHz ( period = 8.207 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[27]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.998 ns                ;
+; N/A                                     ; 122.01 MHz ( period = 8.196 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|e                            ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.977 ns                ;
+; N/A                                     ; 122.04 MHz ( period = 8.194 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[27]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.975 ns                ;
+; N/A                                     ; 122.10 MHz ( period = 8.190 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[29]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.971 ns                ;
+; N/A                                     ; 122.12 MHz ( period = 8.189 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[26]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.970 ns                ;
+; N/A                                     ; 122.17 MHz ( period = 8.185 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[14]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.966 ns                ;
+; N/A                                     ; 122.20 MHz ( period = 8.183 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[28]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.974 ns                ;
+; N/A                                     ; 122.20 MHz ( period = 8.183 ns )                    ; lcd:inst50|clk_count[1]               ; lcd:inst50|clk_count[13]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.964 ns                ;
+; N/A                                     ; 122.28 MHz ( period = 8.178 ns )                    ; lcd:inst50|clk_count[6]               ; lcd:inst50|lcd_data[2]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.969 ns                ;
+; N/A                                     ; 122.31 MHz ( period = 8.176 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[17]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.967 ns                ;
+; N/A                                     ; 122.32 MHz ( period = 8.175 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[30]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.966 ns                ;
+; N/A                                     ; 122.40 MHz ( period = 8.170 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[28]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.951 ns                ;
+; N/A                                     ; 122.44 MHz ( period = 8.167 ns )                    ; lcd:inst50|clk_count[6]               ; lcd:inst50|lcd_data[5]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.960 ns                ;
+; N/A                                     ; 122.44 MHz ( period = 8.167 ns )                    ; lcd:inst50|clk_count[6]               ; lcd:inst50|lcd_data[1]                  ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.960 ns                ;
+; N/A                                     ; 122.50 MHz ( period = 8.163 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[17]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.944 ns                ;
+; N/A                                     ; 122.52 MHz ( period = 8.162 ns )                    ; lcd:inst50|clk_count[5]               ; lcd:inst50|clk_count[30]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.943 ns                ;
+; N/A                                     ; 122.85 MHz ( period = 8.140 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[18]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.933 ns                ;
+; N/A                                     ; 122.87 MHz ( period = 8.139 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[19]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.932 ns                ;
+; N/A                                     ; 122.91 MHz ( period = 8.136 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[2]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.932 ns                ;
+; N/A                                     ; 122.93 MHz ( period = 8.135 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[11]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.931 ns                ;
+; N/A                                     ; 122.93 MHz ( period = 8.135 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[12]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.931 ns                ;
+; N/A                                     ; 122.94 MHz ( period = 8.134 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[6]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.920 ns                ;
+; N/A                                     ; 122.99 MHz ( period = 8.131 ns )                    ; lcd:inst50|clk_count[3]               ; lcd:inst50|clk_count[10]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.927 ns                ;
+; N/A                                     ; 122.99 MHz ( period = 8.131 ns )                    ; lcd:inst50|clk_count[3]               ; lcd:inst50|clk_count[16]                ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.927 ns                ;
+; N/A                                     ; 122.99 MHz ( period = 8.131 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[3]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.917 ns                ;
+; N/A                                     ; 122.99 MHz ( period = 8.131 ns )                    ; lcd:inst50|clk_count[4]               ; lcd:inst50|clk_count[4]                 ; OSC_50     ; OSC_50   ; None                        ; None                      ; 7.917 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                       ;                                         ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+---------------------------------------+-----------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Hold: 'OSC_50'                                                                                                                                                                                                                                ;
++------------------------------------------+-----------------------------------------------------+---------------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Minimum Slack                            ; From                                                ; To                                    ; From Clock ; To Clock ; Required Hold Relationship ; Required Shortest P2P Time ; Actual Shortest P2P Time ;
++------------------------------------------+-----------------------------------------------------+---------------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[5]                     ; PS2_keyboard_interface:inst4|ascii[6] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.602 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[5]                     ; PS2_keyboard_interface:inst4|ascii[5] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.912 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[2]                     ; PS2_keyboard_interface:inst4|ascii[4] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.956 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[5]                     ; PS2_keyboard_interface:inst4|ascii[1] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.942 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[2]                     ; PS2_keyboard_interface:inst4|ascii[0] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.949 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[4]                     ; PS2_keyboard_interface:inst4|ascii[1] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.173 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[6]                     ; PS2_keyboard_interface:inst4|ascii[3] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.255 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[2]                     ; PS2_keyboard_interface:inst4|ascii[6] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.419 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[4]                     ; PS2_keyboard_interface:inst4|ascii[5] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.692 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[4]                     ; PS2_keyboard_interface:inst4|ascii[2] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.655 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[6]                     ; PS2_keyboard_interface:inst4|ascii[5] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.576 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[3]                     ; PS2_keyboard_interface:inst4|ascii[1] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.688 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[3]                     ; PS2_keyboard_interface:inst4|ascii[6] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.755 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[1]                     ; PS2_keyboard_interface:inst4|ascii[5] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.924 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[0]                     ; PS2_keyboard_interface:inst4|ascii[1] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.814 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[2]                     ; PS2_keyboard_interface:inst4|ascii[1] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.836 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[0]                     ; PS2_keyboard_interface:inst4|ascii[6] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.891 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[6]                     ; PS2_keyboard_interface:inst4|ascii[2] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.748 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[1]                     ; PS2_keyboard_interface:inst4|ascii[0] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.905 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[4]                     ; PS2_keyboard_interface:inst4|ascii[3] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.956 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[1]                     ; PS2_keyboard_interface:inst4|ascii[1] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.949 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[0]                     ; PS2_keyboard_interface:inst4|ascii[5] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.076 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[4]                     ; PS2_keyboard_interface:inst4|ascii[6] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.967 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[3]                     ; PS2_keyboard_interface:inst4|ascii[4] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.029 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[5]                     ; PS2_keyboard_interface:inst4|ascii[0] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.997 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[6]                     ; PS2_keyboard_interface:inst4|ascii[4] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.852 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[3]                     ; PS2_keyboard_interface:inst4|ascii[5] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.156 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[2]                     ; PS2_keyboard_interface:inst4|ascii[3] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.141 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[1]                     ; PS2_keyboard_interface:inst4|ascii[4] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.150 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[0]                     ; PS2_keyboard_interface:inst4|ascii[2] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.173 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[2]                     ; PS2_keyboard_interface:inst4|ascii[2] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.194 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[3]                     ; PS2_keyboard_interface:inst4|ascii[3] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.199 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[0]                     ; PS2_keyboard_interface:inst4|ascii[0] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.184 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[1]                     ; PS2_keyboard_interface:inst4|ascii[6] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.203 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[4]                     ; PS2_keyboard_interface:inst4|ascii[4] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.303 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[1]                     ; PS2_keyboard_interface:inst4|ascii[3] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.305 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[3]                     ; PS2_keyboard_interface:inst4|ascii[2] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.307 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[6]                     ; PS2_keyboard_interface:inst4|ascii[1] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.138 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[5]                     ; PS2_keyboard_interface:inst4|ascii[2] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.374 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[6]                     ; PS2_keyboard_interface:inst4|ascii[0] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.172 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[0]                     ; PS2_keyboard_interface:inst4|ascii[4] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.425 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[58]              ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.575 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[4]                     ; PS2_keyboard_interface:inst4|ascii[0] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.493 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[1]                       ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.666 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[0]                     ; PS2_keyboard_interface:inst4|ascii[3] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.553 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[1]                     ; PS2_keyboard_interface:inst4|ascii[2] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.566 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[3]                     ; PS2_keyboard_interface:inst4|ascii[0] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.534 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[62]              ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.712 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[59]              ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.722 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[8]               ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.634 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[6]                     ; PS2_keyboard_interface:inst4|ascii[6] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.437 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[52]              ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.798 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[86]              ; cv_ack_generator:inst11|cvack_int[10] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.814 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[60]              ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.857 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[1]                       ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.723 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[42]              ; cv_ack_generator:inst11|cvack_int[5]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.785 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[5]                     ; PS2_keyboard_interface:inst4|ascii[3] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.788 ns                 ;
+; Not operational: Clock Skew > Data Delay ; PS2_keyboard:inst1|scan_code[5]                     ; PS2_keyboard_interface:inst4|ascii[4] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.865 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[81]              ; cv_ack_generator:inst11|cvack_int[10] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.012 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[45]              ; cv_ack_generator:inst11|cvack_int[5]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.947 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[50]              ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.069 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[0]                       ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 1.967 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[6]                       ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.021 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[122]             ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.019 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[46]              ; cv_ack_generator:inst11|cvack_int[5]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.074 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.113 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[124]             ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.115 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[90]              ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.128 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[24]              ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.133 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[61]              ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.259 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[4]                       ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.153 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[76]              ; cv_ack_generator:inst11|cvack_int[9]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.159 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[88]              ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.171 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.188 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[43]              ; cv_ack_generator:inst11|cvack_int[5]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.187 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[5]                       ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.223 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[126]             ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.231 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[9]               ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.244 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[0]                       ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.228 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[53]              ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.382 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[68]              ; cv_ack_generator:inst11|cvack_int[8]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.384 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.267 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[89]              ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.311 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[14]              ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.347 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[51]              ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.461 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[18]              ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.333 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[120]             ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.368 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[1]                       ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.375 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[12]              ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.381 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[98]              ; cv_ack_generator:inst11|cvack_int[12] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.391 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[66]              ; cv_ack_generator:inst11|cvack_int[8]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.493 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[78]              ; cv_ack_generator:inst11|cvack_int[9]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.409 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[70]              ; cv_ack_generator:inst11|cvack_int[8]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.533 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.443 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[1]               ; cv_ack_generator:inst11|cvack_int[0]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.434 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[48]              ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.550 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[2]                       ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.463 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[106]             ; cv_ack_generator:inst11|cvack_int[13] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.469 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.486 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[29]              ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.487 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[118]             ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.517 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.493 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[6]                       ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.543 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[83]              ; cv_ack_generator:inst11|cvack_int[10] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.647 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[0]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.544 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[5]                       ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.556 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[12] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.553 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[94]              ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.565 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[84]              ; cv_ack_generator:inst11|cvack_int[10] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.661 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[93]              ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.567 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[0]                       ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.566 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[5]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.586 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[2]                       ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.612 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[10] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.736 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[4]                       ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.639 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[13] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.637 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[11]              ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.646 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.654 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[73]              ; cv_ack_generator:inst11|cvack_int[9]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.651 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[6]                       ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.658 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[22]              ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.629 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[110]             ; cv_ack_generator:inst11|cvack_int[13] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.667 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[109]             ; cv_ack_generator:inst11|cvack_int[13] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.670 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[20]              ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.641 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[32]              ; cv_ack_generator:inst11|cvack_int[4]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.684 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[4]                       ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.727 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[121]             ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.723 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[64]              ; cv_ack_generator:inst11|cvack_int[8]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.834 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[49]              ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.847 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[38]              ; cv_ack_generator:inst11|cvack_int[4]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.772 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[1]                       ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.772 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[54]              ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.876 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.779 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[74]              ; cv_ack_generator:inst11|cvack_int[9]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.780 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[117]             ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.797 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[2]                       ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.815 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[2]                       ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.779 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[0]                       ; cv_ack_generator:inst11|cvack_int[10] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.929 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[102]             ; cv_ack_generator:inst11|cvack_int[12] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.814 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[108]             ; cv_ack_generator:inst11|cvack_int[13] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.814 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[5]                       ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.925 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[30]              ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.828 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[2]                       ; cv_ack_generator:inst11|cvack_int[12] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.836 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.946 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[104]             ; cv_ack_generator:inst11|cvack_int[13] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.856 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[26]              ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.866 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[4]                       ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.972 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[5]                       ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.983 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[112]             ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.877 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[3]               ; cv_ack_generator:inst11|cvack_int[0]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.896 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[56]              ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.009 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[2]                       ; cv_ack_generator:inst11|cvack_int[13] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.912 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[0]                       ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.018 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[25]              ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.918 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[5]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.905 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[123]             ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.914 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[4]               ; cv_ack_generator:inst11|cvack_int[0]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.912 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[4]                       ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.031 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.062 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[17]              ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.923 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[100]             ; cv_ack_generator:inst11|cvack_int[12] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.961 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[82]              ; cv_ack_generator:inst11|cvack_int[10] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.065 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[67]              ; cv_ack_generator:inst11|cvack_int[8]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.084 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[2]                       ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.100 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[4]                       ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.982 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[19]              ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.959 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[2]                       ; cv_ack_generator:inst11|cvack_int[0]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.995 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[91]              ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.004 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[4]                       ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 2.986 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[96]              ; cv_ack_generator:inst11|cvack_int[12] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.021 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[115]             ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.034 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[28]              ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.057 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[114]             ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.048 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[6]                       ; cv_ack_generator:inst11|cvack_int[7]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.170 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[105]             ; cv_ack_generator:inst11|cvack_int[13] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.063 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[0]               ; cv_ack_generator:inst11|cvack_int[0]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.071 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[5]                       ; cv_ack_generator:inst11|cvack_int[5]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.070 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[6]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.184 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[16]              ; cv_ack_generator:inst11|cvack_int[2]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.055 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[72]              ; cv_ack_generator:inst11|cvack_int[9]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.100 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[40]              ; cv_ack_generator:inst11|cvack_int[5]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.104 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[4]                       ; cv_ack_generator:inst11|cvack_int[5]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.119 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[36]              ; cv_ack_generator:inst11|cvack_int[4]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.144 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[65]              ; cv_ack_generator:inst11|cvack_int[8]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.252 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[92]              ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.151 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[1]                       ; cv_ack_generator:inst11|cvack_int[11] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.177 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[69]              ; cv_ack_generator:inst11|cvack_int[8]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.291 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[13] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.206 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[2]               ; cv_ack_generator:inst11|cvack_int[0]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.198 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[116]             ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.196 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[3]                       ; cv_ack_generator:inst11|cvack_int[3]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.223 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[99]              ; cv_ack_generator:inst11|cvack_int[12] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.227 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[12] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.237 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[6]                       ; cv_ack_generator:inst11|cvack_int[12] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.240 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.267 ns                 ;
+; Not operational: Clock Skew > Data Delay ; register_bank_user_word:inst2|buff[113]             ; cv_ack_generator:inst11|cvack_int[14] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.263 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[4]                       ; cv_ack_generator:inst11|cvack_int[4]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.285 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[7]                       ; cv_ack_generator:inst11|cvack_int[9]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.287 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[5]                       ; cv_ack_generator:inst11|cvack_int[1]  ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.287 ns                 ;
+; Not operational: Clock Skew > Data Delay ; rx_protocol:inst15|op_char[1]                       ; cv_ack_generator:inst11|cvack_int[15] ; OSC_50     ; OSC_50   ; None                       ; None                       ; 3.306 ns                 ;
+; Timing analysis restricted to 200 rows.  ; To change the limit use Settings (Assignments menu) ;                                       ;            ;          ;                            ;                            ;                          ;
++------------------------------------------+-----------------------------------------------------+---------------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; tsu                                                                                                     ;
++-------+--------------+------------+----------+-----------------------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From     ; To                                            ; To Clock ;
++-------+--------------+------------+----------+-----------------------------------------------+----------+
+; N/A   ; None         ; 5.103 ns   ; UART_RXD ; rx_module:inst14|bit_count[2]                 ; OSC_50   ;
+; N/A   ; None         ; 5.103 ns   ; UART_RXD ; rx_module:inst14|bit_count[0]                 ; OSC_50   ;
+; N/A   ; None         ; 5.103 ns   ; UART_RXD ; rx_module:inst14|bit_count[1]                 ; OSC_50   ;
+; N/A   ; None         ; 4.946 ns   ; UART_RXD ; rx_module:inst14|state.rx_idle                ; OSC_50   ;
+; N/A   ; None         ; 4.737 ns   ; KEY[0]   ; rx_module:inst14|bit_count[2]                 ; OSC_50   ;
+; N/A   ; None         ; 4.737 ns   ; KEY[0]   ; rx_module:inst14|bit_count[0]                 ; OSC_50   ;
+; N/A   ; None         ; 4.737 ns   ; KEY[0]   ; rx_module:inst14|bit_count[1]                 ; OSC_50   ;
+; N/A   ; None         ; 4.450 ns   ; KEY[0]   ; tx_protocol:inst12|frame_code[0]              ; OSC_50   ;
+; N/A   ; None         ; 4.383 ns   ; KEY[0]   ; user_interface:inst19|lifesU[3]               ; OSC_50   ;
+; N/A   ; None         ; 4.383 ns   ; KEY[0]   ; user_interface:inst19|lifesU[2]               ; OSC_50   ;
+; N/A   ; None         ; 4.383 ns   ; KEY[0]   ; user_interface:inst19|lifesU[1]               ; OSC_50   ;
+; N/A   ; None         ; 4.383 ns   ; KEY[0]   ; user_interface:inst19|lifesU[0]               ; OSC_50   ;
+; N/A   ; None         ; 4.383 ns   ; KEY[0]   ; user_interface:inst19|lifesT[0]               ; OSC_50   ;
+; N/A   ; None         ; 4.363 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[14]                  ; OSC_50   ;
+; N/A   ; None         ; 4.363 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[15]                  ; OSC_50   ;
+; N/A   ; None         ; 4.363 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[10]                  ; OSC_50   ;
+; N/A   ; None         ; 4.363 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[12]                  ; OSC_50   ;
+; N/A   ; None         ; 4.363 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[13]                  ; OSC_50   ;
+; N/A   ; None         ; 4.363 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[11]                  ; OSC_50   ;
+; N/A   ; None         ; 4.363 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[8]                   ; OSC_50   ;
+; N/A   ; None         ; 4.363 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[9]                   ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[12]                     ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[11]                     ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[6]                      ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[9]                      ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[10]                     ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[7]                      ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[8]                      ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[3]                      ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[2]                      ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[4]                      ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[1]                      ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[5]                      ; OSC_50   ;
+; N/A   ; None         ; 4.340 ns   ; UART_RXD ; rx_module:inst14|baud[0]                      ; OSC_50   ;
+; N/A   ; None         ; 4.239 ns   ; KEY[0]   ; tx_protocol:inst12|frame_code[6]              ; OSC_50   ;
+; N/A   ; None         ; 4.145 ns   ; KEY[0]   ; tx_protocol:inst12|frame_code[1]              ; OSC_50   ;
+; N/A   ; None         ; 4.135 ns   ; KEY[0]   ; tx_protocol:inst12|frame_code[4]              ; OSC_50   ;
+; N/A   ; None         ; 4.128 ns   ; KEY[0]   ; rx_protocol:inst15|op_char[5]                 ; OSC_50   ;
+; N/A   ; None         ; 4.128 ns   ; KEY[0]   ; rx_protocol:inst15|op_char[4]                 ; OSC_50   ;
+; N/A   ; None         ; 4.128 ns   ; KEY[0]   ; rx_protocol:inst15|op_char[6]                 ; OSC_50   ;
+; N/A   ; None         ; 4.128 ns   ; KEY[0]   ; rx_protocol:inst15|op_char[7]                 ; OSC_50   ;
+; N/A   ; None         ; 4.111 ns   ; KEY[0]   ; rx_protocol:inst15|op_char[2]                 ; OSC_50   ;
+; N/A   ; None         ; 4.111 ns   ; KEY[0]   ; rx_protocol:inst15|op_char[3]                 ; OSC_50   ;
+; N/A   ; None         ; 3.997 ns   ; UART_RXD ; rx_module:inst14|state.rx_shift               ; OSC_50   ;
+; N/A   ; None         ; 3.990 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[7]                   ; OSC_50   ;
+; N/A   ; None         ; 3.990 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[6]                   ; OSC_50   ;
+; N/A   ; None         ; 3.990 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[2]                   ; OSC_50   ;
+; N/A   ; None         ; 3.990 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[4]                   ; OSC_50   ;
+; N/A   ; None         ; 3.990 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[1]                   ; OSC_50   ;
+; N/A   ; None         ; 3.990 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[0]                   ; OSC_50   ;
+; N/A   ; None         ; 3.990 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[3]                   ; OSC_50   ;
+; N/A   ; None         ; 3.990 ns   ; KEY[0]   ; rx_protocol:inst15|op_cv[5]                   ; OSC_50   ;
+; N/A   ; None         ; 3.971 ns   ; KEY[0]   ; rx_module:inst14|rx_data[0]                   ; OSC_50   ;
+; N/A   ; None         ; 3.964 ns   ; KEY[0]   ; rx_module:inst14|rx_data[4]                   ; OSC_50   ;
+; N/A   ; None         ; 3.932 ns   ; KEY[0]   ; rx_module:inst14|rx_data[3]                   ; OSC_50   ;
+; N/A   ; None         ; 3.923 ns   ; KEY[0]   ; rx_module:inst14|rx_data[7]                   ; OSC_50   ;
+; N/A   ; None         ; 3.920 ns   ; KEY[0]   ; rx_module:inst14|rx_data[5]                   ; OSC_50   ;
+; N/A   ; None         ; 3.891 ns   ; KEY[0]   ; rx_protocol:inst15|frame_type[4]              ; OSC_50   ;
+; N/A   ; None         ; 3.891 ns   ; KEY[0]   ; rx_protocol:inst15|frame_type[5]              ; OSC_50   ;
+; N/A   ; None         ; 3.891 ns   ; KEY[0]   ; rx_protocol:inst15|frame_type[6]              ; OSC_50   ;
+; N/A   ; None         ; 3.891 ns   ; KEY[0]   ; rx_protocol:inst15|frame_type[1]              ; OSC_50   ;
+; N/A   ; None         ; 3.891 ns   ; KEY[0]   ; rx_protocol:inst15|frame_type[0]              ; OSC_50   ;
+; N/A   ; None         ; 3.891 ns   ; KEY[0]   ; rx_protocol:inst15|frame_type[3]              ; OSC_50   ;
+; N/A   ; None         ; 3.891 ns   ; KEY[0]   ; rx_protocol:inst15|frame_type[7]              ; OSC_50   ;
+; N/A   ; None         ; 3.891 ns   ; KEY[0]   ; rx_protocol:inst15|frame_type[2]              ; OSC_50   ;
+; N/A   ; None         ; 3.816 ns   ; KEY[0]   ; rx_module:inst14|rx_data[6]                   ; OSC_50   ;
+; N/A   ; None         ; 3.756 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[5]                  ; OSC_50   ;
+; N/A   ; None         ; 3.756 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[3]                  ; OSC_50   ;
+; N/A   ; None         ; 3.756 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[7]                  ; OSC_50   ;
+; N/A   ; None         ; 3.756 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[1]                  ; OSC_50   ;
+; N/A   ; None         ; 3.756 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[4]                  ; OSC_50   ;
+; N/A   ; None         ; 3.756 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[0]                  ; OSC_50   ;
+; N/A   ; None         ; 3.756 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[6]                  ; OSC_50   ;
+; N/A   ; None         ; 3.756 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[2]                  ; OSC_50   ;
+; N/A   ; None         ; 3.739 ns   ; KEY[0]   ; rx_module:inst14|rx_data[2]                   ; OSC_50   ;
+; N/A   ; None         ; 3.736 ns   ; KEY[0]   ; rx_module:inst14|rx_data[1]                   ; OSC_50   ;
+; N/A   ; None         ; 3.645 ns   ; KEY[0]   ; rx_protocol:inst15|op_char[1]                 ; OSC_50   ;
+; N/A   ; None         ; 3.645 ns   ; KEY[0]   ; rx_protocol:inst15|op_char[0]                 ; OSC_50   ;
+; N/A   ; None         ; 3.308 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[9]                  ; OSC_50   ;
+; N/A   ; None         ; 3.308 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[15]                 ; OSC_50   ;
+; N/A   ; None         ; 3.308 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[13]                 ; OSC_50   ;
+; N/A   ; None         ; 3.308 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[12]                 ; OSC_50   ;
+; N/A   ; None         ; 3.308 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[14]                 ; OSC_50   ;
+; N/A   ; None         ; 3.308 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[11]                 ; OSC_50   ;
+; N/A   ; None         ; 3.308 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[10]                 ; OSC_50   ;
+; N/A   ; None         ; 3.308 ns   ; KEY[0]   ; rx_protocol:inst15|cv_ack[8]                  ; OSC_50   ;
+; N/A   ; None         ; 3.047 ns   ; KEY[0]   ; lcd:inst50|state.RESETLINE                    ; OSC_50   ;
+; N/A   ; None         ; 3.047 ns   ; KEY[0]   ; lcd:inst50|state.initialize                   ; OSC_50   ;
+; N/A   ; None         ; 3.034 ns   ; KEY[0]   ; PS2_keyboard_interface:inst4|st.w_newcode     ; OSC_50   ;
+; N/A   ; None         ; 2.946 ns   ; KEY[0]   ; lcd:inst50|state.line1                        ; OSC_50   ;
+; N/A   ; None         ; 2.945 ns   ; KEY[0]   ; lcd:inst50|state.line2                        ; OSC_50   ;
+; N/A   ; None         ; 2.945 ns   ; KEY[0]   ; lcd:inst50|state.send                         ; OSC_50   ;
+; N/A   ; None         ; 2.917 ns   ; KEY[0]   ; tx_module:inst13|bit_count[1]                 ; OSC_50   ;
+; N/A   ; None         ; 2.880 ns   ; KEY[0]   ; tx_module:inst13|bit_count[0]                 ; OSC_50   ;
+; N/A   ; None         ; 2.880 ns   ; KEY[0]   ; tx_module:inst13|bit_count[2]                 ; OSC_50   ;
+; N/A   ; None         ; 2.845 ns   ; UART_RXD ; rx_module:inst14|state.rx_start               ; OSC_50   ;
+; N/A   ; None         ; 2.786 ns   ; KEY[0]   ; PS2_keyboard:inst1|scan_code[5]               ; OSC_50   ;
+; N/A   ; None         ; 2.786 ns   ; KEY[0]   ; PS2_keyboard:inst1|scan_code[4]               ; OSC_50   ;
+; N/A   ; None         ; 2.786 ns   ; KEY[0]   ; PS2_keyboard:inst1|scan_code[2]               ; OSC_50   ;
+; N/A   ; None         ; 2.786 ns   ; KEY[0]   ; PS2_keyboard:inst1|scan_code[0]               ; OSC_50   ;
+; N/A   ; None         ; 2.786 ns   ; KEY[0]   ; PS2_keyboard:inst1|scan_code[1]               ; OSC_50   ;
+; N/A   ; None         ; 2.786 ns   ; KEY[0]   ; PS2_keyboard:inst1|scan_code[3]               ; OSC_50   ;
+; N/A   ; None         ; 2.773 ns   ; UART_RXD ; rx_module:inst14|rx_data[0]                   ; OSC_50   ;
+; N/A   ; None         ; 2.772 ns   ; UART_RXD ; rx_module:inst14|rx_data[7]                   ; OSC_50   ;
+; N/A   ; None         ; 2.771 ns   ; UART_RXD ; rx_module:inst14|rx_data[3]                   ; OSC_50   ;
+; N/A   ; None         ; 2.770 ns   ; UART_RXD ; rx_module:inst14|rx_data[5]                   ; OSC_50   ;
+; N/A   ; None         ; 2.770 ns   ; UART_RXD ; rx_module:inst14|rx_data[4]                   ; OSC_50   ;
+; N/A   ; None         ; 2.738 ns   ; UART_RXD ; rx_module:inst14|rx_data[1]                   ; OSC_50   ;
+; N/A   ; None         ; 2.737 ns   ; UART_RXD ; rx_module:inst14|rx_data[2]                   ; OSC_50   ;
+; N/A   ; None         ; 2.733 ns   ; UART_RXD ; rx_module:inst14|rx_data[6]                   ; OSC_50   ;
+; N/A   ; None         ; 2.710 ns   ; KEY[0]   ; lcd:inst50|state.power_up                     ; OSC_50   ;
+; N/A   ; None         ; 2.704 ns   ; KEY[0]   ; PS2_keyboard_interface:inst4|st.w_scan_ready  ; OSC_50   ;
+; N/A   ; None         ; 2.704 ns   ; KEY[0]   ; PS2_keyboard_interface:inst4|st.w_sc3         ; OSC_50   ;
+; N/A   ; None         ; 2.704 ns   ; KEY[0]   ; PS2_keyboard_interface:inst4|st.w_sc2         ; OSC_50   ;
+; N/A   ; None         ; 2.649 ns   ; KEY[0]   ; PS2_keyboard:inst1|scan_code[6]               ; OSC_50   ;
+; N/A   ; None         ; 2.649 ns   ; KEY[0]   ; PS2_keyboard:inst1|scan_code[7]               ; OSC_50   ;
+; N/A   ; None         ; 2.545 ns   ; PS2_CLK  ; PS2_keyboard:inst1|filter[7]                  ; OSC_50   ;
+; N/A   ; None         ; 2.443 ns   ; KEY[0]   ; PS2_keyboard_interface:inst4|st.ack2          ; OSC_50   ;
+; N/A   ; None         ; 2.442 ns   ; KEY[0]   ; PS2_keyboard_interface:inst4|st.activate_flag ; OSC_50   ;
+; N/A   ; None         ; 2.437 ns   ; KEY[0]   ; PS2_keyboard_interface:inst4|st.load_reg      ; OSC_50   ;
+; N/A   ; None         ; 1.508 ns   ; PS2_DAT  ; PS2_keyboard:inst1|ready_set                  ; OSC_50   ;
+; N/A   ; None         ; 1.363 ns   ; KEY[0]   ; PS2_keyboard:inst1|ready_set                  ; OSC_50   ;
+; N/A   ; None         ; 0.750 ns   ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[5]                 ; OSC_50   ;
+; N/A   ; None         ; 0.750 ns   ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[6]                 ; OSC_50   ;
+; N/A   ; None         ; 0.274 ns   ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[4]                 ; OSC_50   ;
+; N/A   ; None         ; 0.274 ns   ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[2]                 ; OSC_50   ;
+; N/A   ; None         ; 0.274 ns   ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[7]                 ; OSC_50   ;
+; N/A   ; None         ; 0.274 ns   ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[0]                 ; OSC_50   ;
+; N/A   ; None         ; 0.274 ns   ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[1]                 ; OSC_50   ;
+; N/A   ; None         ; 0.274 ns   ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[3]                 ; OSC_50   ;
+; N/A   ; None         ; 0.274 ns   ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[8]                 ; OSC_50   ;
+; N/A   ; None         ; 0.033 ns   ; KEY[0]   ; PS2_keyboard:inst1|INCNT[2]                   ; OSC_50   ;
+; N/A   ; None         ; 0.033 ns   ; KEY[0]   ; PS2_keyboard:inst1|INCNT[3]                   ; OSC_50   ;
+; N/A   ; None         ; 0.033 ns   ; KEY[0]   ; PS2_keyboard:inst1|INCNT[1]                   ; OSC_50   ;
+; N/A   ; None         ; 0.033 ns   ; KEY[0]   ; PS2_keyboard:inst1|INCNT[0]                   ; OSC_50   ;
+; N/A   ; None         ; -0.460 ns  ; PS2_DAT  ; PS2_keyboard:inst1|READ_CHAR                  ; OSC_50   ;
+; N/A   ; None         ; -0.461 ns  ; PS2_DAT  ; PS2_keyboard:inst1|SHIFTIN[8]                 ; OSC_50   ;
+; N/A   ; None         ; -0.783 ns  ; KEY[0]   ; PS2_keyboard:inst1|READ_CHAR                  ; OSC_50   ;
++-------+--------------+------------+----------+-----------------------------------------------+----------+
+
+
++---------------------------------------------------------------------------------------------------+
+; tco                                                                                               ;
++-------+--------------+------------+-----------------------------------+--------------+------------+
+; Slack ; Required tco ; Actual tco ; From                              ; To           ; From Clock ;
++-------+--------------+------------+-----------------------------------+--------------+------------+
+; N/A   ; None         ; 12.321 ns  ; user_interface:inst19|sev_seg[17] ; HEX0[3]      ; OSC_50     ;
+; N/A   ; None         ; 12.300 ns  ; user_interface:inst19|sev_seg[17] ; HEX1[4]      ; OSC_50     ;
+; N/A   ; None         ; 12.247 ns  ; user_interface:inst19|sev_seg[17] ; HEX2[3]      ; OSC_50     ;
+; N/A   ; None         ; 12.243 ns  ; user_interface:inst19|sev_seg[17] ; HEX1[6]      ; OSC_50     ;
+; N/A   ; None         ; 12.209 ns  ; user_interface:inst19|sev_seg[17] ; HEX3[3]      ; OSC_50     ;
+; N/A   ; None         ; 12.209 ns  ; user_interface:inst19|sev_seg[17] ; HEX3[4]      ; OSC_50     ;
+; N/A   ; None         ; 12.198 ns  ; user_interface:inst19|sev_seg[17] ; HEX3[6]      ; OSC_50     ;
+; N/A   ; None         ; 12.169 ns  ; user_interface:inst19|sev_seg[17] ; HEX1[0]      ; OSC_50     ;
+; N/A   ; None         ; 12.159 ns  ; user_interface:inst19|sev_seg[17] ; HEX2[0]      ; OSC_50     ;
+; N/A   ; None         ; 12.086 ns  ; user_interface:inst19|sev_seg[17] ; HEX1[2]      ; OSC_50     ;
+; N/A   ; None         ; 12.057 ns  ; user_interface:inst19|sev_seg[18] ; HEX1[4]      ; OSC_50     ;
+; N/A   ; None         ; 12.045 ns  ; user_interface:inst19|sev_seg[17] ; HEX3[2]      ; OSC_50     ;
+; N/A   ; None         ; 12.034 ns  ; user_interface:inst19|sev_seg[18] ; HEX0[3]      ; OSC_50     ;
+; N/A   ; None         ; 11.994 ns  ; user_interface:inst19|sev_seg[17] ; HEX1[3]      ; OSC_50     ;
+; N/A   ; None         ; 11.957 ns  ; user_interface:inst19|sev_seg[18] ; HEX1[6]      ; OSC_50     ;
+; N/A   ; None         ; 11.949 ns  ; user_interface:inst19|sev_seg[17] ; HEX3[0]      ; OSC_50     ;
+; N/A   ; None         ; 11.932 ns  ; user_interface:inst19|sev_seg[17] ; HEX2[4]      ; OSC_50     ;
+; N/A   ; None         ; 11.917 ns  ; user_interface:inst19|sev_seg[17] ; HEX2[6]      ; OSC_50     ;
+; N/A   ; None         ; 11.910 ns  ; user_interface:inst19|sev_seg[17] ; HEX1[5]      ; OSC_50     ;
+; N/A   ; None         ; 11.909 ns  ; user_interface:inst19|sev_seg[17] ; HEX2[5]      ; OSC_50     ;
+; N/A   ; None         ; 11.882 ns  ; user_interface:inst19|sev_seg[18] ; HEX1[0]      ; OSC_50     ;
+; N/A   ; None         ; 11.799 ns  ; user_interface:inst19|sev_seg[18] ; HEX1[2]      ; OSC_50     ;
+; N/A   ; None         ; 11.707 ns  ; user_interface:inst19|sev_seg[18] ; HEX1[3]      ; OSC_50     ;
+; N/A   ; None         ; 11.706 ns  ; user_interface:inst19|sev_seg[18] ; HEX3[0]      ; OSC_50     ;
+; N/A   ; None         ; 11.648 ns  ; user_interface:inst19|sev_seg[18] ; HEX1[5]      ; OSC_50     ;
+; N/A   ; None         ; 11.446 ns  ; user_interface:inst19|sev_seg[19] ; HEX1[4]      ; OSC_50     ;
+; N/A   ; None         ; 11.419 ns  ; user_interface:inst19|sev_seg[19] ; HEX0[3]      ; OSC_50     ;
+; N/A   ; None         ; 11.394 ns  ; user_interface:inst19|sev_seg[17] ; HEX1[1]      ; OSC_50     ;
+; N/A   ; None         ; 11.347 ns  ; user_interface:inst19|sev_seg[19] ; HEX1[6]      ; OSC_50     ;
+; N/A   ; None         ; 11.267 ns  ; user_interface:inst19|sev_seg[19] ; HEX1[0]      ; OSC_50     ;
+; N/A   ; None         ; 11.208 ns  ; lcd:inst50|rs                     ; LCD_RS       ; OSC_50     ;
+; N/A   ; None         ; 11.189 ns  ; user_interface:inst19|sev_seg[19] ; HEX1[2]      ; OSC_50     ;
+; N/A   ; None         ; 11.176 ns  ; user_interface:inst19|LR[16]      ; LED_RED[0]   ; OSC_50     ;
+; N/A   ; None         ; 11.176 ns  ; user_interface:inst19|LR[16]      ; LED_RED[1]   ; OSC_50     ;
+; N/A   ; None         ; 11.162 ns  ; user_interface:inst19|LR[16]      ; LED_RED[4]   ; OSC_50     ;
+; N/A   ; None         ; 11.162 ns  ; user_interface:inst19|LR[16]      ; LED_RED[5]   ; OSC_50     ;
+; N/A   ; None         ; 11.152 ns  ; user_interface:inst19|LR[16]      ; LED_RED[6]   ; OSC_50     ;
+; N/A   ; None         ; 11.152 ns  ; user_interface:inst19|LR[16]      ; LED_RED[7]   ; OSC_50     ;
+; N/A   ; None         ; 11.146 ns  ; user_interface:inst19|LR[16]      ; LED_RED[2]   ; OSC_50     ;
+; N/A   ; None         ; 11.146 ns  ; user_interface:inst19|LR[16]      ; LED_RED[3]   ; OSC_50     ;
+; N/A   ; None         ; 11.105 ns  ; user_interface:inst19|sev_seg[18] ; HEX1[1]      ; OSC_50     ;
+; N/A   ; None         ; 11.095 ns  ; user_interface:inst19|sev_seg[19] ; HEX3[0]      ; OSC_50     ;
+; N/A   ; None         ; 11.092 ns  ; user_interface:inst19|sev_seg[19] ; HEX1[3]      ; OSC_50     ;
+; N/A   ; None         ; 11.032 ns  ; user_interface:inst19|sev_seg[19] ; HEX1[5]      ; OSC_50     ;
+; N/A   ; None         ; 10.981 ns  ; user_interface:inst19|sev_seg[18] ; HEX2[3]      ; OSC_50     ;
+; N/A   ; None         ; 10.944 ns  ; user_interface:inst19|sev_seg[19] ; HEX2[3]      ; OSC_50     ;
+; N/A   ; None         ; 10.943 ns  ; user_interface:inst19|sev_seg[18] ; HEX3[3]      ; OSC_50     ;
+; N/A   ; None         ; 10.943 ns  ; user_interface:inst19|sev_seg[18] ; HEX3[4]      ; OSC_50     ;
+; N/A   ; None         ; 10.932 ns  ; user_interface:inst19|sev_seg[18] ; HEX3[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.906 ns  ; user_interface:inst19|sev_seg[19] ; HEX3[3]      ; OSC_50     ;
+; N/A   ; None         ; 10.906 ns  ; user_interface:inst19|sev_seg[19] ; HEX3[4]      ; OSC_50     ;
+; N/A   ; None         ; 10.902 ns  ; user_interface:inst19|sev_seg[21] ; HEX4[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.890 ns  ; user_interface:inst19|sev_seg[18] ; HEX2[0]      ; OSC_50     ;
+; N/A   ; None         ; 10.879 ns  ; user_interface:inst19|sev_seg[19] ; HEX2[0]      ; OSC_50     ;
+; N/A   ; None         ; 10.877 ns  ; user_interface:inst19|sev_seg[18] ; HEX3[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.877 ns  ; user_interface:inst19|sev_seg[19] ; HEX3[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.842 ns  ; user_interface:inst19|sev_seg[22] ; HEX4[2]      ; OSC_50     ;
+; N/A   ; None         ; 10.831 ns  ; lcd:inst50|lcd_data[2]            ; LCD_DATA[2]  ; OSC_50     ;
+; N/A   ; None         ; 10.824 ns  ; user_interface:inst19|sev_seg[19] ; HEX3[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.778 ns  ; user_interface:inst19|sev_seg[18] ; HEX3[2]      ; OSC_50     ;
+; N/A   ; None         ; 10.775 ns  ; user_interface:inst19|sev_seg[17] ; HEX0[0]      ; OSC_50     ;
+; N/A   ; None         ; 10.768 ns  ; user_interface:inst19|sev_seg[19] ; HEX3[2]      ; OSC_50     ;
+; N/A   ; None         ; 10.746 ns  ; user_interface:inst19|sev_seg[17] ; HEX0[4]      ; OSC_50     ;
+; N/A   ; None         ; 10.734 ns  ; lcd:inst50|lcd_data[3]            ; LCD_DATA[3]  ; OSC_50     ;
+; N/A   ; None         ; 10.666 ns  ; user_interface:inst19|sev_seg[18] ; HEX2[4]      ; OSC_50     ;
+; N/A   ; None         ; 10.662 ns  ; user_interface:inst19|sev_seg[22] ; HEX4[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.651 ns  ; user_interface:inst19|sev_seg[18] ; HEX2[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.645 ns  ; user_interface:inst19|sev_seg[18] ; HEX2[5]      ; OSC_50     ;
+; N/A   ; None         ; 10.631 ns  ; user_interface:inst19|sev_seg[19] ; HEX2[5]      ; OSC_50     ;
+; N/A   ; None         ; 10.629 ns  ; user_interface:inst19|sev_seg[19] ; HEX2[4]      ; OSC_50     ;
+; N/A   ; None         ; 10.596 ns  ; user_interface:inst19|sev_seg[19] ; HEX2[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.567 ns  ; user_interface:inst19|sev_seg[21] ; HEX4[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.524 ns  ; user_interface:inst19|sev_seg[23] ; HEX4[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.490 ns  ; user_interface:inst19|sev_seg[19] ; HEX1[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.489 ns  ; user_interface:inst19|sev_seg[18] ; HEX0[0]      ; OSC_50     ;
+; N/A   ; None         ; 10.460 ns  ; user_interface:inst19|sev_seg[18] ; HEX0[4]      ; OSC_50     ;
+; N/A   ; None         ; 10.458 ns  ; user_interface:inst19|sev_seg[17] ; HEX0[2]      ; OSC_50     ;
+; N/A   ; None         ; 10.458 ns  ; user_interface:inst19|sev_seg[17] ; HEX0[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.448 ns  ; user_interface:inst19|sev_seg[17] ; HEX0[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.445 ns  ; lcd:inst50|lcd_data[6]            ; LCD_DATA[6]  ; OSC_50     ;
+; N/A   ; None         ; 10.445 ns  ; user_interface:inst19|sev_seg[17] ; HEX0[5]      ; OSC_50     ;
+; N/A   ; None         ; 10.421 ns  ; user_interface:inst19|sev_seg[23] ; HEX4[2]      ; OSC_50     ;
+; N/A   ; None         ; 10.392 ns  ; user_interface:inst19|sev_seg[20] ; HEX4[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.339 ns  ; lcd:inst50|lcd_data[4]            ; LCD_DATA[4]  ; OSC_50     ;
+; N/A   ; None         ; 10.337 ns  ; user_interface:inst19|sev_seg[22] ; HEX4[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.299 ns  ; lcd:inst50|lcd_data[5]            ; LCD_DATA[5]  ; OSC_50     ;
+; N/A   ; None         ; 10.266 ns  ; user_interface:inst19|sev_seg[21] ; HEX4[5]      ; OSC_50     ;
+; N/A   ; None         ; 10.192 ns  ; user_interface:inst19|sev_seg[23] ; HEX4[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.185 ns  ; user_interface:inst19|sev_seg[18] ; HEX2[2]      ; OSC_50     ;
+; N/A   ; None         ; 10.172 ns  ; user_interface:inst19|sev_seg[18] ; HEX0[6]      ; OSC_50     ;
+; N/A   ; None         ; 10.169 ns  ; user_interface:inst19|sev_seg[18] ; HEX0[2]      ; OSC_50     ;
+; N/A   ; None         ; 10.168 ns  ; lcd:inst50|lcd_data[1]            ; LCD_DATA[1]  ; OSC_50     ;
+; N/A   ; None         ; 10.159 ns  ; user_interface:inst19|sev_seg[18] ; HEX0[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.158 ns  ; user_interface:inst19|sev_seg[18] ; HEX0[5]      ; OSC_50     ;
+; N/A   ; None         ; 10.145 ns  ; user_interface:inst19|sev_seg[18] ; HEX2[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.139 ns  ; user_interface:inst19|sev_seg[20] ; HEX4[2]      ; OSC_50     ;
+; N/A   ; None         ; 10.096 ns  ; tx_module:inst13|tx               ; UART_TXD     ; OSC_50     ;
+; N/A   ; None         ; 10.072 ns  ; user_interface:inst19|sev_seg[21] ; HEX4[0]      ; OSC_50     ;
+; N/A   ; None         ; 10.058 ns  ; user_interface:inst19|sev_seg[20] ; HEX4[1]      ; OSC_50     ;
+; N/A   ; None         ; 10.042 ns  ; user_interface:inst19|sev_seg[22] ; HEX4[5]      ; OSC_50     ;
+; N/A   ; None         ; 10.023 ns  ; user_interface:inst19|LR[16]      ; LED_RED[9]   ; OSC_50     ;
+; N/A   ; None         ; 10.017 ns  ; user_interface:inst19|LR[16]      ; LED_RED[10]  ; OSC_50     ;
+; N/A   ; None         ; 10.017 ns  ; user_interface:inst19|LR[16]      ; LED_RED[11]  ; OSC_50     ;
+; N/A   ; None         ; 10.013 ns  ; user_interface:inst19|LR[16]      ; LED_RED[8]   ; OSC_50     ;
+; N/A   ; None         ; 9.980 ns   ; user_interface:inst19|sev_seg[21] ; HEX4[2]      ; OSC_50     ;
+; N/A   ; None         ; 9.899 ns   ; user_interface:inst19|sev_seg[23] ; HEX4[5]      ; OSC_50     ;
+; N/A   ; None         ; 9.898 ns   ; lcd:inst50|lcd_data[0]            ; LCD_DATA[0]  ; OSC_50     ;
+; N/A   ; None         ; 9.874 ns   ; user_interface:inst19|sev_seg[19] ; HEX0[0]      ; OSC_50     ;
+; N/A   ; None         ; 9.853 ns   ; lcd:inst50|lcd_data[7]            ; LCD_DATA[7]  ; OSC_50     ;
+; N/A   ; None         ; 9.846 ns   ; user_interface:inst19|sev_seg[23] ; HEX4[0]      ; OSC_50     ;
+; N/A   ; None         ; 9.845 ns   ; user_interface:inst19|sev_seg[19] ; HEX0[4]      ; OSC_50     ;
+; N/A   ; None         ; 9.795 ns   ; user_interface:inst19|LR[16]      ; LED_RED[12]  ; OSC_50     ;
+; N/A   ; None         ; 9.795 ns   ; user_interface:inst19|LR[16]      ; LED_RED[13]  ; OSC_50     ;
+; N/A   ; None         ; 9.794 ns   ; user_interface:inst19|sev_seg[21] ; HEX4[4]      ; OSC_50     ;
+; N/A   ; None         ; 9.781 ns   ; user_interface:inst19|LG[7]       ; LED_GREEN[0] ; OSC_50     ;
+; N/A   ; None         ; 9.781 ns   ; user_interface:inst19|LG[7]       ; LED_GREEN[1] ; OSC_50     ;
+; N/A   ; None         ; 9.772 ns   ; user_interface:inst19|sev_seg[21] ; HEX4[3]      ; OSC_50     ;
+; N/A   ; None         ; 9.761 ns   ; user_interface:inst19|sev_seg[20] ; HEX4[5]      ; OSC_50     ;
+; N/A   ; None         ; 9.760 ns   ; user_interface:inst19|LG[7]       ; LED_GREEN[2] ; OSC_50     ;
+; N/A   ; None         ; 9.760 ns   ; user_interface:inst19|LG[7]       ; LED_GREEN[3] ; OSC_50     ;
+; N/A   ; None         ; 9.676 ns   ; user_interface:inst19|sev_seg[18] ; HEX3[5]      ; OSC_50     ;
+; N/A   ; None         ; 9.654 ns   ; user_interface:inst19|sev_seg[25] ; HEX5[0]      ; OSC_50     ;
+; N/A   ; None         ; 9.587 ns   ; user_interface:inst19|LR[16]      ; LED_RED[14]  ; OSC_50     ;
+; N/A   ; None         ; 9.587 ns   ; user_interface:inst19|LR[16]      ; LED_RED[15]  ; OSC_50     ;
+; N/A   ; None         ; 9.587 ns   ; user_interface:inst19|LR[16]      ; LED_RED[16]  ; OSC_50     ;
+; N/A   ; None         ; 9.571 ns   ; user_interface:inst19|sev_seg[22] ; HEX4[0]      ; OSC_50     ;
+; N/A   ; None         ; 9.562 ns   ; user_interface:inst19|sev_seg[19] ; HEX0[6]      ; OSC_50     ;
+; N/A   ; None         ; 9.559 ns   ; user_interface:inst19|sev_seg[23] ; HEX4[4]      ; OSC_50     ;
+; N/A   ; None         ; 9.554 ns   ; user_interface:inst19|sev_seg[19] ; HEX0[2]      ; OSC_50     ;
+; N/A   ; None         ; 9.548 ns   ; user_interface:inst19|sev_seg[19] ; HEX0[5]      ; OSC_50     ;
+; N/A   ; None         ; 9.544 ns   ; user_interface:inst19|sev_seg[19] ; HEX0[1]      ; OSC_50     ;
+; N/A   ; None         ; 9.538 ns   ; user_interface:inst19|sev_seg[22] ; HEX4[3]      ; OSC_50     ;
+; N/A   ; None         ; 9.519 ns   ; user_interface:inst19|LG[7]       ; LED_GREEN[4] ; OSC_50     ;
+; N/A   ; None         ; 9.509 ns   ; user_interface:inst19|LG[7]       ; LED_GREEN[5] ; OSC_50     ;
+; N/A   ; None         ; 9.499 ns   ; user_interface:inst19|LG[7]       ; LED_GREEN[6] ; OSC_50     ;
+; N/A   ; None         ; 9.449 ns   ; user_interface:inst19|LG[7]       ; LED_GREEN[7] ; OSC_50     ;
+; N/A   ; None         ; 9.406 ns   ; user_interface:inst19|sev_seg[20] ; HEX4[0]      ; OSC_50     ;
+; N/A   ; None         ; 9.395 ns   ; lcd:inst50|e                      ; LCD_EN       ; OSC_50     ;
+; N/A   ; None         ; 9.368 ns   ; user_interface:inst19|sev_seg[25] ; HEX5[3]      ; OSC_50     ;
+; N/A   ; None         ; 9.348 ns   ; user_interface:inst19|sev_seg[25] ; HEX5[4]      ; OSC_50     ;
+; N/A   ; None         ; 9.348 ns   ; user_interface:inst19|sev_seg[25] ; HEX5[5]      ; OSC_50     ;
+; N/A   ; None         ; 9.306 ns   ; game:inst|led_red                 ; LED_RED[17]  ; OSC_50     ;
+; N/A   ; None         ; 9.284 ns   ; user_interface:inst19|sev_seg[20] ; HEX4[4]      ; OSC_50     ;
+; N/A   ; None         ; 9.263 ns   ; user_interface:inst19|sev_seg[20] ; HEX4[3]      ; OSC_50     ;
+; N/A   ; None         ; 9.123 ns   ; user_interface:inst19|sev_seg[22] ; HEX4[4]      ; OSC_50     ;
+; N/A   ; None         ; 9.102 ns   ; user_interface:inst19|sev_seg[23] ; HEX4[3]      ; OSC_50     ;
++-------+--------------+------------+-----------------------------------+--------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; th                                                                                                            ;
++---------------+-------------+-----------+----------+-----------------------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From     ; To                                            ; To Clock ;
++---------------+-------------+-----------+----------+-----------------------------------------------+----------+
+; N/A           ; None        ; 1.228 ns  ; KEY[0]   ; PS2_keyboard:inst1|INCNT[0]                   ; OSC_50   ;
+; N/A           ; None        ; 1.227 ns  ; KEY[0]   ; PS2_keyboard:inst1|INCNT[3]                   ; OSC_50   ;
+; N/A           ; None        ; 1.227 ns  ; KEY[0]   ; PS2_keyboard:inst1|INCNT[1]                   ; OSC_50   ;
+; N/A           ; None        ; 1.225 ns  ; KEY[0]   ; PS2_keyboard:inst1|INCNT[2]                   ; OSC_50   ;
+; N/A           ; None        ; 1.013 ns  ; KEY[0]   ; PS2_keyboard:inst1|READ_CHAR                  ; OSC_50   ;
+; N/A           ; None        ; 0.691 ns  ; PS2_DAT  ; PS2_keyboard:inst1|SHIFTIN[8]                 ; OSC_50   ;
+; N/A           ; None        ; 0.690 ns  ; PS2_DAT  ; PS2_keyboard:inst1|READ_CHAR                  ; OSC_50   ;
+; N/A           ; None        ; -0.044 ns ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[4]                 ; OSC_50   ;
+; N/A           ; None        ; -0.044 ns ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[2]                 ; OSC_50   ;
+; N/A           ; None        ; -0.044 ns ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[7]                 ; OSC_50   ;
+; N/A           ; None        ; -0.044 ns ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[0]                 ; OSC_50   ;
+; N/A           ; None        ; -0.044 ns ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[1]                 ; OSC_50   ;
+; N/A           ; None        ; -0.044 ns ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[3]                 ; OSC_50   ;
+; N/A           ; None        ; -0.044 ns ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[8]                 ; OSC_50   ;
+; N/A           ; None        ; -0.520 ns ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[5]                 ; OSC_50   ;
+; N/A           ; None        ; -0.520 ns ; KEY[0]   ; PS2_keyboard:inst1|SHIFTIN[6]                 ; OSC_50   ;
+; N/A           ; None        ; -1.133 ns ; KEY[0]   ; PS2_keyboard:inst1|ready_set                  ; OSC_50   ;
+; N/A           ; None        ; -1.278 ns ; PS2_DAT  ; PS2_keyboard:inst1|ready_set                  ; OSC_50   ;
+; N/A           ; None        ; -2.207 ns ; KEY[0]   ; PS2_keyboard_interface:inst4|st.load_reg      ; OSC_50   ;
+; N/A           ; None        ; -2.212 ns ; KEY[0]   ; PS2_keyboard_interface:inst4|st.activate_flag ; OSC_50   ;
+; N/A           ; None        ; -2.213 ns ; KEY[0]   ; PS2_keyboard_interface:inst4|st.ack2          ; OSC_50   ;
+; N/A           ; None        ; -2.315 ns ; PS2_CLK  ; PS2_keyboard:inst1|filter[7]                  ; OSC_50   ;
+; N/A           ; None        ; -2.419 ns ; KEY[0]   ; PS2_keyboard:inst1|scan_code[6]               ; OSC_50   ;
+; N/A           ; None        ; -2.419 ns ; KEY[0]   ; PS2_keyboard:inst1|scan_code[7]               ; OSC_50   ;
+; N/A           ; None        ; -2.474 ns ; KEY[0]   ; PS2_keyboard_interface:inst4|st.w_scan_ready  ; OSC_50   ;
+; N/A           ; None        ; -2.474 ns ; KEY[0]   ; PS2_keyboard_interface:inst4|st.w_sc3         ; OSC_50   ;
+; N/A           ; None        ; -2.474 ns ; KEY[0]   ; PS2_keyboard_interface:inst4|st.w_sc2         ; OSC_50   ;
+; N/A           ; None        ; -2.480 ns ; KEY[0]   ; lcd:inst50|state.power_up                     ; OSC_50   ;
+; N/A           ; None        ; -2.503 ns ; UART_RXD ; rx_module:inst14|rx_data[6]                   ; OSC_50   ;
+; N/A           ; None        ; -2.507 ns ; UART_RXD ; rx_module:inst14|rx_data[2]                   ; OSC_50   ;
+; N/A           ; None        ; -2.508 ns ; UART_RXD ; rx_module:inst14|rx_data[1]                   ; OSC_50   ;
+; N/A           ; None        ; -2.540 ns ; UART_RXD ; rx_module:inst14|rx_data[5]                   ; OSC_50   ;
+; N/A           ; None        ; -2.540 ns ; UART_RXD ; rx_module:inst14|rx_data[4]                   ; OSC_50   ;
+; N/A           ; None        ; -2.541 ns ; UART_RXD ; rx_module:inst14|rx_data[3]                   ; OSC_50   ;
+; N/A           ; None        ; -2.542 ns ; UART_RXD ; rx_module:inst14|rx_data[7]                   ; OSC_50   ;
+; N/A           ; None        ; -2.543 ns ; UART_RXD ; rx_module:inst14|rx_data[0]                   ; OSC_50   ;
+; N/A           ; None        ; -2.556 ns ; KEY[0]   ; PS2_keyboard:inst1|scan_code[5]               ; OSC_50   ;
+; N/A           ; None        ; -2.556 ns ; KEY[0]   ; PS2_keyboard:inst1|scan_code[4]               ; OSC_50   ;
+; N/A           ; None        ; -2.556 ns ; KEY[0]   ; PS2_keyboard:inst1|scan_code[2]               ; OSC_50   ;
+; N/A           ; None        ; -2.556 ns ; KEY[0]   ; PS2_keyboard:inst1|scan_code[0]               ; OSC_50   ;
+; N/A           ; None        ; -2.556 ns ; KEY[0]   ; PS2_keyboard:inst1|scan_code[1]               ; OSC_50   ;
+; N/A           ; None        ; -2.556 ns ; KEY[0]   ; PS2_keyboard:inst1|scan_code[3]               ; OSC_50   ;
+; N/A           ; None        ; -2.615 ns ; UART_RXD ; rx_module:inst14|state.rx_start               ; OSC_50   ;
+; N/A           ; None        ; -2.650 ns ; KEY[0]   ; tx_module:inst13|bit_count[0]                 ; OSC_50   ;
+; N/A           ; None        ; -2.650 ns ; KEY[0]   ; tx_module:inst13|bit_count[2]                 ; OSC_50   ;
+; N/A           ; None        ; -2.687 ns ; KEY[0]   ; tx_module:inst13|bit_count[1]                 ; OSC_50   ;
+; N/A           ; None        ; -2.715 ns ; KEY[0]   ; lcd:inst50|state.line2                        ; OSC_50   ;
+; N/A           ; None        ; -2.715 ns ; KEY[0]   ; lcd:inst50|state.send                         ; OSC_50   ;
+; N/A           ; None        ; -2.716 ns ; KEY[0]   ; lcd:inst50|state.line1                        ; OSC_50   ;
+; N/A           ; None        ; -2.765 ns ; UART_RXD ; rx_module:inst14|state.rx_shift               ; OSC_50   ;
+; N/A           ; None        ; -2.804 ns ; KEY[0]   ; PS2_keyboard_interface:inst4|st.w_newcode     ; OSC_50   ;
+; N/A           ; None        ; -2.817 ns ; KEY[0]   ; lcd:inst50|state.RESETLINE                    ; OSC_50   ;
+; N/A           ; None        ; -2.817 ns ; KEY[0]   ; lcd:inst50|state.initialize                   ; OSC_50   ;
+; N/A           ; None        ; -3.078 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[9]                  ; OSC_50   ;
+; N/A           ; None        ; -3.078 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[15]                 ; OSC_50   ;
+; N/A           ; None        ; -3.078 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[13]                 ; OSC_50   ;
+; N/A           ; None        ; -3.078 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[12]                 ; OSC_50   ;
+; N/A           ; None        ; -3.078 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[14]                 ; OSC_50   ;
+; N/A           ; None        ; -3.078 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[11]                 ; OSC_50   ;
+; N/A           ; None        ; -3.078 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[10]                 ; OSC_50   ;
+; N/A           ; None        ; -3.078 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[8]                  ; OSC_50   ;
+; N/A           ; None        ; -3.255 ns ; UART_RXD ; rx_module:inst14|state.rx_idle                ; OSC_50   ;
+; N/A           ; None        ; -3.415 ns ; KEY[0]   ; rx_protocol:inst15|op_char[1]                 ; OSC_50   ;
+; N/A           ; None        ; -3.415 ns ; KEY[0]   ; rx_protocol:inst15|op_char[0]                 ; OSC_50   ;
+; N/A           ; None        ; -3.506 ns ; KEY[0]   ; rx_module:inst14|rx_data[1]                   ; OSC_50   ;
+; N/A           ; None        ; -3.509 ns ; KEY[0]   ; rx_module:inst14|rx_data[2]                   ; OSC_50   ;
+; N/A           ; None        ; -3.526 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[5]                  ; OSC_50   ;
+; N/A           ; None        ; -3.526 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[3]                  ; OSC_50   ;
+; N/A           ; None        ; -3.526 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[7]                  ; OSC_50   ;
+; N/A           ; None        ; -3.526 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[1]                  ; OSC_50   ;
+; N/A           ; None        ; -3.526 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[4]                  ; OSC_50   ;
+; N/A           ; None        ; -3.526 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[0]                  ; OSC_50   ;
+; N/A           ; None        ; -3.526 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[6]                  ; OSC_50   ;
+; N/A           ; None        ; -3.526 ns ; KEY[0]   ; rx_protocol:inst15|cv_ack[2]                  ; OSC_50   ;
+; N/A           ; None        ; -3.586 ns ; KEY[0]   ; rx_module:inst14|rx_data[6]                   ; OSC_50   ;
+; N/A           ; None        ; -3.661 ns ; KEY[0]   ; rx_protocol:inst15|frame_type[4]              ; OSC_50   ;
+; N/A           ; None        ; -3.661 ns ; KEY[0]   ; rx_protocol:inst15|frame_type[5]              ; OSC_50   ;
+; N/A           ; None        ; -3.661 ns ; KEY[0]   ; rx_protocol:inst15|frame_type[6]              ; OSC_50   ;
+; N/A           ; None        ; -3.661 ns ; KEY[0]   ; rx_protocol:inst15|frame_type[1]              ; OSC_50   ;
+; N/A           ; None        ; -3.661 ns ; KEY[0]   ; rx_protocol:inst15|frame_type[0]              ; OSC_50   ;
+; N/A           ; None        ; -3.661 ns ; KEY[0]   ; rx_protocol:inst15|frame_type[3]              ; OSC_50   ;
+; N/A           ; None        ; -3.661 ns ; KEY[0]   ; rx_protocol:inst15|frame_type[7]              ; OSC_50   ;
+; N/A           ; None        ; -3.661 ns ; KEY[0]   ; rx_protocol:inst15|frame_type[2]              ; OSC_50   ;
+; N/A           ; None        ; -3.690 ns ; KEY[0]   ; rx_module:inst14|rx_data[5]                   ; OSC_50   ;
+; N/A           ; None        ; -3.693 ns ; KEY[0]   ; rx_module:inst14|rx_data[7]                   ; OSC_50   ;
+; N/A           ; None        ; -3.702 ns ; KEY[0]   ; rx_module:inst14|rx_data[3]                   ; OSC_50   ;
+; N/A           ; None        ; -3.734 ns ; KEY[0]   ; rx_module:inst14|rx_data[4]                   ; OSC_50   ;
+; N/A           ; None        ; -3.741 ns ; KEY[0]   ; rx_module:inst14|rx_data[0]                   ; OSC_50   ;
+; N/A           ; None        ; -3.760 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[7]                   ; OSC_50   ;
+; N/A           ; None        ; -3.760 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[6]                   ; OSC_50   ;
+; N/A           ; None        ; -3.760 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[2]                   ; OSC_50   ;
+; N/A           ; None        ; -3.760 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[4]                   ; OSC_50   ;
+; N/A           ; None        ; -3.760 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[1]                   ; OSC_50   ;
+; N/A           ; None        ; -3.760 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[0]                   ; OSC_50   ;
+; N/A           ; None        ; -3.760 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[3]                   ; OSC_50   ;
+; N/A           ; None        ; -3.760 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[5]                   ; OSC_50   ;
+; N/A           ; None        ; -3.881 ns ; KEY[0]   ; rx_protocol:inst15|op_char[2]                 ; OSC_50   ;
+; N/A           ; None        ; -3.881 ns ; KEY[0]   ; rx_protocol:inst15|op_char[3]                 ; OSC_50   ;
+; N/A           ; None        ; -3.898 ns ; KEY[0]   ; rx_protocol:inst15|op_char[5]                 ; OSC_50   ;
+; N/A           ; None        ; -3.898 ns ; KEY[0]   ; rx_protocol:inst15|op_char[4]                 ; OSC_50   ;
+; N/A           ; None        ; -3.898 ns ; KEY[0]   ; rx_protocol:inst15|op_char[6]                 ; OSC_50   ;
+; N/A           ; None        ; -3.898 ns ; KEY[0]   ; rx_protocol:inst15|op_char[7]                 ; OSC_50   ;
+; N/A           ; None        ; -3.905 ns ; KEY[0]   ; tx_protocol:inst12|frame_code[4]              ; OSC_50   ;
+; N/A           ; None        ; -3.915 ns ; KEY[0]   ; tx_protocol:inst12|frame_code[1]              ; OSC_50   ;
+; N/A           ; None        ; -4.009 ns ; KEY[0]   ; tx_protocol:inst12|frame_code[6]              ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[12]                     ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[11]                     ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[6]                      ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[9]                      ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[10]                     ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[7]                      ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[8]                      ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[3]                      ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[2]                      ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[4]                      ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[1]                      ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[5]                      ; OSC_50   ;
+; N/A           ; None        ; -4.110 ns ; UART_RXD ; rx_module:inst14|baud[0]                      ; OSC_50   ;
+; N/A           ; None        ; -4.133 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[14]                  ; OSC_50   ;
+; N/A           ; None        ; -4.133 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[15]                  ; OSC_50   ;
+; N/A           ; None        ; -4.133 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[10]                  ; OSC_50   ;
+; N/A           ; None        ; -4.133 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[12]                  ; OSC_50   ;
+; N/A           ; None        ; -4.133 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[13]                  ; OSC_50   ;
+; N/A           ; None        ; -4.133 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[11]                  ; OSC_50   ;
+; N/A           ; None        ; -4.133 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[8]                   ; OSC_50   ;
+; N/A           ; None        ; -4.133 ns ; KEY[0]   ; rx_protocol:inst15|op_cv[9]                   ; OSC_50   ;
+; N/A           ; None        ; -4.153 ns ; KEY[0]   ; user_interface:inst19|lifesU[3]               ; OSC_50   ;
+; N/A           ; None        ; -4.153 ns ; KEY[0]   ; user_interface:inst19|lifesU[2]               ; OSC_50   ;
+; N/A           ; None        ; -4.153 ns ; KEY[0]   ; user_interface:inst19|lifesU[1]               ; OSC_50   ;
+; N/A           ; None        ; -4.153 ns ; KEY[0]   ; user_interface:inst19|lifesU[0]               ; OSC_50   ;
+; N/A           ; None        ; -4.153 ns ; KEY[0]   ; user_interface:inst19|lifesT[0]               ; OSC_50   ;
+; N/A           ; None        ; -4.220 ns ; KEY[0]   ; tx_protocol:inst12|frame_code[0]              ; OSC_50   ;
+; N/A           ; None        ; -4.507 ns ; KEY[0]   ; rx_module:inst14|bit_count[2]                 ; OSC_50   ;
+; N/A           ; None        ; -4.507 ns ; KEY[0]   ; rx_module:inst14|bit_count[0]                 ; OSC_50   ;
+; N/A           ; None        ; -4.507 ns ; KEY[0]   ; rx_module:inst14|bit_count[1]                 ; OSC_50   ;
+; N/A           ; None        ; -4.873 ns ; UART_RXD ; rx_module:inst14|bit_count[2]                 ; OSC_50   ;
+; N/A           ; None        ; -4.873 ns ; UART_RXD ; rx_module:inst14|bit_count[0]                 ; OSC_50   ;
+; N/A           ; None        ; -4.873 ns ; UART_RXD ; rx_module:inst14|bit_count[1]                 ; OSC_50   ;
++---------------+-------------+-----------+----------+-----------------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Thu Dec 22 10:25:38 2022
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off hangman -c hangman --timing_analysis_only
+Warning: Timing Analysis is analyzing one or more combinational loops as latches
+    Warning: Node "PS2_keyboard_interface:inst4|ascii[5]" is a latch
+    Warning: Node "PS2_keyboard_interface:inst4|ascii[3]" is a latch
+    Warning: Node "PS2_keyboard_interface:inst4|ascii[4]" is a latch
+    Warning: Node "PS2_keyboard_interface:inst4|ascii[2]" is a latch
+    Warning: Node "PS2_keyboard_interface:inst4|ascii[1]" is a latch
+    Warning: Node "PS2_keyboard_interface:inst4|ascii[0]" is a latch
+    Warning: Node "PS2_keyboard_interface:inst4|ascii[6]" is a latch
+    Warning: Node "main:inst6|start" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[14]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[6]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[15]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[9]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[1]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[3]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[11]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[4]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[12]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[5]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[13]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[7]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[2]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[10]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[8]" is a latch
+    Warning: Node "cv_ack_generator:inst11|cvack_int[0]" is a latch
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "OSC_50" is an undefined clock
+Warning: Found 24 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected ripple clock "cv_ack_generator:inst11|state.s_compute" as buffer
+    Info: Detected ripple clock "main:inst6|st.w_start" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~5" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~0" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~6" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~1" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~8" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~7" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~2" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~3" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|ready_set" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~9" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|scan_code[7]" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~4" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|scan_code[3]" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|scan_code[1]" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|scan_code[0]" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|keyboard_clk_filtered" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|scan_code[2]" as buffer
+    Info: Detected gated clock "PS2_keyboard_interface:inst4|Mux1~10" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|scan_code[6]" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|scan_code[4]" as buffer
+    Info: Detected ripple clock "PS2_keyboard:inst1|scan_code[5]" as buffer
+    Info: Detected ripple clock "clk_div_two:inst7|clk_int" as buffer
+Info: Clock "OSC_50" has Internal fmax of 57.57 MHz between source register "PS2_keyboard_interface:inst4|ascii[0]" and destination register "PS2_keyboard_interface:inst4|keycode[0]" (period= 17.37 ns)
+    Info: + Longest register to register delay is 0.827 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCCOMB_X35_Y27_N2; Fanout = 1; REG Node = 'PS2_keyboard_interface:inst4|ascii[0]'
+        Info: 2: + IC(0.461 ns) + CELL(0.366 ns) = 0.827 ns; Loc. = LCFF_X35_Y27_N11; Fanout = 4; REG Node = 'PS2_keyboard_interface:inst4|keycode[0]'
+        Info: Total cell delay = 0.366 ns ( 44.26 % )
+        Info: Total interconnect delay = 0.461 ns ( 55.74 % )
+    Info: - Smallest clock skew is -7.894 ns
+        Info: + Shortest clock path from clock "OSC_50" to destination register is 4.257 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'OSC_50'
+            Info: 2: + IC(0.331 ns) + CELL(0.787 ns) = 2.117 ns; Loc. = LCFF_X1_Y18_N13; Fanout = 2; REG Node = 'clk_div_two:inst7|clk_int'
+            Info: 3: + IC(0.626 ns) + CELL(0.000 ns) = 2.743 ns; Loc. = CLKCTRL_G0; Fanout = 783; COMB Node = 'clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk'
+            Info: 4: + IC(0.977 ns) + CELL(0.537 ns) = 4.257 ns; Loc. = LCFF_X35_Y27_N11; Fanout = 4; REG Node = 'PS2_keyboard_interface:inst4|keycode[0]'
+            Info: Total cell delay = 2.323 ns ( 54.57 % )
+            Info: Total interconnect delay = 1.934 ns ( 45.43 % )
+        Info: - Longest clock path from clock "OSC_50" to source register is 12.151 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'OSC_50'
+            Info: 2: + IC(0.331 ns) + CELL(0.787 ns) = 2.117 ns; Loc. = LCFF_X1_Y18_N13; Fanout = 2; REG Node = 'clk_div_two:inst7|clk_int'
+            Info: 3: + IC(0.626 ns) + CELL(0.000 ns) = 2.743 ns; Loc. = CLKCTRL_G0; Fanout = 783; COMB Node = 'clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk'
+            Info: 4: + IC(0.976 ns) + CELL(0.787 ns) = 4.506 ns; Loc. = LCFF_X33_Y27_N17; Fanout = 13; REG Node = 'PS2_keyboard:inst1|keyboard_clk_filtered'
+            Info: 5: + IC(0.333 ns) + CELL(0.787 ns) = 5.626 ns; Loc. = LCFF_X33_Y27_N21; Fanout = 28; REG Node = 'PS2_keyboard:inst1|scan_code[2]'
+            Info: 6: + IC(0.883 ns) + CELL(0.413 ns) = 6.922 ns; Loc. = LCCOMB_X34_Y27_N30; Fanout = 2; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~1'
+            Info: 7: + IC(0.693 ns) + CELL(0.437 ns) = 8.052 ns; Loc. = LCCOMB_X32_Y27_N8; Fanout = 1; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~2'
+            Info: 8: + IC(0.254 ns) + CELL(0.420 ns) = 8.726 ns; Loc. = LCCOMB_X32_Y27_N18; Fanout = 1; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~4'
+            Info: 9: + IC(0.247 ns) + CELL(0.420 ns) = 9.393 ns; Loc. = LCCOMB_X32_Y27_N0; Fanout = 1; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~10'
+            Info: 10: + IC(1.304 ns) + CELL(0.000 ns) = 10.697 ns; Loc. = CLKCTRL_G10; Fanout = 7; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~10clkctrl'
+            Info: 11: + IC(1.304 ns) + CELL(0.150 ns) = 12.151 ns; Loc. = LCCOMB_X35_Y27_N2; Fanout = 1; REG Node = 'PS2_keyboard_interface:inst4|ascii[0]'
+            Info: Total cell delay = 5.200 ns ( 42.79 % )
+            Info: Total interconnect delay = 6.951 ns ( 57.21 % )
+    Info: + Micro clock to output delay of source is 0.000 ns
+    Info: + Micro setup delay of destination is -0.036 ns
+    Info: Delay path is controlled by inverted clocks -- if clock duty cycle is 50%, fmax is divided by two
+Warning: Circuit may not operate. Detected 201 non-operational path(s) clocked by clock "OSC_50" with clock skew larger than data delay. See Compilation Report for details.
+Info: Found hold time violation between source  pin or register "PS2_keyboard:inst1|scan_code[5]" and destination pin or register "PS2_keyboard_interface:inst4|ascii[6]" for clock "OSC_50" (Hold time is 4.922 ns)
+    Info: + Largest clock skew is 6.774 ns
+        Info: + Longest clock path from clock "OSC_50" to destination register is 12.150 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'OSC_50'
+            Info: 2: + IC(0.331 ns) + CELL(0.787 ns) = 2.117 ns; Loc. = LCFF_X1_Y18_N13; Fanout = 2; REG Node = 'clk_div_two:inst7|clk_int'
+            Info: 3: + IC(0.626 ns) + CELL(0.000 ns) = 2.743 ns; Loc. = CLKCTRL_G0; Fanout = 783; COMB Node = 'clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk'
+            Info: 4: + IC(0.976 ns) + CELL(0.787 ns) = 4.506 ns; Loc. = LCFF_X33_Y27_N17; Fanout = 13; REG Node = 'PS2_keyboard:inst1|keyboard_clk_filtered'
+            Info: 5: + IC(0.333 ns) + CELL(0.787 ns) = 5.626 ns; Loc. = LCFF_X33_Y27_N21; Fanout = 28; REG Node = 'PS2_keyboard:inst1|scan_code[2]'
+            Info: 6: + IC(0.883 ns) + CELL(0.413 ns) = 6.922 ns; Loc. = LCCOMB_X34_Y27_N30; Fanout = 2; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~1'
+            Info: 7: + IC(0.693 ns) + CELL(0.437 ns) = 8.052 ns; Loc. = LCCOMB_X32_Y27_N8; Fanout = 1; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~2'
+            Info: 8: + IC(0.254 ns) + CELL(0.420 ns) = 8.726 ns; Loc. = LCCOMB_X32_Y27_N18; Fanout = 1; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~4'
+            Info: 9: + IC(0.247 ns) + CELL(0.420 ns) = 9.393 ns; Loc. = LCCOMB_X32_Y27_N0; Fanout = 1; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~10'
+            Info: 10: + IC(1.304 ns) + CELL(0.000 ns) = 10.697 ns; Loc. = CLKCTRL_G10; Fanout = 7; COMB Node = 'PS2_keyboard_interface:inst4|Mux1~10clkctrl'
+            Info: 11: + IC(1.303 ns) + CELL(0.150 ns) = 12.150 ns; Loc. = LCCOMB_X35_Y27_N4; Fanout = 1; REG Node = 'PS2_keyboard_interface:inst4|ascii[6]'
+            Info: Total cell delay = 5.200 ns ( 42.80 % )
+            Info: Total interconnect delay = 6.950 ns ( 57.20 % )
+        Info: - Shortest clock path from clock "OSC_50" to source register is 5.376 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'OSC_50'
+            Info: 2: + IC(0.331 ns) + CELL(0.787 ns) = 2.117 ns; Loc. = LCFF_X1_Y18_N13; Fanout = 2; REG Node = 'clk_div_two:inst7|clk_int'
+            Info: 3: + IC(0.626 ns) + CELL(0.000 ns) = 2.743 ns; Loc. = CLKCTRL_G0; Fanout = 783; COMB Node = 'clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk'
+            Info: 4: + IC(0.976 ns) + CELL(0.787 ns) = 4.506 ns; Loc. = LCFF_X33_Y27_N17; Fanout = 13; REG Node = 'PS2_keyboard:inst1|keyboard_clk_filtered'
+            Info: 5: + IC(0.333 ns) + CELL(0.537 ns) = 5.376 ns; Loc. = LCFF_X33_Y27_N7; Fanout = 23; REG Node = 'PS2_keyboard:inst1|scan_code[5]'
+            Info: Total cell delay = 3.110 ns ( 57.85 % )
+            Info: Total interconnect delay = 2.266 ns ( 42.15 % )
+    Info: - Micro clock to output delay of source is 0.250 ns
+    Info: - Shortest register to register delay is 1.602 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X33_Y27_N7; Fanout = 23; REG Node = 'PS2_keyboard:inst1|scan_code[5]'
+        Info: 2: + IC(0.779 ns) + CELL(0.150 ns) = 0.929 ns; Loc. = LCCOMB_X35_Y27_N30; Fanout = 1; COMB Node = 'PS2_keyboard_interface:inst4|Mux7~3'
+        Info: 3: + IC(0.254 ns) + CELL(0.419 ns) = 1.602 ns; Loc. = LCCOMB_X35_Y27_N4; Fanout = 1; REG Node = 'PS2_keyboard_interface:inst4|ascii[6]'
+        Info: Total cell delay = 0.569 ns ( 35.52 % )
+        Info: Total interconnect delay = 1.033 ns ( 64.48 % )
+    Info: + Micro hold delay of destination is 0.000 ns
+    Info: Delay path is controlled by inverted clocks -- if clock duty cycle is 50%, fmax is divided by two
+Info: tsu for register "rx_module:inst14|bit_count[2]" (data pin = "UART_RXD", clock pin = "OSC_50") is 5.103 ns
+    Info: + Longest pin to register delay is 9.441 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.882 ns) = 0.882 ns; Loc. = PIN_C25; Fanout = 14; PIN Node = 'UART_RXD'
+        Info: 2: + IC(5.908 ns) + CELL(0.275 ns) = 7.065 ns; Loc. = LCCOMB_X33_Y28_N30; Fanout = 1; COMB Node = 'rx_module:inst14|bit_count[2]~0'
+        Info: 3: + IC(0.453 ns) + CELL(0.275 ns) = 7.793 ns; Loc. = LCCOMB_X33_Y28_N16; Fanout = 3; COMB Node = 'rx_module:inst14|bit_count[2]~1'
+        Info: 4: + IC(0.988 ns) + CELL(0.660 ns) = 9.441 ns; Loc. = LCFF_X29_Y25_N11; Fanout = 10; REG Node = 'rx_module:inst14|bit_count[2]'
+        Info: Total cell delay = 2.092 ns ( 22.16 % )
+        Info: Total interconnect delay = 7.349 ns ( 77.84 % )
+    Info: + Micro setup delay of destination is -0.036 ns
+    Info: - Shortest clock path from clock "OSC_50" to destination register is 4.302 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'OSC_50'
+        Info: 2: + IC(0.331 ns) + CELL(0.787 ns) = 2.117 ns; Loc. = LCFF_X1_Y18_N13; Fanout = 2; REG Node = 'clk_div_two:inst7|clk_int'
+        Info: 3: + IC(0.626 ns) + CELL(0.000 ns) = 2.743 ns; Loc. = CLKCTRL_G0; Fanout = 783; COMB Node = 'clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk'
+        Info: 4: + IC(1.022 ns) + CELL(0.537 ns) = 4.302 ns; Loc. = LCFF_X29_Y25_N11; Fanout = 10; REG Node = 'rx_module:inst14|bit_count[2]'
+        Info: Total cell delay = 2.323 ns ( 54.00 % )
+        Info: Total interconnect delay = 1.979 ns ( 46.00 % )
+Info: tco from clock "OSC_50" to destination pin "HEX0[3]" through register "user_interface:inst19|sev_seg[17]" is 12.321 ns
+    Info: + Longest clock path from clock "OSC_50" to source register is 4.325 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'OSC_50'
+        Info: 2: + IC(0.331 ns) + CELL(0.787 ns) = 2.117 ns; Loc. = LCFF_X1_Y18_N13; Fanout = 2; REG Node = 'clk_div_two:inst7|clk_int'
+        Info: 3: + IC(0.626 ns) + CELL(0.000 ns) = 2.743 ns; Loc. = CLKCTRL_G0; Fanout = 783; COMB Node = 'clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk'
+        Info: 4: + IC(1.045 ns) + CELL(0.537 ns) = 4.325 ns; Loc. = LCFF_X31_Y18_N29; Fanout = 13; REG Node = 'user_interface:inst19|sev_seg[17]'
+        Info: Total cell delay = 2.323 ns ( 53.71 % )
+        Info: Total interconnect delay = 2.002 ns ( 46.29 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Longest register to pin delay is 7.746 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X31_Y18_N29; Fanout = 13; REG Node = 'user_interface:inst19|sev_seg[17]'
+        Info: 2: + IC(1.098 ns) + CELL(0.420 ns) = 1.518 ns; Loc. = LCCOMB_X28_Y14_N24; Fanout = 3; COMB Node = 'hex_disps:inst47|BCD7seg:display0|HEX[3]~3'
+        Info: 3: + IC(3.430 ns) + CELL(2.798 ns) = 7.746 ns; Loc. = PIN_AD11; Fanout = 0; PIN Node = 'HEX0[3]'
+        Info: Total cell delay = 3.218 ns ( 41.54 % )
+        Info: Total interconnect delay = 4.528 ns ( 58.46 % )
+Info: th for register "PS2_keyboard:inst1|INCNT[0]" (data pin = "KEY[0]", clock pin = "OSC_50") is 1.228 ns
+    Info: + Longest clock path from clock "OSC_50" to destination register is 7.670 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'OSC_50'
+        Info: 2: + IC(0.331 ns) + CELL(0.787 ns) = 2.117 ns; Loc. = LCFF_X1_Y18_N13; Fanout = 2; REG Node = 'clk_div_two:inst7|clk_int'
+        Info: 3: + IC(0.626 ns) + CELL(0.000 ns) = 2.743 ns; Loc. = CLKCTRL_G0; Fanout = 783; COMB Node = 'clk_video:inst8|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk'
+        Info: 4: + IC(0.976 ns) + CELL(0.787 ns) = 4.506 ns; Loc. = LCFF_X33_Y27_N17; Fanout = 13; REG Node = 'PS2_keyboard:inst1|keyboard_clk_filtered'
+        Info: 5: + IC(1.653 ns) + CELL(0.000 ns) = 6.159 ns; Loc. = CLKCTRL_G8; Fanout = 14; COMB Node = 'PS2_keyboard:inst1|keyboard_clk_filtered~clkctrl'
+        Info: 6: + IC(0.974 ns) + CELL(0.537 ns) = 7.670 ns; Loc. = LCFF_X38_Y27_N25; Fanout = 5; REG Node = 'PS2_keyboard:inst1|INCNT[0]'
+        Info: Total cell delay = 3.110 ns ( 40.55 % )
+        Info: Total interconnect delay = 4.560 ns ( 59.45 % )
+    Info: + Micro hold delay of destination is 0.266 ns
+    Info: - Shortest pin to register delay is 6.708 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 567; PIN Node = 'KEY[0]'
+        Info: 2: + IC(5.612 ns) + CELL(0.150 ns) = 6.624 ns; Loc. = LCCOMB_X38_Y27_N24; Fanout = 1; COMB Node = 'PS2_keyboard:inst1|INCNT~0'
+        Info: 3: + IC(0.000 ns) + CELL(0.084 ns) = 6.708 ns; Loc. = LCFF_X38_Y27_N25; Fanout = 5; REG Node = 'PS2_keyboard:inst1|INCNT[0]'
+        Info: Total cell delay = 1.096 ns ( 16.34 % )
+        Info: Total interconnect delay = 5.612 ns ( 83.66 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 198 megabytes
+    Info: Processing ended: Thu Dec 22 10:25:43 2022
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:02
+
+

@@ -1,0 +1,142 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity tx_protocol is
+	port(	clk, nrst, send_ready, send_op_cv_ack: in std_logic;
+			cv, op_cv_ack : in std_logic_vector (15 downto 0);
+			guessing_char : in std_logic_vector (7 downto 0);
+			send_gc, send_loser, send_winner, tx_empty: in std_logic;
+			tx_data : out std_logic_vector (7 downto 0);
+			send, ready_to_tx: out std_logic);
+end tx_protocol;
+
+architecture arc of tx_protocol is
+	type state_type is (w_frame_code, s_rdy, w_tx_empty1, s_frame_id, w_tx_empty2,
+						s_frame_type, w_tx_empty3, s_decision, s_cv1, w_tx_empty4,
+						s_cv2, s_cvack1, w_tx_empty5, s_cvack2, s_gc, s_end);
+	signal st : state_type;
+	signal J_RDY, J_FCR : std_logic;
+	signal K_RDY, k_FCR : std_logic;
+	signal frame_code : std_logic_vector(7 downto 0);
+	signal frame_code_received : std_logic;
+begin
+
+	-- States machine
+	process(clk, nrst) begin 
+		if nrst = '0' then
+			st <= w_frame_code;
+			tx_data <= x"00";
+		elsif clk'event and clk = '1' then
+			case st is
+				when w_frame_code =>
+					if (frame_code_received = '1') then
+						st <= s_rdy;
+					end if;
+				when s_rdy =>
+					st <= w_tx_empty1;
+				when w_tx_empty1 =>
+					if (tx_empty = '1') then
+						st <= s_frame_id;
+					end if;
+				when s_frame_id =>
+					tx_data <= x"AA";
+					st <= w_tx_empty2;
+				when w_tx_empty2 =>
+					if (tx_empty = '1') then
+						st <= s_frame_type;
+					end if;
+				when s_frame_type =>
+					tx_data <= frame_code;
+					st <= w_tx_empty3;
+				when w_tx_empty3 =>
+					if (tx_empty = '1') then
+						st <= s_decision;
+					end if;
+				when s_decision =>
+					if (frame_code = x"A1") then
+						st <= s_cv1;
+					elsif (frame_code = x"B1") then
+						st <= s_cvack1;
+					elsif (frame_code = x"C1") then
+						st <= s_gc;
+					else
+						st <= s_end;
+					end if;
+				when s_cv1 =>
+					tx_data <= cv(15 downto 8);
+					st <= w_tx_empty4;
+				when w_tx_empty4 =>
+					if (tx_empty = '1') then
+						st <= s_cv2;
+					end if;
+				when s_cv2 =>
+					tx_data <= cv(7 downto 0);
+					st <= s_end;
+				when s_cvack1 =>
+					tx_data <= cv(15 downto 8);
+					st <= w_tx_empty5;
+				when w_tx_empty5 =>
+					if (tx_empty = '1') then
+						st <= s_cvack2;
+					end if;
+				when s_cvack2 =>
+					tx_data <= cv(7 downto 0);
+					st <= s_end;
+				when s_gc =>
+					tx_data <= guessing_char;
+					st <= s_end;
+				when s_end =>
+					st <= w_frame_code;
+			end case;
+		end if;
+	end process;
+	
+	
+	-- JK flip-flop
+	process(clk,nrst,J_RDY,K_RDY)
+	begin
+		if nrst = '0' then
+			ready_to_tx <= '1';
+		elsif (clk'event and clk = '1') then
+			if J_RDY = '1' then
+				ready_to_tx <= '1';
+			elsif K_RDY = '1' then
+				ready_to_tx <= '0';
+			end if;
+		end if;
+	end process;
+	
+	-- Combinational that converts the input into the corresponding frame code.
+	process(clk,nrst, frame_code, frame_code_received)
+	begin
+		if nrst = '0' then
+			frame_code_received <= '0';
+		elsif (clk'event and clk = '1') then
+			if (send_ready = '1') then
+				frame_code <= x"A1";
+				frame_code_received <= '1';
+			elsif (send_op_cv_ack = '1') then
+				frame_code <= x"B1";
+				frame_code_received <= '1';
+			elsif (send_gc = '1') then
+				frame_code <= x"C1";
+				frame_code_received <= '1';
+			elsif (send_loser = '1') then
+				frame_code <= x"D1";
+				frame_code_received <= '1';
+			elsif (send_winner = '1') then
+				frame_code <= x"D2";
+				frame_code_received <= '1';
+			else
+				frame_code_received <= '0';
+			end if;
+		end if;
+	end process;
+
+
+K_RDY <= '1' when st = s_rdy else '0';
+J_RDY <= '1' when st = s_end or st = w_frame_code else '0';
+send <= '1' when st = s_frame_id or st = s_frame_type or st = s_cv1 or st = s_cv2 or st = s_cvack1 or st = s_cvack2 or st = s_gc else '0';
+	
+end arc;
