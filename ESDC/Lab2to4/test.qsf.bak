@@ -1,0 +1,97 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2010 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions
+# and other software and tools, and its AMPP partner logic
+# functions, and any output files from any of the foregoing
+# (including device programming or simulation files), and any
+# associated documentation or information are expressly subject
+# to the terms and conditions of the Altera Program License
+# Subscription Agreement, Altera MegaCore Function License
+# Agreement, or other applicable license agreement, including,
+# without limitation, that your use is for the sole purpose of
+# programming logic devices manufactured by Altera and sold by
+# Altera or its authorized distributors.  Please refer to the
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+# Date created = 20:35:04  September 27, 2022
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		test_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C35F672C6
+set_global_assignment -name TOP_LEVEL_ENTITY P1_BOARD_vga
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:45:50  OCTOBER 26, 2022"
+set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name ENABLE_DA_RULE "C101, C102, C103, C104, C105, C106, R101, R102, R103, R104, R105, T101, T102, A101, A102, A103, A104, A105, A106, A107, A108, S101, S102, S103, S104, D101, D102, D103, M101, M102, M103, M104, M105"
+set_global_assignment -name ENABLE_DRC_SETTINGS ON
+set_global_assignment -name SETUP_HOLD_DETECTION ON
+set_global_assignment -name MISC_FILE "G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/practice1.dpf"
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE practice1_3_b_test.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE practice1_3_b_test.vwf
+set_global_assignment -name BDF_FILE practice1_3.bdf
+set_global_assignment -name VHDL_FILE add_generator.vhd
+set_global_assignment -name VHDL_FILE bcd7seg.vhd
+set_global_assignment -name VHDL_FILE clk_div_two.vhd
+set_global_assignment -name VHDL_FILE clk_video.vhd
+set_global_assignment -name VHDL_FILE count4b.vhd
+set_global_assignment -name VHDL_FILE f_div.vhd
+set_global_assignment -name VHDL_FILE protocol_rx.vhd
+set_global_assignment -name VHDL_FILE hex_disps.vhd
+set_global_assignment -name BDF_FILE I_O_Manager_VGA.bdf
+set_global_assignment -name BDF_FILE keyboard.bdf
+set_global_assignment -name VHDL_FILE keypad.vhd
+set_global_assignment -name VHDL_FILE keytest_h_v2.vhd
+set_global_assignment -name VHDL_FILE protocol_tx.vhd
+set_global_assignment -name BDF_FILE P1_BOARD_vga.bdf
+set_global_assignment -name VHDL_FILE rx_module2.vhd
+set_global_assignment -name VHDL_FILE tx_module.vhd
+set_global_assignment -name BDF_FILE TX_RX_BLOCK.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE TX_RX_BLOCK_SIM1.vwf
+set_global_assignment -name VHDL_FILE rx_module.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE TX_RX_BLOCK_SIM2.vwf
+set_global_assignment -name BDF_FILE RXmodule.bdf
+set_global_assignment -name VHDL_FILE square.vhd
+set_global_assignment -name VHDL_FILE register_bank.vhd
+set_global_assignment -name VHDL_FILE main.vhd
+set_global_assignment -name BDF_FILE TXmodule.bdf
+set_global_assignment -name VHDL_FILE VGA_SYNC.VHD
+set_global_assignment -name BDF_FILE VGA_TEST_BOARD.bdf
+set_global_assignment -name BDF_FILE VGA_visualisation.bdf
+set_global_assignment -name VHDL_FILE Video_Memory.vhd
+set_global_assignment -name VHDL_FILE wr_memory.vhd
+set_global_assignment -name VHDL_FILE game.vhd
+set_global_assignment -name BDF_FILE practice1_2.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE practice1_2.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE main_test.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE register_bank_test.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE game_block_test.vwf
+set_global_assignment -name BDF_FILE practice1_3_b.bdf
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

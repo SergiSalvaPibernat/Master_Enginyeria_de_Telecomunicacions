@@ -1,0 +1,142 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity game is
+	port(	clk50, nrst, new_game, RDY_RECEIVED, GR_RECEIVED, EQ_RECEIVED, SM_RECEIVED, DT_RECEIVED, bank_ready, ready_to_TX: in std_logic;
+			OponentH, OponentT, OponentU, OurH, OurT, OurU: in std_logic_vector(3 downto 0);
+			SND_RDY, SEND_GR, SEND_EQ, SEND_SM, SEND_DT, frame_received, LightD, LightG, LightS, Light_WIN, Light_Loose, Light_Tie, enterCode: out std_logic);
+end game;
+
+architecture arc of game is
+	type state_type is (s0_wait, w_tx1, s_rdy, w_rdy, code, w_code, w_tx2, s_dt, w_dt, fr_r, w_tx3, s_GRorSM, s_eq, w_fr, w_fr2);
+	signal state : state_type;
+	signal GR, EQ, SM : std_logic;
+	
+	begin process(clk50, nrst) begin
+		if (nrst = '0') then
+			state <= s0_wait;
+			LightG <= '0';
+			LightS <= '0';
+			Light_WIN <= '0';
+			Light_Tie <= '0';
+			Light_Loose <= '0';
+		elsif (clk50'event and clk50='1') then
+			case state is
+				when s0_wait =>
+					if (new_game = '1') then
+						state <= w_tx1;
+						LightG <= '0';
+						LightS <= '0';
+						Light_WIN <= '0';
+						Light_Tie <= '0';
+						Light_Loose <= '0';
+					end if;
+				
+				when w_tx1 =>
+					if (ready_to_TX = '1') then
+						state <= s_rdy;
+					end if;
+
+				when s_rdy =>
+					state <= w_rdy;
+				
+				when w_rdy =>
+					if (RDY_RECEIVED = '1') then
+						state <= code;
+					end if;
+				
+				when code =>
+					state <= w_code;
+					
+				when w_code =>
+					if (bank_ready = '1') then
+						state <= w_tx2;
+					end if;
+
+				when w_tx2 =>
+					if (ready_to_TX = '1') then
+						state <= s_dt;
+					end if;
+				
+				when s_dt =>
+					state <= w_dt;
+					
+				when w_dt =>
+					if (DT_RECEIVED = '1') then
+						state <= fr_r;
+					end if;
+
+				when fr_r =>
+					state <= w_tx3;
+				
+				when w_tx3 =>
+					if (ready_to_TX = '1' and EQ = '1') then
+						state <= s_eq;
+					elsif (ready_to_TX = '1' and (GR = '1' or SM = '1')) then
+						state <= s_GRorSM;
+					end if;
+				
+				when s_eq =>
+					state <= w_fr2;
+				
+				when w_fr2 =>
+					if (EQ_RECEIVED = '1') then
+                        state <= s0_wait;
+						LightG <= '0';
+						LightS <= '0';
+						Light_Tie <= '1';
+                    elsif (GR_RECEIVED = '1' or SM_RECEIVED = '1') then
+                        state <= s0_wait;
+						LightG <= '0';
+						LightS <= '0';
+						Light_Loose <= '1';
+                    end if;
+				
+				when s_GRorSM =>
+					if (GR = '1') then 
+						state <= w_fr;
+					elsif SM = '1' then
+						state <= w_fr;
+					end if;
+				
+				when w_fr =>
+					if (EQ_RECEIVED = '1') then
+						state <= s0_wait;
+						LightG <= '0';
+						LightS <= '0';
+						Light_WIN <= '1';
+					elsif (GR_RECEIVED = '1') then
+						state <= code;
+						LightG <= '1';
+						LightS <= '0';
+					elsif (SM_RECEIVED) = '1' then
+						state <= code;
+						LightG <= '0';
+						LightS <= '1';
+					end if;
+			end case;
+		end if;
+	end process;
+
+SND_RDY <= '1' when state = s_rdy else '0';
+frame_received <= '1' when state = code or state = fr_r or (state = w_fr2
+ and(GR_RECEIVED = '1' or SM_RECEIVED = '1' or EQ_RECEIVED = '1')) or
+ (state = w_fr and (GR_RECEIVED = '1' or SM_RECEIVED = '1' or EQ_RECEIVED = '1')) else '0';
+enterCode <= '1' when state = code else '0';
+SEND_DT <= '1' when state = s_dt else '0';
+SEND_EQ <= '1' when state = s_eq else '0';
+SEND_GR <= '1' when (state = s_GRorSM and GR = '1') else '0';
+SEND_SM <= '1' when (state = s_GRorSM and SM = '1') else '0';
+LightD <= '1' when state = code or state = w_code else '0';
+--Light_WIN <= '1' when (state = w_fr and EQ_RECEIVED = '1') else '0';
+--Light_Tie <= '1' when (state = w_fr2 and EQ_RECEIVED = '1') else '0';
+--Light_Loose <= '1' when (state = w_fr2 and (SM_RECEIVED = '1' or GR_RECEIVED = '1')) else '0';
+
+--Comparator
+GR <= '1' when ((OponentH&OponentT&OponentU)>(OurH&OurT&OurU)) else '0';
+EQ <= '1' when ((OponentH&OponentT&OponentU)=(OurH&OurT&OurU)) else '0';
+SM <= '1' when ((OponentH&OponentT&OponentU)<(OurH&OurT&OurU)) else '0'; 
+
+end arc;
+	

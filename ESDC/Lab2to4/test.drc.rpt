@@ -1,0 +1,267 @@
+Design Assistant report for test
+Fri Dec 16 12:52:29 2022
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Design Assistant Summary
+  3. Design Assistant Settings
+  4. Medium Violations
+  5. Information only Violations
+  6. Design Assistant Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Design Assistant Summary                                                ;
++-----------------------------------+-------------------------------------+
+; Design Assistant Status           ; Analyzed - Fri Dec 16 12:52:29 2022 ;
+; Revision Name                     ; test                                ;
+; Top-level Entity Name             ; P1_BOARD_vga                        ;
+; Family                            ; Cyclone II                          ;
+; Total Critical Violations         ; 0                                   ;
+; Total High Violations             ; 0                                   ;
+; Total Medium Violations           ; 3                                   ;
+; - Rule C104                       ; 1                                   ;
+; - Rule C106                       ; 1                                   ;
+; - Rule R102                       ; 1                                   ;
+; Total Information only Violations ; 54                                  ;
+; - Rule T101                       ; 4                                   ;
+; - Rule T102                       ; 50                                  ;
++-----------------------------------+-------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Design Assistant Settings                                                                                                                                                                                                                                                                                ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Option                                                                                                                                                                                                                                                                               ; Setting      ; To ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Design Assistant mode                                                                                                                                                                                                                                                                ; Post-Fitting ;    ;
+; Threshold value for clock net not mapped to clock spines rule                                                                                                                                                                                                                        ; 25           ;    ;
+; Minimum number of clock port feed by gated clocks                                                                                                                                                                                                                                    ; 30           ;    ;
+; Minimum number of node fan-out                                                                                                                                                                                                                                                       ; 30           ;    ;
+; Maximum number of nodes to report                                                                                                                                                                                                                                                    ; 50           ;    ;
+; Rule C101: Gated clock should be implemented according to the Altera standard scheme                                                                                                                                                                                                 ; On           ;    ;
+; Rule C102: Logic cell should not be used to generate an inverted clock signal                                                                                                                                                                                                        ; On           ;    ;
+; Rule C103: Gated clock does not feed at least a pre-defined number of clock ports to effectively save power                                                                                                                                                                          ; On           ;    ;
+; Rule C104: Clock signal source should drive only clock input ports                                                                                                                                                                                                                   ; On           ;    ;
+; Rule C105: Clock signal should be a global signal (Rule applies during post-fitting analysis. This rule applies during both post-fitting analysis and post-synthesis analysis if the design targets a MAX 3000 or MAX 7000 device. For more information, see the Help for the rule.) ; On           ;    ;
+; Rule C106: Clock signal source should not drive registers triggered by different clock edges                                                                                                                                                                                         ; On           ;    ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                                                                                                                                                                                         ; On           ;    ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers                                                                                                                                                                                                ; On           ;    ;
+; Rule R103: External reset signal should be correctly synchronized                                                                                                                                                                                                                    ; On           ;    ;
+; Rule R104: The reset signal that is generated in one clock domain and used in another clock domain should be correctly synchronized                                                                                                                                                  ; On           ;    ;
+; Rule R105: The reset signal that is generated in one clock domain and used in another clock domain should be synchronized                                                                                                                                                            ; On           ;    ;
+; Rule T101: Nodes with more than the specified number of fan-outs                                                                                                                                                                                                                     ; On           ;    ;
+; Rule T102: Top nodes with the highest number of fan-outs                                                                                                                                                                                                                             ; On           ;    ;
+; Rule A101: Design should not contain combinational loops                                                                                                                                                                                                                             ; On           ;    ;
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic                                                                                                                                                                           ; On           ;    ;
+; Rule A103: Design should not contain delay chains                                                                                                                                                                                                                                    ; On           ;    ;
+; Rule A104: Design should not contain ripple clock structures                                                                                                                                                                                                                         ; On           ;    ;
+; Rule A105: Pulses should not be implemented asynchronously                                                                                                                                                                                                                           ; On           ;    ;
+; Rule A106: Multiple pulses should not be generated in design                                                                                                                                                                                                                         ; On           ;    ;
+; Rule A107: Design should not contain SR latches                                                                                                                                                                                                                                      ; On           ;    ;
+; Rule A108: Design should not contain latches                                                                                                                                                                                                                                         ; On           ;    ;
+; Rule S101: Output enable and input of the same tri-state node should not be driven by same signal source                                                                                                                                                                             ; On           ;    ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                                                                                                                                ; On           ;    ;
+; Rule S103: More than one asynchronous port of a register should not be driven by the same signal source                                                                                                                                                                              ; On           ;    ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                                                                                                                                                                                ; On           ;    ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains                                                                                                                                                                                        ; On           ;    ;
+; Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain                                                                                                                 ; On           ;    ;
+; Rule D103: Data bits are not correctly synchronized when transferred between asynchronous clock domains                                                                                                                                                                              ; On           ;    ;
+; Rule M101: Data bits are not synchronized when transferred to the state machine of asynchronous clock domains                                                                                                                                                                        ; On           ;    ;
+; Rule M102: No reset signal defined to initialize the state machine                                                                                                                                                                                                                   ; On           ;    ;
+; Rule M103: State machine should not contain an unreachable state                                                                                                                                                                                                                     ; On           ;    ;
+; Rule M104: State machine should not contain a deadlock state                                                                                                                                                                                                                         ; On           ;    ;
+; Rule M105: State machine should not contain a dead transition                                                                                                                                                                                                                        ; On           ;    ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Medium Violations                                                                                                                                                         ;
++----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+; Rule name                                                                                    ; Name                                                                       ;
++----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+; Rule C104: Clock signal source should drive only clock input ports                           ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|clk_div_two:inst9|clk_int    ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|vga_r[0]      ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|vga_r[1]      ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|vga_r[2]      ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|vga_r[3]      ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|vga_r[4]      ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|vga_r[5]      ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|vga_r[6]      ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|vga_r[7]      ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|vga_r[8]      ;
+;  Clock ports destination node(s) list                                                        ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|red_out       ;
+; Rule C106: Clock signal source should not drive registers triggered by different clock edges ; f_div:inst1|clkout                                                         ;
+;  Positive edge destination node(s) list                                                      ; keytest_h_v2:keytest|new_code_int                                          ;
+;  Positive edge destination node(s) list                                                      ; keytest_h_v2:keytest|keycode_int[1]                                        ;
+;  Positive edge destination node(s) list                                                      ; keytest_h_v2:keytest|keycode_int[0]                                        ;
+;  Positive edge destination node(s) list                                                      ; keytest_h_v2:keytest|keycode_int[2]                                        ;
+;  Positive edge destination node(s) list                                                      ; keytest_h_v2:keytest|keycode_int[3]                                        ;
+;  Positive edge destination node(s) list                                                      ; keypad:keypad|current_state.kra3                                           ;
+;  Positive edge destination node(s) list                                                      ; keypad:keypad|current_state.kra2                                           ;
+;  Positive edge destination node(s) list                                                      ; keypad:keypad|current_state.kra1                                           ;
+;  Positive edge destination node(s) list                                                      ; keypad:keypad|current_state.kra0                                           ;
+;  Positive edge destination node(s) list                                                      ; keypad:keypad|current_state.wait0                                          ;
+;  Negative edge destination node(s) list                                                      ; keypad:keypad|colq[1]                                                      ;
+;  Negative edge destination node(s) list                                                      ; keypad:keypad|colq[2]                                                      ;
+;  Negative edge destination node(s) list                                                      ; keypad:keypad|colq[3]                                                      ;
+;  Negative edge destination node(s) list                                                      ; keypad:keypad|colq[0]                                                      ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers        ; KEY[0]                                                                     ;
+;  Reset signal destination node(s) list                                                       ; register_bank:GUESS_CODE|set_DataU[1]                                      ;
+;  Reset signal destination node(s) list                                                       ; register_bank:GUESS_CODE|set_DataT[1]                                      ;
+;  Reset signal destination node(s) list                                                       ; register_bank:GUESS_CODE|set_DataU[2]                                      ;
+;  Reset signal destination node(s) list                                                       ; register_bank:GUESS_CODE|set_DataT[2]                                      ;
+;  Reset signal destination node(s) list                                                       ; register_bank:GUESS_CODE|set_DataH[1]                                      ;
+;  Reset signal destination node(s) list                                                       ; register_bank:GUESS_CODE|set_DataH[2]                                      ;
+;  Reset signal destination node(s) list                                                       ; tx_module:inst17|tx                                                        ;
+;  Reset signal destination node(s) list                                                       ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|square:inst8|st_square.sLG2c ;
+;  Reset signal destination node(s) list                                                       ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|square:inst8|st_square.sLG7c ;
+;  Reset signal destination node(s) list                                                       ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|square:inst8|st_square.sLR0c ;
++----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Information only Violations                                                                                                                                                                                                 ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Rule name                                                        ; Name                                                                                                                                           ; Fan-Out ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Rule T101: Nodes with more than the specified number of fan-outs ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|clk_video:inst3|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk ; 105     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; KEY[0]                                                                                                                                         ; 231     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; clk_video:inst10|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk                                              ; 182     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; OSC_50~clkctrl                                                                                                                                 ; 108     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[0]                                                                                                                                         ; 231     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; clk_video:inst10|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk                                              ; 182     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; OSC_50~clkctrl                                                                                                                                 ; 108     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|clk_video:inst3|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk ; 105     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[8]                                                                     ; 26      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[9]                                                                     ; 26      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[10]                                                                    ; 26      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[11]                                                                    ; 26      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[5]                                                                     ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[3]                                                                     ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[6]                                                                     ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[4]                                                                     ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[7]                                                                     ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[0]                                                                     ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[1]                                                                     ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[2]                                                                     ; 25      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[2]                                                                   ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_row[3]                                                                      ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[5]                                                                   ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_row[5]                                                                      ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[8]                                                                   ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[4]                                                                   ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[9]                                                                   ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[6]                                                                   ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_row[2]                                                                      ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[7]                                                                   ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_row[4]                                                                      ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[3]                                                                   ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|st_write.s3                                                                      ; 18      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[14]                                                                    ; 18      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[13]                                                                    ; 18      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[12]                                                                    ; 18      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|st_write.s6                                                                      ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; f_div:inst1|LessThan0~4                                                                                                                        ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|st_write.s2                                                                      ; 15      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; protocol_rx:inst15|EQ_RECEIVED                                                                                                                 ; 15      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank:USER_CODE|state.get_key                                                                                                          ; 15      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank:GUESS_CODE|state.get_key                                                                                                         ; 15      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; tx_module:inst17|tx_empty                                                                                                                      ; 14      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; UART_RXD                                                                                                                                       ; 14      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; game:game|state.w_fr                                                                                                                           ; 13      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_module2:inst18|bit_count[0]                                                                                                                 ; 13      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; rx_module2:inst18|bit_count[1]                                                                                                                 ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; keytest_h_v2:keytest|keycode_int[1]                                                                                                            ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank:GUESS_CODE|set_DataU[0]~0                                                                                                        ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; keytest_h_v2:keytest|keycode_int[2]                                                                                                            ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; register_bank:USER_CODE|set_DataU[0]~0                                                                                                         ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; keytest_h_v2:keytest|keycode_int[3]                                                                                                            ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; game:game|state.w_tx3                                                                                                                          ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; protocol_tx:inst16|state.pr_w3                                                                                                                 ; 11      ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------+
+; Design Assistant Messages ;
++---------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Design Assistant
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Fri Dec 16 12:52:28 2022
+Info: Command: quartus_drc --read_settings_files=off --write_settings_files=off practice1 -c test
+Warning: (Medium) Rule C104: Clock signal source should drive only clock input ports. Found 1 nodes related to this rule.
+    Warning: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|clk_div_two:inst9|clk_int"
+Warning: (Medium) Rule C106: Clock signal source should not drive registers triggered by different clock edges. Found 1 node(s) related to this rule.
+    Warning: Node  "f_div:inst1|clkout"
+Warning: (Medium) Rule R102: External reset signals should be synchronized using two cascaded registers. Found 1 node(s) related to this rule.
+    Warning: Node  "KEY[0]"
+Info: (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 4 node(s) with highest fan-out.
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|clk_video:inst3|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk"
+    Info: Node  "KEY[0]"
+    Info: Node  "clk_video:inst10|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk"
+    Info: Node  "OSC_50~clkctrl"
+Info: (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
+    Info: Node  "KEY[0]"
+    Info: Node  "clk_video:inst10|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk"
+    Info: Node  "OSC_50~clkctrl"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|clk_video:inst3|clk_video_altclkctrl_6df:clk_video_altclkctrl_6df_component|wire_clkctrl1_outclk"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[8]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[9]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[10]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[11]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[5]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[3]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[6]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[4]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[7]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[0]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[1]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[2]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[2]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_row[3]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[5]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_row[5]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[8]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[4]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[9]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[6]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_row[2]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[7]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_row[4]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|VGA_SYNC:inst2|pixel_column[3]"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|st_write.s3"
+    Info: Node  "I_O_Manager_VGA:inst9|VGA_visualisation:inst1|wr_memory:inst1|address_t[14]"
+    Info: Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info: Design Assistant information: finished post-fitting analysis of current design -- generated 54 information messages and 3 warning messages
+Info: Quartus II Design Assistant was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 203 megabytes
+    Info: Processing ended: Fri Dec 16 12:52:29 2022
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+

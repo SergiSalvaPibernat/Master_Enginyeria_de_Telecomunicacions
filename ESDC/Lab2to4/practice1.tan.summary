@@ -1,0 +1,56 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 4.178 ns
+From           : nrst
+To             : practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[7]
+From Clock     : --
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 10.572 ns
+From           : practice1_3:PLAYER_2|game:inst3|state.w_fr
+To             : OVER_B
+From Clock     : clk
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : 0.140 ns
+From           : keycodeA[2]
+To             : practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[2]
+From Clock     : --
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Clock Setup: 'clk'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 178.16 MHz ( period = 5.613 ns )
+From           : practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3]
+To             : practice1_3:PLAYER_2|game:inst3|state.s0_wait
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

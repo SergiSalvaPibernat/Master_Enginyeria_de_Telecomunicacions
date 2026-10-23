@@ -1,0 +1,641 @@
+Classic Timing Analyzer report for practice1
+Wed Oct 26 16:46:47 2022
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'clk'
+  7. tsu
+  8. tco
+  9. th
+ 10. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                                         ;
++------------------------------+-------+---------------+----------------------------------+-------------------------------------------------------+--------------------------------------------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From                                                  ; To                                                     ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+-------------------------------------------------------+--------------------------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 4.178 ns                         ; nrst                                                  ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[7]      ; --         ; clk      ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 10.572 ns                        ; practice1_3:PLAYER_2|game:inst3|state.w_fr            ; OVER_B                                                 ; clk        ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; 0.140 ns                         ; keycodeA[2]                                           ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[2] ; --         ; clk      ; 0            ;
+; Clock Setup: 'clk'           ; N/A   ; None          ; 178.16 MHz ( period = 5.613 ns ) ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.s0_wait          ; clk        ; clk      ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;                                                       ;                                                        ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+-------------------------------------------------------+--------------------------------------------------------+------------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EP2C35F672C6       ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                                                    ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                                                    ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                                                           ; Near End           ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; clk             ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clk'                                                                                                                                                                                                                                                                                                 ;
++-----------------------------------------+-----------------------------------------------------+-------------------------------------------------------+------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                                                  ; To                                             ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+-------------------------------------------------------+------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 178.16 MHz ( period = 5.613 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 5.400 ns                ;
+; N/A                                     ; 178.16 MHz ( period = 5.613 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 5.400 ns                ;
+; N/A                                     ; 180.96 MHz ( period = 5.526 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 5.313 ns                ;
+; N/A                                     ; 183.15 MHz ( period = 5.460 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 5.242 ns                ;
+; N/A                                     ; 183.15 MHz ( period = 5.460 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 5.242 ns                ;
+; N/A                                     ; 183.22 MHz ( period = 5.458 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 5.240 ns                ;
+; N/A                                     ; 183.22 MHz ( period = 5.458 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 5.240 ns                ;
+; N/A                                     ; 183.39 MHz ( period = 5.453 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 5.240 ns                ;
+; N/A                                     ; 183.45 MHz ( period = 5.451 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 5.238 ns                ;
+; N/A                                     ; 183.49 MHz ( period = 5.450 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 5.237 ns                ;
+; N/A                                     ; 184.81 MHz ( period = 5.411 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 5.195 ns                ;
+; N/A                                     ; 184.81 MHz ( period = 5.411 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 5.195 ns                ;
+; N/A                                     ; 185.32 MHz ( period = 5.396 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 5.180 ns                ;
+; N/A                                     ; 185.32 MHz ( period = 5.396 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 5.180 ns                ;
+; N/A                                     ; 188.50 MHz ( period = 5.305 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 5.088 ns                ;
+; N/A                                     ; 188.50 MHz ( period = 5.305 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 5.088 ns                ;
+; N/A                                     ; 188.61 MHz ( period = 5.302 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 5.084 ns                ;
+; N/A                                     ; 188.64 MHz ( period = 5.301 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 5.083 ns                ;
+; N/A                                     ; 188.68 MHz ( period = 5.300 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 5.082 ns                ;
+; N/A                                     ; 188.71 MHz ( period = 5.299 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 5.081 ns                ;
+; N/A                                     ; 188.79 MHz ( period = 5.297 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 5.079 ns                ;
+; N/A                                     ; 188.86 MHz ( period = 5.295 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 5.077 ns                ;
+; N/A                                     ; 189.07 MHz ( period = 5.289 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 5.076 ns                ;
+; N/A                                     ; 189.07 MHz ( period = 5.289 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 5.076 ns                ;
+; N/A                                     ; 189.50 MHz ( period = 5.277 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 5.035 ns                ;
+; N/A                                     ; 190.37 MHz ( period = 5.253 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 5.037 ns                ;
+; N/A                                     ; 190.40 MHz ( period = 5.252 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 5.036 ns                ;
+; N/A                                     ; 190.55 MHz ( period = 5.248 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 5.032 ns                ;
+; N/A                                     ; 190.91 MHz ( period = 5.238 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 5.022 ns                ;
+; N/A                                     ; 190.95 MHz ( period = 5.237 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 5.021 ns                ;
+; N/A                                     ; 191.09 MHz ( period = 5.233 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 5.017 ns                ;
+; N/A                                     ; 192.05 MHz ( period = 5.207 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.965 ns                ;
+; N/A                                     ; 192.20 MHz ( period = 5.203 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.961 ns                ;
+; N/A                                     ; 192.23 MHz ( period = 5.202 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.989 ns                ;
+; N/A                                     ; 192.68 MHz ( period = 5.190 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.975 ns                ;
+; N/A                                     ; 192.72 MHz ( period = 5.189 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.974 ns                ;
+; N/A                                     ; 192.90 MHz ( period = 5.184 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.966 ns                ;
+; N/A                                     ; 192.90 MHz ( period = 5.184 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.966 ns                ;
+; N/A                                     ; 193.05 MHz ( period = 5.180 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.962 ns                ;
+; N/A                                     ; 193.05 MHz ( period = 5.180 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.962 ns                ;
+; N/A                                     ; 193.24 MHz ( period = 5.175 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.960 ns                ;
+; N/A                                     ; 193.27 MHz ( period = 5.174 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.959 ns                ;
+; N/A                                     ; 193.65 MHz ( period = 5.164 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.951 ns                ;
+; N/A                                     ; 193.65 MHz ( period = 5.164 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.951 ns                ;
+; N/A                                     ; 194.14 MHz ( period = 5.151 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_2|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.909 ns                ;
+; N/A                                     ; 194.29 MHz ( period = 5.147 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.930 ns                ;
+; N/A                                     ; 194.33 MHz ( period = 5.146 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.929 ns                ;
+; N/A                                     ; 194.48 MHz ( period = 5.142 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.925 ns                ;
+; N/A                                     ; 194.78 MHz ( period = 5.134 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.917 ns                ;
+; N/A                                     ; 194.78 MHz ( period = 5.134 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.917 ns                ;
+; N/A                                     ; 194.93 MHz ( period = 5.130 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.912 ns                ;
+; N/A                                     ; 194.93 MHz ( period = 5.130 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.912 ns                ;
+; N/A                                     ; 194.97 MHz ( period = 5.129 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.912 ns                ;
+; N/A                                     ; 194.97 MHz ( period = 5.129 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.912 ns                ;
+; N/A                                     ; 194.97 MHz ( period = 5.129 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.916 ns                ;
+; N/A                                     ; 195.05 MHz ( period = 5.127 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.914 ns                ;
+; N/A                                     ; 195.08 MHz ( period = 5.126 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.913 ns                ;
+; N/A                                     ; 195.20 MHz ( period = 5.123 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.910 ns                ;
+; N/A                                     ; 195.20 MHz ( period = 5.123 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.910 ns                ;
+; N/A                                     ; 195.92 MHz ( period = 5.104 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.890 ns                ;
+; N/A                                     ; 195.92 MHz ( period = 5.104 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.890 ns                ;
+; N/A                                     ; 196.00 MHz ( period = 5.102 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.888 ns                ;
+; N/A                                     ; 196.00 MHz ( period = 5.102 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.888 ns                ;
+; N/A                                     ; 196.27 MHz ( period = 5.095 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.878 ns                ;
+; N/A                                     ; 196.27 MHz ( period = 5.095 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.878 ns                ;
+; N/A                                     ; 196.35 MHz ( period = 5.093 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.876 ns                ;
+; N/A                                     ; 196.35 MHz ( period = 5.093 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.876 ns                ;
+; N/A                                     ; 196.50 MHz ( period = 5.089 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.871 ns                ;
+; N/A                                     ; 196.50 MHz ( period = 5.089 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.871 ns                ;
+; N/A                                     ; 196.97 MHz ( period = 5.077 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.864 ns                ;
+; N/A                                     ; 197.08 MHz ( period = 5.074 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.861 ns                ;
+; N/A                                     ; 197.08 MHz ( period = 5.074 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.861 ns                ;
+; N/A                                     ; 197.16 MHz ( period = 5.072 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.855 ns                ;
+; N/A                                     ; 197.20 MHz ( period = 5.071 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.854 ns                ;
+; N/A                                     ; 197.24 MHz ( period = 5.070 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.853 ns                ;
+; N/A                                     ; 197.28 MHz ( period = 5.069 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.852 ns                ;
+; N/A                                     ; 198.06 MHz ( period = 5.049 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_1|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.831 ns                ;
+; N/A                                     ; 198.14 MHz ( period = 5.047 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_1|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.829 ns                ;
+; N/A                                     ; 198.41 MHz ( period = 5.040 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.797 ns                ;
+; N/A                                     ; 198.53 MHz ( period = 5.037 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.794 ns                ;
+; N/A                                     ; 198.57 MHz ( period = 5.036 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.823 ns                ;
+; N/A                                     ; 198.65 MHz ( period = 5.034 ns )                    ; practice1_3:PLAYER_1|register_bank:inst10|bank_ready  ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.818 ns                ;
+; N/A                                     ; 198.65 MHz ( period = 5.034 ns )                    ; practice1_3:PLAYER_1|register_bank:inst10|bank_ready  ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.818 ns                ;
+; N/A                                     ; 198.77 MHz ( period = 5.031 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.815 ns                ;
+; N/A                                     ; 198.81 MHz ( period = 5.030 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.814 ns                ;
+; N/A                                     ; 198.97 MHz ( period = 5.026 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.808 ns                ;
+; N/A                                     ; 199.00 MHz ( period = 5.025 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.807 ns                ;
+; N/A                                     ; 199.12 MHz ( period = 5.022 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.804 ns                ;
+; N/A                                     ; 199.12 MHz ( period = 5.022 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.779 ns                ;
+; N/A                                     ; 199.16 MHz ( period = 5.021 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.803 ns                ;
+; N/A                                     ; 199.16 MHz ( period = 5.021 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.803 ns                ;
+; N/A                                     ; 199.16 MHz ( period = 5.021 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.808 ns                ;
+; N/A                                     ; 199.16 MHz ( period = 5.021 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.808 ns                ;
+; N/A                                     ; 199.24 MHz ( period = 5.019 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.776 ns                ;
+; N/A                                     ; 199.32 MHz ( period = 5.017 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[2] ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.800 ns                ;
+; N/A                                     ; 199.32 MHz ( period = 5.017 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[2] ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.800 ns                ;
+; N/A                                     ; 199.32 MHz ( period = 5.017 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.799 ns                ;
+; N/A                                     ; 199.32 MHz ( period = 5.017 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.803 ns                ;
+; N/A                                     ; 199.40 MHz ( period = 5.015 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.801 ns                ;
+; N/A                                     ; 199.56 MHz ( period = 5.011 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.797 ns                ;
+; N/A                                     ; 199.56 MHz ( period = 5.011 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.797 ns                ;
+; N/A                                     ; 199.84 MHz ( period = 5.004 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.791 ns                ;
+; N/A                                     ; 199.92 MHz ( period = 5.002 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.789 ns                ;
+; N/A                                     ; 199.96 MHz ( period = 5.001 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.788 ns                ;
+; N/A                                     ; 200.00 MHz ( period = 5.000 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.784 ns                ;
+; N/A                                     ; 200.00 MHz ( period = 5.000 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.758 ns                ;
+; N/A                                     ; 200.12 MHz ( period = 4.997 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.755 ns                ;
+; N/A                                     ; 200.16 MHz ( period = 4.996 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.783 ns                ;
+; N/A                                     ; 200.16 MHz ( period = 4.996 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.783 ns                ;
+; N/A                                     ; 200.16 MHz ( period = 4.996 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.753 ns                ;
+; N/A                                     ; 200.52 MHz ( period = 4.987 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.774 ns                ;
+; N/A                                     ; 200.60 MHz ( period = 4.985 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.769 ns                ;
+; N/A                                     ; 200.88 MHz ( period = 4.978 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.735 ns                ;
+; N/A                                     ; 200.96 MHz ( period = 4.976 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.759 ns                ;
+; N/A                                     ; 201.01 MHz ( period = 4.975 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.758 ns                ;
+; N/A                                     ; 201.13 MHz ( period = 4.972 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.754 ns                ;
+; N/A                                     ; 201.13 MHz ( period = 4.972 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.729 ns                ;
+; N/A                                     ; 201.17 MHz ( period = 4.971 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.754 ns                ;
+; N/A                                     ; 201.17 MHz ( period = 4.971 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.754 ns                ;
+; N/A                                     ; 201.17 MHz ( period = 4.971 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.753 ns                ;
+; N/A                                     ; 201.21 MHz ( period = 4.970 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.753 ns                ;
+; N/A                                     ; 201.33 MHz ( period = 4.967 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.749 ns                ;
+; N/A                                     ; 201.37 MHz ( period = 4.966 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.749 ns                ;
+; N/A                                     ; 201.49 MHz ( period = 4.963 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.750 ns                ;
+; N/A                                     ; 201.57 MHz ( period = 4.961 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.748 ns                ;
+; N/A                                     ; 201.61 MHz ( period = 4.960 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.747 ns                ;
+; N/A                                     ; 201.78 MHz ( period = 4.956 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.714 ns                ;
+; N/A                                     ; 201.86 MHz ( period = 4.954 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.711 ns                ;
+; N/A                                     ; 201.90 MHz ( period = 4.953 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_2|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.711 ns                ;
+; N/A                                     ; 202.06 MHz ( period = 4.949 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.735 ns                ;
+; N/A                                     ; 202.06 MHz ( period = 4.949 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.735 ns                ;
+; N/A                                     ; 202.14 MHz ( period = 4.947 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.704 ns                ;
+; N/A                                     ; 202.22 MHz ( period = 4.945 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[1]        ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.732 ns                ;
+; N/A                                     ; 202.22 MHz ( period = 4.945 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[1]        ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.732 ns                ;
+; N/A                                     ; 202.27 MHz ( period = 4.944 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.701 ns                ;
+; N/A                                     ; 202.27 MHz ( period = 4.944 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.730 ns                ;
+; N/A                                     ; 202.35 MHz ( period = 4.942 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.728 ns                ;
+; N/A                                     ; 202.35 MHz ( period = 4.942 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.728 ns                ;
+; N/A                                     ; 202.39 MHz ( period = 4.941 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.727 ns                ;
+; N/A                                     ; 202.43 MHz ( period = 4.940 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.726 ns                ;
+; N/A                                     ; 202.47 MHz ( period = 4.939 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[0]        ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.725 ns                ;
+; N/A                                     ; 202.68 MHz ( period = 4.934 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[2]        ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.721 ns                ;
+; N/A                                     ; 202.68 MHz ( period = 4.934 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.721 ns                ;
+; N/A                                     ; 202.68 MHz ( period = 4.934 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[2]        ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.721 ns                ;
+; N/A                                     ; 202.76 MHz ( period = 4.932 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.717 ns                ;
+; N/A                                     ; 202.76 MHz ( period = 4.932 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.690 ns                ;
+; N/A                                     ; 202.80 MHz ( period = 4.931 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.713 ns                ;
+; N/A                                     ; 202.80 MHz ( period = 4.931 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_1|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.716 ns                ;
+; N/A                                     ; 202.84 MHz ( period = 4.930 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.712 ns                ;
+; N/A                                     ; 203.00 MHz ( period = 4.926 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.708 ns                ;
+; N/A                                     ; 203.09 MHz ( period = 4.924 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.710 ns                ;
+; N/A                                     ; 203.13 MHz ( period = 4.923 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataT[2]        ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.706 ns                ;
+; N/A                                     ; 203.13 MHz ( period = 4.923 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataT[2]        ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.706 ns                ;
+; N/A                                     ; 203.38 MHz ( period = 4.917 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.701 ns                ;
+; N/A                                     ; 203.42 MHz ( period = 4.916 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.700 ns                ;
+; N/A                                     ; 203.50 MHz ( period = 4.914 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.701 ns                ;
+; N/A                                     ; 203.54 MHz ( period = 4.913 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_1|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.697 ns                ;
+; N/A                                     ; 203.58 MHz ( period = 4.912 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_1|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.696 ns                ;
+; N/A                                     ; 203.58 MHz ( period = 4.912 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.699 ns                ;
+; N/A                                     ; 203.62 MHz ( period = 4.911 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[0] ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.698 ns                ;
+; N/A                                     ; 203.71 MHz ( period = 4.909 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.696 ns                ;
+; N/A                                     ; 203.75 MHz ( period = 4.908 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_1|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.692 ns                ;
+; N/A                                     ; 203.79 MHz ( period = 4.907 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[3] ; practice1_3:PLAYER_1|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.691 ns                ;
+; N/A                                     ; 203.96 MHz ( period = 4.903 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.660 ns                ;
+; N/A                                     ; 204.33 MHz ( period = 4.894 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_1|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.677 ns                ;
+; N/A                                     ; 204.42 MHz ( period = 4.892 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[2] ; practice1_3:PLAYER_2|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.679 ns                ;
+; N/A                                     ; 204.42 MHz ( period = 4.892 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[2] ; practice1_3:PLAYER_2|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.679 ns                ;
+; N/A                                     ; 204.67 MHz ( period = 4.886 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.644 ns                ;
+; N/A                                     ; 204.79 MHz ( period = 4.883 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.641 ns                ;
+; N/A                                     ; 204.79 MHz ( period = 4.883 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_2|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.641 ns                ;
+; N/A                                     ; 204.96 MHz ( period = 4.879 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[1] ; practice1_3:PLAYER_2|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.637 ns                ;
+; N/A                                     ; 204.96 MHz ( period = 4.879 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.636 ns                ;
+; N/A                                     ; 205.09 MHz ( period = 4.876 ns )                    ; practice1_3:PLAYER_1|register_bank:inst10|bank_ready  ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.660 ns                ;
+; N/A                                     ; 205.13 MHz ( period = 4.875 ns )                    ; practice1_3:PLAYER_1|register_bank:inst10|bank_ready  ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.659 ns                ;
+; N/A                                     ; 205.30 MHz ( period = 4.871 ns )                    ; practice1_3:PLAYER_1|register_bank:inst10|bank_ready  ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.655 ns                ;
+; N/A                                     ; 205.47 MHz ( period = 4.867 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[3] ; practice1_3:PLAYER_1|game:inst3|state.s0_wait  ; clk        ; clk      ; None                        ; None                      ; 4.650 ns                ;
+; N/A                                     ; 205.47 MHz ( period = 4.867 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[3] ; practice1_3:PLAYER_1|game:inst3|state.code     ; clk        ; clk      ; None                        ; None                      ; 4.650 ns                ;
+; N/A                                     ; 205.51 MHz ( period = 4.866 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.651 ns                ;
+; N/A                                     ; 205.55 MHz ( period = 4.865 ns )                    ; practice1_3:PLAYER_1|protocol_rx:inst|dataU[3]        ; practice1_3:PLAYER_1|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.650 ns                ;
+; N/A                                     ; 205.68 MHz ( period = 4.862 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.648 ns                ;
+; N/A                                     ; 205.72 MHz ( period = 4.861 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.648 ns                ;
+; N/A                                     ; 205.80 MHz ( period = 4.859 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[2] ; practice1_3:PLAYER_1|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.642 ns                ;
+; N/A                                     ; 205.80 MHz ( period = 4.859 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_2|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.617 ns                ;
+; N/A                                     ; 205.80 MHz ( period = 4.859 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.646 ns                ;
+; N/A                                     ; 205.85 MHz ( period = 4.858 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[2] ; practice1_3:PLAYER_1|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.641 ns                ;
+; N/A                                     ; 205.85 MHz ( period = 4.858 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[1]        ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.645 ns                ;
+; N/A                                     ; 205.85 MHz ( period = 4.858 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[0]        ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.645 ns                ;
+; N/A                                     ; 205.93 MHz ( period = 4.856 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[0] ; practice1_3:PLAYER_2|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.614 ns                ;
+; N/A                                     ; 206.02 MHz ( period = 4.854 ns )                    ; practice1_3:PLAYER_1|register_bank:inst9|set_DataT[2] ; practice1_3:PLAYER_1|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.637 ns                ;
+; N/A                                     ; 206.14 MHz ( period = 4.851 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.637 ns                ;
+; N/A                                     ; 206.23 MHz ( period = 4.849 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.635 ns                ;
+; N/A                                     ; 206.27 MHz ( period = 4.848 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[1]        ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.634 ns                ;
+; N/A                                     ; 206.31 MHz ( period = 4.847 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataT[2]        ; practice1_3:PLAYER_2|game:inst3|state.s_GRorSM ; clk        ; clk      ; None                        ; None                      ; 4.634 ns                ;
+; N/A                                     ; 206.53 MHz ( period = 4.842 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.fr_r     ; clk        ; clk      ; None                        ; None                      ; 4.600 ns                ;
+; N/A                                     ; 206.78 MHz ( period = 4.836 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_2|game:inst3|state.w_tx1    ; clk        ; clk      ; None                        ; None                      ; 4.623 ns                ;
+; N/A                                     ; 206.87 MHz ( period = 4.834 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_2|game:inst3|state.w_tx2    ; clk        ; clk      ; None                        ; None                      ; 4.621 ns                ;
+; N/A                                     ; 206.91 MHz ( period = 4.833 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataT[1] ; practice1_3:PLAYER_2|game:inst3|state.w_fr     ; clk        ; clk      ; None                        ; None                      ; 4.620 ns                ;
+; N/A                                     ; 207.08 MHz ( period = 4.829 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_2|game:inst3|state.s_rdy    ; clk        ; clk      ; None                        ; None                      ; 4.586 ns                ;
+; N/A                                     ; 207.13 MHz ( period = 4.828 ns )                    ; practice1_3:PLAYER_2|register_bank:inst9|set_DataU[2] ; practice1_3:PLAYER_2|game:inst3|state.s_eq     ; clk        ; clk      ; None                        ; None                      ; 4.586 ns                ;
+; N/A                                     ; 207.21 MHz ( period = 4.826 ns )                    ; practice1_3:PLAYER_2|protocol_rx:inst|dataU[2]        ; practice1_3:PLAYER_2|game:inst3|state.s_dt     ; clk        ; clk      ; None                        ; None                      ; 4.583 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                                       ;                                                ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+-------------------------------------------------------+------------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; tsu                                                                                                                 ;
++-------+--------------+------------+-------------+--------------------------------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From        ; To                                                     ; To Clock ;
++-------+--------------+------------+-------------+--------------------------------------------------------+----------+
+; N/A   ; None         ; 4.178 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[6]      ; clk      ;
+; N/A   ; None         ; 4.178 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[7]      ; clk      ;
+; N/A   ; None         ; 4.123 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[2]      ; clk      ;
+; N/A   ; None         ; 4.123 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[1]      ; clk      ;
+; N/A   ; None         ; 3.948 ns   ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[3] ; clk      ;
+; N/A   ; None         ; 3.948 ns   ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[2] ; clk      ;
+; N/A   ; None         ; 3.948 ns   ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[1] ; clk      ;
+; N/A   ; None         ; 3.797 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[6]      ; clk      ;
+; N/A   ; None         ; 3.797 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[7]      ; clk      ;
+; N/A   ; None         ; 3.756 ns   ; keycodeB[3] ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[3] ; clk      ;
+; N/A   ; None         ; 3.709 ns   ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[0] ; clk      ;
+; N/A   ; None         ; 3.667 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[3]      ; clk      ;
+; N/A   ; None         ; 3.667 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[0]      ; clk      ;
+; N/A   ; None         ; 3.610 ns   ; keycodeB[2] ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[2] ; clk      ;
+; N/A   ; None         ; 3.544 ns   ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|new_code_int   ; clk      ;
+; N/A   ; None         ; 3.500 ns   ; keycodeB[1] ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[1] ; clk      ;
+; N/A   ; None         ; 3.474 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[1]       ; clk      ;
+; N/A   ; None         ; 3.474 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[5]       ; clk      ;
+; N/A   ; None         ; 3.451 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[2]       ; clk      ;
+; N/A   ; None         ; 3.423 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[7]       ; clk      ;
+; N/A   ; None         ; 3.355 ns   ; keycodeA[0] ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[0] ; clk      ;
+; N/A   ; None         ; 3.354 ns   ; keycodeB[0] ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[0] ; clk      ;
+; N/A   ; None         ; 3.326 ns   ; keycodeA[3] ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[3] ; clk      ;
+; N/A   ; None         ; 3.318 ns   ; keycodeA[1] ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[1] ; clk      ;
+; N/A   ; None         ; 3.292 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[0]       ; clk      ;
+; N/A   ; None         ; 3.287 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[2]      ; clk      ;
+; N/A   ; None         ; 3.287 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[3]      ; clk      ;
+; N/A   ; None         ; 3.287 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[1]      ; clk      ;
+; N/A   ; None         ; 3.287 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[0]      ; clk      ;
+; N/A   ; None         ; 3.281 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[6]       ; clk      ;
+; N/A   ; None         ; 3.278 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[3]       ; clk      ;
+; N/A   ; None         ; 3.275 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[4]       ; clk      ;
+; N/A   ; None         ; 2.666 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|bit_count[0]     ; clk      ;
+; N/A   ; None         ; 2.666 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|bit_count[1]     ; clk      ;
+; N/A   ; None         ; 2.666 ns   ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|bit_count[2]     ; clk      ;
+; N/A   ; None         ; 2.654 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[2]       ; clk      ;
+; N/A   ; None         ; 2.584 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[2]    ; clk      ;
+; N/A   ; None         ; 2.584 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[1]    ; clk      ;
+; N/A   ; None         ; 2.584 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[4]    ; clk      ;
+; N/A   ; None         ; 2.584 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[5]    ; clk      ;
+; N/A   ; None         ; 2.584 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[7]    ; clk      ;
+; N/A   ; None         ; 2.584 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[3]    ; clk      ;
+; N/A   ; None         ; 2.584 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[6]    ; clk      ;
+; N/A   ; None         ; 2.584 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[0]    ; clk      ;
+; N/A   ; None         ; 2.565 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[2]    ; clk      ;
+; N/A   ; None         ; 2.565 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[1]    ; clk      ;
+; N/A   ; None         ; 2.565 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[5]    ; clk      ;
+; N/A   ; None         ; 2.565 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[4]    ; clk      ;
+; N/A   ; None         ; 2.565 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[0]    ; clk      ;
+; N/A   ; None         ; 2.565 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[6]    ; clk      ;
+; N/A   ; None         ; 2.565 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[3]    ; clk      ;
+; N/A   ; None         ; 2.565 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[7]    ; clk      ;
+; N/A   ; None         ; 2.385 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[5]       ; clk      ;
+; N/A   ; None         ; 2.381 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[6]       ; clk      ;
+; N/A   ; None         ; 2.374 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[0]       ; clk      ;
+; N/A   ; None         ; 2.372 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[4]       ; clk      ;
+; N/A   ; None         ; 2.370 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[7]       ; clk      ;
+; N/A   ; None         ; 2.329 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[1]       ; clk      ;
+; N/A   ; None         ; 2.225 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[3]       ; clk      ;
+; N/A   ; None         ; 2.019 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|bit_count[2]     ; clk      ;
+; N/A   ; None         ; 2.019 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|bit_count[0]     ; clk      ;
+; N/A   ; None         ; 2.019 ns   ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|bit_count[1]     ; clk      ;
+; N/A   ; None         ; 1.694 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[6]   ; clk      ;
+; N/A   ; None         ; 1.694 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[7]   ; clk      ;
+; N/A   ; None         ; 1.694 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[2]   ; clk      ;
+; N/A   ; None         ; 1.694 ns   ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[1]   ; clk      ;
+; N/A   ; None         ; 1.405 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[6]   ; clk      ;
+; N/A   ; None         ; 1.405 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[2]   ; clk      ;
+; N/A   ; None         ; 1.405 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[1]   ; clk      ;
+; N/A   ; None         ; 1.405 ns   ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[7]   ; clk      ;
+; N/A   ; None         ; 1.221 ns   ; nrst        ; practice1_3:PLAYER_2|tx_module:inst6|bit_count[0]      ; clk      ;
+; N/A   ; None         ; 1.221 ns   ; nrst        ; practice1_3:PLAYER_2|tx_module:inst6|bit_count[2]      ; clk      ;
+; N/A   ; None         ; 1.221 ns   ; nrst        ; practice1_3:PLAYER_2|tx_module:inst6|bit_count[1]      ; clk      ;
+; N/A   ; None         ; 1.161 ns   ; nrst        ; practice1_3:PLAYER_1|tx_module:inst6|bit_count[0]      ; clk      ;
+; N/A   ; None         ; 1.161 ns   ; nrst        ; practice1_3:PLAYER_1|tx_module:inst6|bit_count[2]      ; clk      ;
+; N/A   ; None         ; 1.161 ns   ; nrst        ; practice1_3:PLAYER_1|tx_module:inst6|bit_count[1]      ; clk      ;
+; N/A   ; None         ; 0.712 ns   ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[0] ; clk      ;
+; N/A   ; None         ; 0.712 ns   ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[2] ; clk      ;
+; N/A   ; None         ; 0.712 ns   ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[3] ; clk      ;
+; N/A   ; None         ; 0.712 ns   ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[1] ; clk      ;
+; N/A   ; None         ; 0.335 ns   ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|new_code_int   ; clk      ;
+; N/A   ; None         ; 0.090 ns   ; keycodeA[2] ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[2] ; clk      ;
++-------+--------------+------------+-------------+--------------------------------------------------------+----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; tco                                                                                                                     ;
++-------+--------------+------------+---------------------------------------------------+--------------------+------------+
+; Slack ; Required tco ; Actual tco ; From                                              ; To                 ; From Clock ;
++-------+--------------+------------+---------------------------------------------------+--------------------+------------+
+; N/A   ; None         ; 10.572 ns  ; practice1_3:PLAYER_2|game:inst3|state.w_fr        ; OVER_B             ; clk        ;
+; N/A   ; None         ; 10.324 ns  ; practice1_3:PLAYER_2|game:inst3|state.w_fr2       ; OVER_B             ; clk        ;
+; N/A   ; None         ; 10.173 ns  ; practice1_3:PLAYER_2|protocol_rx:inst|EQ_RECEIVED ; OVER_B             ; clk        ;
+; N/A   ; None         ; 10.135 ns  ; practice1_3:PLAYER_2|protocol_rx:inst|SM_RECEIVED ; OVER_B             ; clk        ;
+; N/A   ; None         ; 10.013 ns  ; practice1_3:PLAYER_2|protocol_rx:inst|GR_RECEIVED ; OVER_B             ; clk        ;
+; N/A   ; None         ; 9.684 ns   ; practice1_3:PLAYER_2|main:inst1|state.w_game      ; OVER_B             ; clk        ;
+; N/A   ; None         ; 9.552 ns   ; practice1_3:PLAYER_2|game:inst3|state.w_fr2       ; B_LOSES            ; clk        ;
+; N/A   ; None         ; 9.407 ns   ; practice1_3:PLAYER_2|protocol_rx:inst|SM_RECEIVED ; B_LOSES            ; clk        ;
+; N/A   ; None         ; 9.285 ns   ; practice1_3:PLAYER_2|protocol_rx:inst|GR_RECEIVED ; B_LOSES            ; clk        ;
+; N/A   ; None         ; 9.094 ns   ; practice1_3:PLAYER_2|main:inst1|state.s0_wait     ; OVER_B             ; clk        ;
+; N/A   ; None         ; 8.981 ns   ; practice1_3:PLAYER_1|game:inst3|state.w_fr2       ; OVER_A             ; clk        ;
+; N/A   ; None         ; 8.776 ns   ; practice1_3:PLAYER_1|game:inst3|LightS            ; SM_A               ; clk        ;
+; N/A   ; None         ; 8.727 ns   ; practice1_3:PLAYER_1|protocol_rx:inst|GR_RECEIVED ; OVER_A             ; clk        ;
+; N/A   ; None         ; 8.483 ns   ; practice1_3:PLAYER_1|protocol_rx:inst|EQ_RECEIVED ; OVER_A             ; clk        ;
+; N/A   ; None         ; 8.448 ns   ; practice1_3:PLAYER_1|protocol_rx:inst|SM_RECEIVED ; OVER_A             ; clk        ;
+; N/A   ; None         ; 8.337 ns   ; practice1_3:PLAYER_1|game:inst3|state.w_fr        ; OVER_A             ; clk        ;
+; N/A   ; None         ; 8.078 ns   ; practice1_3:PLAYER_2|game:inst3|state.code        ; Enter_Guess_code_B ; clk        ;
+; N/A   ; None         ; 7.799 ns   ; practice1_3:PLAYER_1|protocol_rx:inst|EQ_RECEIVED ; TIE_A              ; clk        ;
+; N/A   ; None         ; 7.765 ns   ; practice1_3:PLAYER_2|game:inst3|state.w_fr2       ; TIE_B              ; clk        ;
+; N/A   ; None         ; 7.651 ns   ; practice1_3:PLAYER_1|main:inst1|state.w_game      ; OVER_A             ; clk        ;
+; N/A   ; None         ; 7.644 ns   ; practice1_3:PLAYER_1|game:inst3|state.w_fr2       ; TIE_A              ; clk        ;
+; N/A   ; None         ; 7.453 ns   ; practice1_3:PLAYER_2|game:inst3|state.w_fr        ; B_WINS             ; clk        ;
+; N/A   ; None         ; 7.424 ns   ; practice1_3:PLAYER_2|game:inst3|state.w_code      ; Enter_Guess_code_B ; clk        ;
+; N/A   ; None         ; 7.397 ns   ; practice1_3:PLAYER_1|game:inst3|state.w_fr2       ; A_LOSES            ; clk        ;
+; N/A   ; None         ; 7.373 ns   ; practice1_3:PLAYER_1|protocol_rx:inst|EQ_RECEIVED ; A_WINS             ; clk        ;
+; N/A   ; None         ; 7.331 ns   ; practice1_3:PLAYER_2|main:inst1|state.w_code      ; ENTER_CODE_B       ; clk        ;
+; N/A   ; None         ; 7.320 ns   ; practice1_3:PLAYER_1|game:inst3|state.code        ; Enter_Guess_code_A ; clk        ;
+; N/A   ; None         ; 7.305 ns   ; practice1_3:PLAYER_2|protocol_rx:inst|EQ_RECEIVED ; TIE_B              ; clk        ;
+; N/A   ; None         ; 7.266 ns   ; practice1_3:PLAYER_1|game:inst3|state.w_fr        ; A_WINS             ; clk        ;
+; N/A   ; None         ; 7.143 ns   ; practice1_3:PLAYER_1|protocol_rx:inst|GR_RECEIVED ; A_LOSES            ; clk        ;
+; N/A   ; None         ; 7.117 ns   ; practice1_3:PLAYER_1|main:inst1|state.w_code      ; ENTER_CODE_A       ; clk        ;
+; N/A   ; None         ; 7.054 ns   ; practice1_3:PLAYER_2|protocol_rx:inst|EQ_RECEIVED ; B_WINS             ; clk        ;
+; N/A   ; None         ; 7.046 ns   ; practice1_3:PLAYER_2|main:inst1|state.enter_code  ; ENTER_CODE_B       ; clk        ;
+; N/A   ; None         ; 6.961 ns   ; practice1_3:PLAYER_1|game:inst3|state.w_code      ; Enter_Guess_code_A ; clk        ;
+; N/A   ; None         ; 6.958 ns   ; practice1_3:PLAYER_1|main:inst1|state.enter_code  ; ENTER_CODE_A       ; clk        ;
+; N/A   ; None         ; 6.875 ns   ; practice1_3:PLAYER_2|tx_module:inst6|tx           ; TX_B               ; clk        ;
+; N/A   ; None         ; 6.864 ns   ; practice1_3:PLAYER_1|protocol_rx:inst|SM_RECEIVED ; A_LOSES            ; clk        ;
+; N/A   ; None         ; 6.821 ns   ; practice1_3:PLAYER_1|main:inst1|state.s0_wait     ; OVER_A             ; clk        ;
+; N/A   ; None         ; 6.642 ns   ; practice1_3:PLAYER_2|game:inst3|LightG            ; GR_B               ; clk        ;
+; N/A   ; None         ; 6.622 ns   ; practice1_3:PLAYER_1|tx_module:inst6|tx           ; TX_A               ; clk        ;
+; N/A   ; None         ; 6.423 ns   ; practice1_3:PLAYER_1|game:inst3|LightG            ; GR_A               ; clk        ;
+; N/A   ; None         ; 6.419 ns   ; practice1_3:PLAYER_2|game:inst3|LightS            ; SM_B               ; clk        ;
++-------+--------------+------------+---------------------------------------------------+--------------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; th                                                                                                                        ;
++---------------+-------------+-----------+-------------+--------------------------------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From        ; To                                                     ; To Clock ;
++---------------+-------------+-----------+-------------+--------------------------------------------------------+----------+
+; N/A           ; None        ; 0.140 ns  ; keycodeA[2] ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[2] ; clk      ;
+; N/A           ; None        ; -0.105 ns ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|new_code_int   ; clk      ;
+; N/A           ; None        ; -0.482 ns ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[0] ; clk      ;
+; N/A           ; None        ; -0.482 ns ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[2] ; clk      ;
+; N/A           ; None        ; -0.482 ns ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[3] ; clk      ;
+; N/A           ; None        ; -0.482 ns ; keyA        ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[1] ; clk      ;
+; N/A           ; None        ; -0.931 ns ; nrst        ; practice1_3:PLAYER_1|tx_module:inst6|bit_count[0]      ; clk      ;
+; N/A           ; None        ; -0.931 ns ; nrst        ; practice1_3:PLAYER_1|tx_module:inst6|bit_count[2]      ; clk      ;
+; N/A           ; None        ; -0.931 ns ; nrst        ; practice1_3:PLAYER_1|tx_module:inst6|bit_count[1]      ; clk      ;
+; N/A           ; None        ; -0.991 ns ; nrst        ; practice1_3:PLAYER_2|tx_module:inst6|bit_count[0]      ; clk      ;
+; N/A           ; None        ; -0.991 ns ; nrst        ; practice1_3:PLAYER_2|tx_module:inst6|bit_count[2]      ; clk      ;
+; N/A           ; None        ; -0.991 ns ; nrst        ; practice1_3:PLAYER_2|tx_module:inst6|bit_count[1]      ; clk      ;
+; N/A           ; None        ; -1.175 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[6]   ; clk      ;
+; N/A           ; None        ; -1.175 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[2]   ; clk      ;
+; N/A           ; None        ; -1.175 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[1]   ; clk      ;
+; N/A           ; None        ; -1.175 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[7]   ; clk      ;
+; N/A           ; None        ; -1.464 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[6]   ; clk      ;
+; N/A           ; None        ; -1.464 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[7]   ; clk      ;
+; N/A           ; None        ; -1.464 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[2]   ; clk      ;
+; N/A           ; None        ; -1.464 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[1]   ; clk      ;
+; N/A           ; None        ; -1.789 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|bit_count[2]     ; clk      ;
+; N/A           ; None        ; -1.789 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|bit_count[0]     ; clk      ;
+; N/A           ; None        ; -1.789 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|bit_count[1]     ; clk      ;
+; N/A           ; None        ; -1.995 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[3]       ; clk      ;
+; N/A           ; None        ; -2.099 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[1]       ; clk      ;
+; N/A           ; None        ; -2.140 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[7]       ; clk      ;
+; N/A           ; None        ; -2.142 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[4]       ; clk      ;
+; N/A           ; None        ; -2.144 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[0]       ; clk      ;
+; N/A           ; None        ; -2.151 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[6]       ; clk      ;
+; N/A           ; None        ; -2.155 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[5]       ; clk      ;
+; N/A           ; None        ; -2.335 ns ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[2]    ; clk      ;
+; N/A           ; None        ; -2.335 ns ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[1]    ; clk      ;
+; N/A           ; None        ; -2.335 ns ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[5]    ; clk      ;
+; N/A           ; None        ; -2.335 ns ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[4]    ; clk      ;
+; N/A           ; None        ; -2.335 ns ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[0]    ; clk      ;
+; N/A           ; None        ; -2.335 ns ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[6]    ; clk      ;
+; N/A           ; None        ; -2.335 ns ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[3]    ; clk      ;
+; N/A           ; None        ; -2.335 ns ; nrst        ; practice1_3:PLAYER_2|protocol_rx:inst|frame_type[7]    ; clk      ;
+; N/A           ; None        ; -2.354 ns ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[2]    ; clk      ;
+; N/A           ; None        ; -2.354 ns ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[1]    ; clk      ;
+; N/A           ; None        ; -2.354 ns ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[4]    ; clk      ;
+; N/A           ; None        ; -2.354 ns ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[5]    ; clk      ;
+; N/A           ; None        ; -2.354 ns ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[7]    ; clk      ;
+; N/A           ; None        ; -2.354 ns ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[3]    ; clk      ;
+; N/A           ; None        ; -2.354 ns ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[6]    ; clk      ;
+; N/A           ; None        ; -2.354 ns ; nrst        ; practice1_3:PLAYER_1|protocol_rx:inst|frame_type[0]    ; clk      ;
+; N/A           ; None        ; -2.424 ns ; nrst        ; practice1_3:PLAYER_1|rx_module2:inst4|rx_data[2]       ; clk      ;
+; N/A           ; None        ; -2.436 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|bit_count[0]     ; clk      ;
+; N/A           ; None        ; -2.436 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|bit_count[1]     ; clk      ;
+; N/A           ; None        ; -2.436 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|bit_count[2]     ; clk      ;
+; N/A           ; None        ; -3.045 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[4]       ; clk      ;
+; N/A           ; None        ; -3.048 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[3]       ; clk      ;
+; N/A           ; None        ; -3.051 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[6]       ; clk      ;
+; N/A           ; None        ; -3.057 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[2]      ; clk      ;
+; N/A           ; None        ; -3.057 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[3]      ; clk      ;
+; N/A           ; None        ; -3.057 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[1]      ; clk      ;
+; N/A           ; None        ; -3.057 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[0]      ; clk      ;
+; N/A           ; None        ; -3.062 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[0]       ; clk      ;
+; N/A           ; None        ; -3.088 ns ; keycodeA[1] ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[1] ; clk      ;
+; N/A           ; None        ; -3.096 ns ; keycodeA[3] ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[3] ; clk      ;
+; N/A           ; None        ; -3.124 ns ; keycodeB[0] ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[0] ; clk      ;
+; N/A           ; None        ; -3.125 ns ; keycodeA[0] ; practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[0] ; clk      ;
+; N/A           ; None        ; -3.193 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[7]       ; clk      ;
+; N/A           ; None        ; -3.221 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[2]       ; clk      ;
+; N/A           ; None        ; -3.244 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[1]       ; clk      ;
+; N/A           ; None        ; -3.244 ns ; nrst        ; practice1_3:PLAYER_2|rx_module2:inst4|rx_data[5]       ; clk      ;
+; N/A           ; None        ; -3.270 ns ; keycodeB[1] ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[1] ; clk      ;
+; N/A           ; None        ; -3.314 ns ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|new_code_int   ; clk      ;
+; N/A           ; None        ; -3.380 ns ; keycodeB[2] ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[2] ; clk      ;
+; N/A           ; None        ; -3.437 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[3]      ; clk      ;
+; N/A           ; None        ; -3.437 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[0]      ; clk      ;
+; N/A           ; None        ; -3.479 ns ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[0] ; clk      ;
+; N/A           ; None        ; -3.526 ns ; keycodeB[3] ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[3] ; clk      ;
+; N/A           ; None        ; -3.567 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[6]      ; clk      ;
+; N/A           ; None        ; -3.567 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[7]      ; clk      ;
+; N/A           ; None        ; -3.718 ns ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[3] ; clk      ;
+; N/A           ; None        ; -3.718 ns ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[2] ; clk      ;
+; N/A           ; None        ; -3.718 ns ; keyB        ; practice1_3:PLAYER_2|keytest_h_v2:inst2|keycode_int[1] ; clk      ;
+; N/A           ; None        ; -3.893 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[2]      ; clk      ;
+; N/A           ; None        ; -3.893 ns ; nrst        ; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[1]      ; clk      ;
+; N/A           ; None        ; -3.948 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[6]      ; clk      ;
+; N/A           ; None        ; -3.948 ns ; nrst        ; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[7]      ; clk      ;
++---------------+-------------+-----------+-------------+--------------------------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Wed Oct 26 16:46:46 2022
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off practice1 -c practice1 --timing_analysis_only
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "clk" is an undefined clock
+Info: Clock "clk" has Internal fmax of 178.16 MHz between source register "practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3]" and destination register "practice1_3:PLAYER_2|game:inst3|state.code" (period= 5.613 ns)
+    Info: + Longest register to register delay is 5.400 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X30_Y32_N1; Fanout = 4; REG Node = 'practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3]'
+        Info: 2: + IC(1.242 ns) + CELL(0.414 ns) = 1.656 ns; Loc. = LCCOMB_X31_Y32_N8; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|game:inst3|LessThan1~7'
+        Info: 3: + IC(0.000 ns) + CELL(0.071 ns) = 1.727 ns; Loc. = LCCOMB_X31_Y32_N10; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|game:inst3|LessThan1~9'
+        Info: 4: + IC(0.000 ns) + CELL(0.071 ns) = 1.798 ns; Loc. = LCCOMB_X31_Y32_N12; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|game:inst3|LessThan1~11'
+        Info: 5: + IC(0.000 ns) + CELL(0.159 ns) = 1.957 ns; Loc. = LCCOMB_X31_Y32_N14; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|game:inst3|LessThan1~13'
+        Info: 6: + IC(0.000 ns) + CELL(0.071 ns) = 2.028 ns; Loc. = LCCOMB_X31_Y32_N16; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|game:inst3|LessThan1~15'
+        Info: 7: + IC(0.000 ns) + CELL(0.071 ns) = 2.099 ns; Loc. = LCCOMB_X31_Y32_N18; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|game:inst3|LessThan1~17'
+        Info: 8: + IC(0.000 ns) + CELL(0.071 ns) = 2.170 ns; Loc. = LCCOMB_X31_Y32_N20; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|game:inst3|LessThan1~19'
+        Info: 9: + IC(0.000 ns) + CELL(0.071 ns) = 2.241 ns; Loc. = LCCOMB_X31_Y32_N22; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|game:inst3|LessThan1~21'
+        Info: 10: + IC(0.000 ns) + CELL(0.410 ns) = 2.651 ns; Loc. = LCCOMB_X31_Y32_N24; Fanout = 6; COMB Node = 'practice1_3:PLAYER_2|game:inst3|LessThan1~22'
+        Info: 11: + IC(0.278 ns) + CELL(0.437 ns) = 3.366 ns; Loc. = LCCOMB_X31_Y32_N28; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|game:inst3|Selector11~6'
+        Info: 12: + IC(0.450 ns) + CELL(0.149 ns) = 3.965 ns; Loc. = LCCOMB_X32_Y32_N16; Fanout = 5; COMB Node = 'practice1_3:PLAYER_2|game:inst3|Selector11~10'
+        Info: 13: + IC(0.280 ns) + CELL(0.245 ns) = 4.490 ns; Loc. = LCCOMB_X32_Y32_N8; Fanout = 5; COMB Node = 'practice1_3:PLAYER_2|game:inst3|Selector11~12'
+        Info: 14: + IC(0.250 ns) + CELL(0.660 ns) = 5.400 ns; Loc. = LCFF_X32_Y32_N19; Fanout = 7; REG Node = 'practice1_3:PLAYER_2|game:inst3|state.code'
+        Info: Total cell delay = 2.900 ns ( 53.70 % )
+        Info: Total interconnect delay = 2.500 ns ( 46.30 % )
+    Info: - Smallest clock skew is 0.001 ns
+        Info: + Shortest clock path from clock "clk" to destination register is 2.692 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+            Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G3; Fanout = 326; COMB Node = 'clk~clkctrl'
+            Info: 3: + IC(1.038 ns) + CELL(0.537 ns) = 2.692 ns; Loc. = LCFF_X32_Y32_N19; Fanout = 7; REG Node = 'practice1_3:PLAYER_2|game:inst3|state.code'
+            Info: Total cell delay = 1.536 ns ( 57.06 % )
+            Info: Total interconnect delay = 1.156 ns ( 42.94 % )
+        Info: - Longest clock path from clock "clk" to source register is 2.691 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+            Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G3; Fanout = 326; COMB Node = 'clk~clkctrl'
+            Info: 3: + IC(1.037 ns) + CELL(0.537 ns) = 2.691 ns; Loc. = LCFF_X30_Y32_N1; Fanout = 4; REG Node = 'practice1_3:PLAYER_2|register_bank:inst9|set_DataU[3]'
+            Info: Total cell delay = 1.536 ns ( 57.08 % )
+            Info: Total interconnect delay = 1.155 ns ( 42.92 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Micro setup delay of destination is -0.036 ns
+Info: tsu for register "practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[6]" (data pin = "nrst", clock pin = "clk") is 4.178 ns
+    Info: + Longest pin to register delay is 6.887 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P1; Fanout = 23; PIN Node = 'nrst'
+        Info: 2: + IC(2.502 ns) + CELL(0.413 ns) = 3.914 ns; Loc. = LCCOMB_X47_Y34_N24; Fanout = 1; COMB Node = 'practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[3]~4'
+        Info: 3: + IC(0.430 ns) + CELL(0.150 ns) = 4.494 ns; Loc. = LCCOMB_X46_Y34_N18; Fanout = 2; COMB Node = 'practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[3]~5'
+        Info: 4: + IC(0.456 ns) + CELL(0.393 ns) = 5.343 ns; Loc. = LCCOMB_X45_Y34_N6; Fanout = 2; COMB Node = 'practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[7]~9'
+        Info: 5: + IC(0.884 ns) + CELL(0.660 ns) = 6.887 ns; Loc. = LCFF_X50_Y34_N3; Fanout = 1; REG Node = 'practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[6]'
+        Info: Total cell delay = 2.615 ns ( 37.97 % )
+        Info: Total interconnect delay = 4.272 ns ( 62.03 % )
+    Info: + Micro setup delay of destination is -0.036 ns
+    Info: - Shortest clock path from clock "clk" to destination register is 2.673 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+        Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G3; Fanout = 326; COMB Node = 'clk~clkctrl'
+        Info: 3: + IC(1.019 ns) + CELL(0.537 ns) = 2.673 ns; Loc. = LCFF_X50_Y34_N3; Fanout = 1; REG Node = 'practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[6]'
+        Info: Total cell delay = 1.536 ns ( 57.46 % )
+        Info: Total interconnect delay = 1.137 ns ( 42.54 % )
+Info: tco from clock "clk" to destination pin "OVER_B" through register "practice1_3:PLAYER_2|game:inst3|state.w_fr" is 10.572 ns
+    Info: + Longest clock path from clock "clk" to source register is 2.692 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+        Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G3; Fanout = 326; COMB Node = 'clk~clkctrl'
+        Info: 3: + IC(1.038 ns) + CELL(0.537 ns) = 2.692 ns; Loc. = LCFF_X32_Y32_N1; Fanout = 16; REG Node = 'practice1_3:PLAYER_2|game:inst3|state.w_fr'
+        Info: Total cell delay = 1.536 ns ( 57.06 % )
+        Info: Total interconnect delay = 1.156 ns ( 42.94 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Longest register to pin delay is 7.630 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X32_Y32_N1; Fanout = 16; REG Node = 'practice1_3:PLAYER_2|game:inst3|state.w_fr'
+        Info: 2: + IC(0.792 ns) + CELL(0.271 ns) = 1.063 ns; Loc. = LCCOMB_X35_Y32_N12; Fanout = 2; COMB Node = 'practice1_3:PLAYER_2|game:inst3|Light_WIN'
+        Info: 3: + IC(0.270 ns) + CELL(0.437 ns) = 1.770 ns; Loc. = LCCOMB_X35_Y32_N8; Fanout = 5; COMB Node = 'practice1_3:PLAYER_2|main:inst1|game_over~0'
+        Info: 4: + IC(0.903 ns) + CELL(0.149 ns) = 2.822 ns; Loc. = LCCOMB_X27_Y32_N8; Fanout = 1; COMB Node = 'practice1_3:PLAYER_2|main:inst1|game_over'
+        Info: 5: + IC(2.146 ns) + CELL(2.662 ns) = 7.630 ns; Loc. = PIN_D2; Fanout = 0; PIN Node = 'OVER_B'
+        Info: Total cell delay = 3.519 ns ( 46.12 % )
+        Info: Total interconnect delay = 4.111 ns ( 53.88 % )
+Info: th for register "practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[2]" (data pin = "keycodeA[2]", clock pin = "clk") is 0.140 ns
+    Info: + Longest clock path from clock "clk" to destination register is 2.681 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+        Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G3; Fanout = 326; COMB Node = 'clk~clkctrl'
+        Info: 3: + IC(1.027 ns) + CELL(0.537 ns) = 2.681 ns; Loc. = LCFF_X46_Y33_N3; Fanout = 5; REG Node = 'practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[2]'
+        Info: Total cell delay = 1.536 ns ( 57.29 % )
+        Info: Total interconnect delay = 1.145 ns ( 42.71 % )
+    Info: + Micro hold delay of destination is 0.266 ns
+    Info: - Shortest pin to register delay is 2.807 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.979 ns) = 0.979 ns; Loc. = PIN_C13; Fanout = 1; PIN Node = 'keycodeA[2]'
+        Info: 2: + IC(1.462 ns) + CELL(0.366 ns) = 2.807 ns; Loc. = LCFF_X46_Y33_N3; Fanout = 5; REG Node = 'practice1_3:PLAYER_1|keytest_h_v2:inst2|keycode_int[2]'
+        Info: Total cell delay = 1.345 ns ( 47.92 % )
+        Info: Total interconnect delay = 1.462 ns ( 52.08 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 176 megabytes
+    Info: Processing ended: Wed Oct 26 16:46:47 2022
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

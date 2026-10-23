@@ -1,0 +1,355 @@
+Quartus II
+Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+11
+1000
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+rx_module2
+# storage
+db|practice1.(2).cnf
+db|practice1.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+rx_module2.vhd
+cbae78da868f8266ef46f5e95c31b3b7
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+practice1_3:PLAYER_1|rx_module2:inst4
+practice1_3:PLAYER_2|rx_module2:inst4
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+tx_module
+# storage
+db|practice1.(3).cnf
+db|practice1.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+tx_module.vhd
+dc60315030dbc6902a4fc52bb3a071a8
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+practice1_3:PLAYER_1|tx_module:inst6
+practice1_3:PLAYER_2|tx_module:inst6
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+TX_RX_BLOCK
+# storage
+db|practice1.(0).cnf
+db|practice1.(0).cnf
+# case_insensitive
+# source_file
+tx_rx_block.bdf
+5a1936bbe9b36d7687681612a058c4e4
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# macro_sequence
+
+# end
+# entity
+register_bank
+# storage
+db|practice1.(5).cnf
+db|practice1.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+register_bank.vhd
+f24840758821e8dd1ff1f8db8b3841e
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+practice1_3:PLAYER_1|register_bank:inst9
+practice1_3:PLAYER_1|register_bank:inst10
+practice1_3:PLAYER_2|register_bank:inst9
+practice1_3:PLAYER_2|register_bank:inst10
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+main
+# storage
+db|practice1.(8).cnf
+db|practice1.(8).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+main.vhd
+6065c7c6bc63753c3497211ce6cc7ec0
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+practice1_3:PLAYER_1|main:inst1
+practice1_3:PLAYER_2|main:inst1
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+protocol_rx
+# storage
+db|practice1.(4).cnf
+db|practice1.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+protocol_rx.vhd
+b44aeec942749373124aed7a2e33d2d7
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+practice1_3:PLAYER_1|protocol_rx:inst
+practice1_3:PLAYER_2|protocol_rx:inst
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+keytest_h_v2
+# storage
+db|practice1.(7).cnf
+db|practice1.(7).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+keytest_h_v2.vhd
+c1289d9ac8d146adae659c9b954248f
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+practice1_3:PLAYER_1|keytest_h_v2:inst2
+practice1_3:PLAYER_2|keytest_h_v2:inst2
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+protocol_tx
+# storage
+db|practice1.(9).cnf
+db|practice1.(9).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+protocol_tx.vhd
+f35f7eff53b8691333b74be9b73acff
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+practice1_3:PLAYER_1|protocol_tx:inst5
+practice1_3:PLAYER_2|protocol_tx:inst5
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+practice1_3_b
+# storage
+db|practice1.(10).cnf
+db|practice1.(10).cnf
+# case_insensitive
+# source_file
+practice1_3_b.bdf
+c49eaaac7f9c7ba319c81f138d632c7f
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+game
+# storage
+db|practice1.(6).cnf
+db|practice1.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+game.vhd
+81ab5364825a147eb5f26bf9ff8a6742
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+practice1_3:PLAYER_1|game:inst3
+practice1_3:PLAYER_2|game:inst3
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+practice1_3
+# storage
+db|practice1.(1).cnf
+db|practice1.(1).cnf
+# case_insensitive
+# source_file
+practice1_3.bdf
+4b683f58c3f71bed38c9cd83a51a797e
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+practice1_3:PLAYER_1
+practice1_3:PLAYER_2
+}
+# macro_sequence
+
+# end
+# complete
+

@@ -1,0 +1,754 @@
+Analysis & Synthesis report for practice1
+Wed Oct 26 16:46:36 2022
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |practice1_3_b|practice1_3:PLAYER_2|tx_module:inst6|state
+  9. State Machine - |practice1_3_b|practice1_3:PLAYER_2|protocol_tx:inst5|state
+ 10. State Machine - |practice1_3_b|practice1_3:PLAYER_2|rx_module2:inst4|state
+ 11. State Machine - |practice1_3_b|practice1_3:PLAYER_2|protocol_rx:inst|state
+ 12. State Machine - |practice1_3_b|practice1_3:PLAYER_2|game:inst3|state
+ 13. State Machine - |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst10|state
+ 14. State Machine - |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst9|state
+ 15. State Machine - |practice1_3_b|practice1_3:PLAYER_2|main:inst1|state
+ 16. State Machine - |practice1_3_b|practice1_3:PLAYER_1|tx_module:inst6|state
+ 17. State Machine - |practice1_3_b|practice1_3:PLAYER_1|protocol_tx:inst5|state
+ 18. State Machine - |practice1_3_b|practice1_3:PLAYER_1|rx_module2:inst4|state
+ 19. State Machine - |practice1_3_b|practice1_3:PLAYER_1|protocol_rx:inst|state
+ 20. State Machine - |practice1_3_b|practice1_3:PLAYER_1|game:inst3|state
+ 21. State Machine - |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst10|state
+ 22. State Machine - |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst9|state
+ 23. State Machine - |practice1_3_b|practice1_3:PLAYER_1|main:inst1|state
+ 24. Registers Removed During Synthesis
+ 25. General Register Statistics
+ 26. Inverted Register Statistics
+ 27. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 28. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++------------------------------------+----------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Oct 26 16:46:36 2022        ;
+; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
+; Revision Name                      ; practice1                                    ;
+; Top-level Entity Name              ; practice1_3_b                                ;
+; Family                             ; Cyclone II                                   ;
+; Total logic elements               ; 671                                          ;
+;     Total combinational functions  ; 621                                          ;
+;     Dedicated logic registers      ; 326                                          ;
+; Total registers                    ; 326                                          ;
+; Total pins                         ; 30                                           ;
+; Total virtual pins                 ; 0                                            ;
+; Total memory bits                  ; 0                                            ;
+; Embedded Multiplier 9-bit elements ; 0                                            ;
+; Total PLLs                         ; 0                                            ;
++------------------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; practice1_3_b      ; practice1          ;
+; Family name                                                                ; Cyclone II         ; Stratix II         ;
+; Use Generated Physical Constraints File                                    ; Off                ;                    ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; practice1_3.bdf                  ; yes             ; User Block Diagram/Schematic File  ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/practice1_3.bdf   ;
+; protocol_rx.vhd                  ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/protocol_rx.vhd   ;
+; keytest_h_v2.vhd                 ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/keytest_h_v2.vhd  ;
+; protocol_tx.vhd                  ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/protocol_tx.vhd   ;
+; rx_module2.vhd                   ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/rx_module2.vhd    ;
+; tx_module.vhd                    ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/tx_module.vhd     ;
+; register_bank.vhd                ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/register_bank.vhd ;
+; main.vhd                         ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/main.vhd          ;
+; game.vhd                         ; yes             ; User VHDL File                     ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/game.vhd          ;
+; practice1_3_b.bdf                ; yes             ; User Block Diagram/Schematic File  ; G:/La meva unitat/MASTER/0 - Semester 1/ESDC/2 - Laboratory/2 - Sessions 2 to 4 - Deliveries of Design1 (design elaborated in Therory Sessions, Part 1)/LAB2to4/practice1_3_b.bdf ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 671   ;
+;                                             ;       ;
+; Total combinational functions               ; 621   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 279   ;
+;     -- 3 input functions                    ; 202   ;
+;     -- <=2 input functions                  ; 140   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 577   ;
+;     -- arithmetic mode                      ; 44    ;
+;                                             ;       ;
+; Total registers                             ; 326   ;
+;     -- Dedicated logic registers            ; 326   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 30    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 326   ;
+; Total fan-out                               ; 3096  ;
+; Average fan-out                             ; 3.17  ;
++---------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------+--------------+
+; Compilation Hierarchy Node   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                      ; Library Name ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------+--------------+
+; |practice1_3_b               ; 621 (0)           ; 326 (0)      ; 0           ; 0            ; 0       ; 0         ; 30   ; 0            ; |practice1_3_b                                           ; work         ;
+;    |practice1_3:PLAYER_1|    ; 311 (0)           ; 163 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1                      ;              ;
+;       |game:inst3|           ; 98 (98)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1|game:inst3           ; work         ;
+;       |keytest_h_v2:inst2|   ; 3 (3)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1|keytest_h_v2:inst2   ; work         ;
+;       |main:inst1|           ; 13 (13)           ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1|main:inst1           ; work         ;
+;       |protocol_rx:inst|     ; 33 (33)           ; 42 (42)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1|protocol_rx:inst     ; work         ;
+;       |protocol_tx:inst5|    ; 49 (49)           ; 29 (29)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1|protocol_tx:inst5    ; work         ;
+;       |register_bank:inst10| ; 23 (23)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst10 ; work         ;
+;       |register_bank:inst9|  ; 21 (21)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst9  ; work         ;
+;       |rx_module2:inst4|     ; 45 (45)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1|rx_module2:inst4     ; work         ;
+;       |tx_module:inst6|      ; 26 (26)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_1|tx_module:inst6      ; work         ;
+;    |practice1_3:PLAYER_2|    ; 310 (0)           ; 163 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2                      ; work         ;
+;       |game:inst3|           ; 97 (97)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2|game:inst3           ; work         ;
+;       |keytest_h_v2:inst2|   ; 3 (3)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2|keytest_h_v2:inst2   ; work         ;
+;       |main:inst1|           ; 13 (13)           ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2|main:inst1           ; work         ;
+;       |protocol_rx:inst|     ; 33 (33)           ; 42 (42)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2|protocol_rx:inst     ; work         ;
+;       |protocol_tx:inst5|    ; 49 (49)           ; 29 (29)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2|protocol_tx:inst5    ; work         ;
+;       |register_bank:inst10| ; 23 (23)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst10 ; work         ;
+;       |register_bank:inst9|  ; 21 (21)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst9  ; work         ;
+;       |rx_module2:inst4|     ; 45 (45)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2|rx_module2:inst4     ; work         ;
+;       |tx_module:inst6|      ; 26 (26)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |practice1_3_b|practice1_3:PLAYER_2|tx_module:inst6      ; work         ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_2|tx_module:inst6|state        ;
++----------------+---------------+----------------+----------------+---------------+
+; Name           ; state.tx_stop ; state.tx_shift ; state.tx_start ; state.tx_idle ;
++----------------+---------------+----------------+----------------+---------------+
+; state.tx_idle  ; 0             ; 0              ; 0              ; 0             ;
+; state.tx_start ; 0             ; 0              ; 1              ; 1             ;
+; state.tx_shift ; 0             ; 1              ; 0              ; 1             ;
+; state.tx_stop  ; 1             ; 0              ; 0              ; 1             ;
++----------------+---------------+----------------+----------------+---------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_2|protocol_tx:inst5|state                                                                                                                                                                                                                    ;
++---------------------+-----------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+---------------+
+; Name                ; state.pr_set_TX ; state.pr_w5 ; state.pr_s5 ; state.pr_w4 ; state.pr_s4 ; state.pr_w3 ; state.pr_s3 ; state.pr_check_data ; state.pr_w2 ; state.pr_s2 ; state.pr_w1 ; state.pr_s1 ; state.pr_dt ; state.pr_eq ; state.pr_sm ; state.pr_gr ; state.pr_rdy ; state.pr_wait ;
++---------------------+-----------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+---------------+
+; state.pr_wait       ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 0             ;
+; state.pr_rdy        ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ; 1             ;
+; state.pr_gr         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0            ; 1             ;
+; state.pr_sm         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0            ; 1             ;
+; state.pr_eq         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_dt         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s1         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w1         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s2         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w2         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_check_data ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s3         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w3         ; 0               ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s4         ; 0               ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w4         ; 0               ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s5         ; 0               ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w5         ; 0               ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_set_TX     ; 1               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
++---------------------+-----------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+---------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_2|rx_module2:inst4|state       ;
++----------------+---------------+----------------+----------------+---------------+
+; Name           ; state.rx_stop ; state.rx_shift ; state.rx_start ; state.rx_idle ;
++----------------+---------------+----------------+----------------+---------------+
+; state.rx_idle  ; 0             ; 0              ; 0              ; 0             ;
+; state.rx_start ; 0             ; 0              ; 1              ; 1             ;
+; state.rx_shift ; 0             ; 1              ; 0              ; 1             ;
+; state.rx_stop  ; 1             ; 0              ; 0              ; 1             ;
++----------------+---------------+----------------+----------------+---------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_2|protocol_rx:inst|state                                                                                                                                                                                                    ;
++-----------------+---------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------+---------------+---------------+----------------+-----------------+-------------+-------------+-------------+-------------+--------------+
+; Name            ; state.pr_s_dt ; state.pr_r5 ; state.pr_w5 ; state.pr_r4 ; state.pr_w4 ; state.pr_r3 ; state.pr_w3 ; state.pr_s_eq ; state.pr_s_sm ; state.pr_s_gr ; state.pr_s_rdy ; state.pr_f_type ; state.pr_r2 ; state.pr_w2 ; state.pr_r1 ; state.pr_w1 ; state.pr_ini ;
++-----------------+---------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------+---------------+---------------+----------------+-----------------+-------------+-------------+-------------+-------------+--------------+
+; state.pr_ini    ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 0            ;
+; state.pr_w1     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 1           ; 1            ;
+; state.pr_r1     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 1           ; 0           ; 1            ;
+; state.pr_w2     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 1           ; 0           ; 0           ; 1            ;
+; state.pr_r2     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 1           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_f_type ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 1               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_rdy  ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 1              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_gr   ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 1             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_sm   ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 1             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_eq   ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w3     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r3     ; 0             ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w4     ; 0             ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r4     ; 0             ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w5     ; 0             ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r5     ; 0             ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_dt   ; 1             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
++-----------------+---------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------+---------------+---------------+----------------+-----------------+-------------+-------------+-------------+-------------+--------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_2|game:inst3|state                                                                                                                                                             ;
++----------------+-------------+------------+------------+----------------+-------------+------------+------------+------------+-------------+--------------+------------+-------------+-------------+-------------+---------------+
+; Name           ; state.w_fr2 ; state.w_fr ; state.s_eq ; state.s_GRorSM ; state.w_tx3 ; state.fr_r ; state.w_dt ; state.s_dt ; state.w_tx2 ; state.w_code ; state.code ; state.w_rdy ; state.s_rdy ; state.w_tx1 ; state.s0_wait ;
++----------------+-------------+------------+------------+----------------+-------------+------------+------------+------------+-------------+--------------+------------+-------------+-------------+-------------+---------------+
+; state.s0_wait  ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 0             ;
+; state.w_tx1    ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 1           ; 1             ;
+; state.s_rdy    ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 1           ; 0           ; 1             ;
+; state.w_rdy    ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 1           ; 0           ; 0           ; 1             ;
+; state.code     ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 1          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_code   ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 1            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_tx2    ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 1           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.s_dt     ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 1          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_dt     ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 1          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.fr_r     ; 0           ; 0          ; 0          ; 0              ; 0           ; 1          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_tx3    ; 0           ; 0          ; 0          ; 0              ; 1           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.s_GRorSM ; 0           ; 0          ; 0          ; 1              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.s_eq     ; 0           ; 0          ; 1          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_fr     ; 0           ; 1          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_fr2    ; 1           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
++----------------+-------------+------------+------------+----------------+-------------+------------+------------+------------+-------------+--------------+------------+-------------+-------------+-------------+---------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst10|state    ;
++------------------+-------------+---------------+------------------+---------------+
+; Name             ; state.s_end ; state.get_key ; state.w_keypress ; state.s0_wait ;
++------------------+-------------+---------------+------------------+---------------+
+; state.s0_wait    ; 0           ; 0             ; 0                ; 0             ;
+; state.w_keypress ; 0           ; 0             ; 1                ; 1             ;
+; state.get_key    ; 0           ; 1             ; 0                ; 1             ;
+; state.s_end      ; 1           ; 0             ; 0                ; 1             ;
++------------------+-------------+---------------+------------------+---------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst9|state     ;
++------------------+-------------+---------------+------------------+---------------+
+; Name             ; state.s_end ; state.get_key ; state.w_keypress ; state.s0_wait ;
++------------------+-------------+---------------+------------------+---------------+
+; state.s0_wait    ; 0           ; 0             ; 0                ; 0             ;
+; state.w_keypress ; 0           ; 0             ; 1                ; 1             ;
+; state.get_key    ; 0           ; 1             ; 0                ; 1             ;
+; state.s_end      ; 1           ; 0             ; 0                ; 1             ;
++------------------+-------------+---------------+------------------+---------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_2|main:inst1|state                                 ;
++------------------+--------------+------------------+--------------+------------------+---------------+
+; Name             ; state.w_game ; state.start_game ; state.w_code ; state.enter_code ; state.s0_wait ;
++------------------+--------------+------------------+--------------+------------------+---------------+
+; state.s0_wait    ; 0            ; 0                ; 0            ; 0                ; 0             ;
+; state.enter_code ; 0            ; 0                ; 0            ; 1                ; 1             ;
+; state.w_code     ; 0            ; 0                ; 1            ; 0                ; 1             ;
+; state.start_game ; 0            ; 1                ; 0            ; 0                ; 1             ;
+; state.w_game     ; 1            ; 0                ; 0            ; 0                ; 1             ;
++------------------+--------------+------------------+--------------+------------------+---------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_1|tx_module:inst6|state        ;
++----------------+---------------+----------------+----------------+---------------+
+; Name           ; state.tx_stop ; state.tx_shift ; state.tx_start ; state.tx_idle ;
++----------------+---------------+----------------+----------------+---------------+
+; state.tx_idle  ; 0             ; 0              ; 0              ; 0             ;
+; state.tx_start ; 0             ; 0              ; 1              ; 1             ;
+; state.tx_shift ; 0             ; 1              ; 0              ; 1             ;
+; state.tx_stop  ; 1             ; 0              ; 0              ; 1             ;
++----------------+---------------+----------------+----------------+---------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_1|protocol_tx:inst5|state                                                                                                                                                                                                                    ;
++---------------------+-----------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+---------------+
+; Name                ; state.pr_set_TX ; state.pr_w5 ; state.pr_s5 ; state.pr_w4 ; state.pr_s4 ; state.pr_w3 ; state.pr_s3 ; state.pr_check_data ; state.pr_w2 ; state.pr_s2 ; state.pr_w1 ; state.pr_s1 ; state.pr_dt ; state.pr_eq ; state.pr_sm ; state.pr_gr ; state.pr_rdy ; state.pr_wait ;
++---------------------+-----------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+---------------+
+; state.pr_wait       ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 0             ;
+; state.pr_rdy        ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1            ; 1             ;
+; state.pr_gr         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0            ; 1             ;
+; state.pr_sm         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0            ; 1             ;
+; state.pr_eq         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_dt         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s1         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w1         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s2         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w2         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_check_data ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s3         ; 0               ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w3         ; 0               ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s4         ; 0               ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w4         ; 0               ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_s5         ; 0               ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_w5         ; 0               ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
+; state.pr_set_TX     ; 1               ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0                   ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0            ; 1             ;
++---------------------+-----------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+--------------+---------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_1|rx_module2:inst4|state       ;
++----------------+---------------+----------------+----------------+---------------+
+; Name           ; state.rx_stop ; state.rx_shift ; state.rx_start ; state.rx_idle ;
++----------------+---------------+----------------+----------------+---------------+
+; state.rx_idle  ; 0             ; 0              ; 0              ; 0             ;
+; state.rx_start ; 0             ; 0              ; 1              ; 1             ;
+; state.rx_shift ; 0             ; 1              ; 0              ; 1             ;
+; state.rx_stop  ; 1             ; 0              ; 0              ; 1             ;
++----------------+---------------+----------------+----------------+---------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_1|protocol_rx:inst|state                                                                                                                                                                                                    ;
++-----------------+---------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------+---------------+---------------+----------------+-----------------+-------------+-------------+-------------+-------------+--------------+
+; Name            ; state.pr_s_dt ; state.pr_r5 ; state.pr_w5 ; state.pr_r4 ; state.pr_w4 ; state.pr_r3 ; state.pr_w3 ; state.pr_s_eq ; state.pr_s_sm ; state.pr_s_gr ; state.pr_s_rdy ; state.pr_f_type ; state.pr_r2 ; state.pr_w2 ; state.pr_r1 ; state.pr_w1 ; state.pr_ini ;
++-----------------+---------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------+---------------+---------------+----------------+-----------------+-------------+-------------+-------------+-------------+--------------+
+; state.pr_ini    ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 0            ;
+; state.pr_w1     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 1           ; 1            ;
+; state.pr_r1     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 1           ; 0           ; 1            ;
+; state.pr_w2     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 1           ; 0           ; 0           ; 1            ;
+; state.pr_r2     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 1           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_f_type ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 1               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_rdy  ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 1              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_gr   ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 1             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_sm   ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 1             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_eq   ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 1             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w3     ; 0             ; 0           ; 0           ; 0           ; 0           ; 0           ; 1           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r3     ; 0             ; 0           ; 0           ; 0           ; 0           ; 1           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w4     ; 0             ; 0           ; 0           ; 0           ; 1           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r4     ; 0             ; 0           ; 0           ; 1           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_w5     ; 0             ; 0           ; 1           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_r5     ; 0             ; 1           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
+; state.pr_s_dt   ; 1             ; 0           ; 0           ; 0           ; 0           ; 0           ; 0           ; 0             ; 0             ; 0             ; 0              ; 0               ; 0           ; 0           ; 0           ; 0           ; 1            ;
++-----------------+---------------+-------------+-------------+-------------+-------------+-------------+-------------+---------------+---------------+---------------+----------------+-----------------+-------------+-------------+-------------+-------------+--------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_1|game:inst3|state                                                                                                                                                             ;
++----------------+-------------+------------+------------+----------------+-------------+------------+------------+------------+-------------+--------------+------------+-------------+-------------+-------------+---------------+
+; Name           ; state.w_fr2 ; state.w_fr ; state.s_eq ; state.s_GRorSM ; state.w_tx3 ; state.fr_r ; state.w_dt ; state.s_dt ; state.w_tx2 ; state.w_code ; state.code ; state.w_rdy ; state.s_rdy ; state.w_tx1 ; state.s0_wait ;
++----------------+-------------+------------+------------+----------------+-------------+------------+------------+------------+-------------+--------------+------------+-------------+-------------+-------------+---------------+
+; state.s0_wait  ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 0             ;
+; state.w_tx1    ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 1           ; 1             ;
+; state.s_rdy    ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 1           ; 0           ; 1             ;
+; state.w_rdy    ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 1           ; 0           ; 0           ; 1             ;
+; state.code     ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 1          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_code   ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 1            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_tx2    ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 1           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.s_dt     ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 1          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_dt     ; 0           ; 0          ; 0          ; 0              ; 0           ; 0          ; 1          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.fr_r     ; 0           ; 0          ; 0          ; 0              ; 0           ; 1          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_tx3    ; 0           ; 0          ; 0          ; 0              ; 1           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.s_GRorSM ; 0           ; 0          ; 0          ; 1              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.s_eq     ; 0           ; 0          ; 1          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_fr     ; 0           ; 1          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
+; state.w_fr2    ; 1           ; 0          ; 0          ; 0              ; 0           ; 0          ; 0          ; 0          ; 0           ; 0            ; 0          ; 0           ; 0           ; 0           ; 1             ;
++----------------+-------------+------------+------------+----------------+-------------+------------+------------+------------+-------------+--------------+------------+-------------+-------------+-------------+---------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst10|state    ;
++------------------+-------------+---------------+------------------+---------------+
+; Name             ; state.s_end ; state.get_key ; state.w_keypress ; state.s0_wait ;
++------------------+-------------+---------------+------------------+---------------+
+; state.s0_wait    ; 0           ; 0             ; 0                ; 0             ;
+; state.w_keypress ; 0           ; 0             ; 1                ; 1             ;
+; state.get_key    ; 0           ; 1             ; 0                ; 1             ;
+; state.s_end      ; 1           ; 0             ; 0                ; 1             ;
++------------------+-------------+---------------+------------------+---------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst9|state     ;
++------------------+-------------+---------------+------------------+---------------+
+; Name             ; state.s_end ; state.get_key ; state.w_keypress ; state.s0_wait ;
++------------------+-------------+---------------+------------------+---------------+
+; state.s0_wait    ; 0           ; 0             ; 0                ; 0             ;
+; state.w_keypress ; 0           ; 0             ; 1                ; 1             ;
+; state.get_key    ; 0           ; 1             ; 0                ; 1             ;
+; state.s_end      ; 1           ; 0             ; 0                ; 1             ;
++------------------+-------------+---------------+------------------+---------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------+
+; State Machine - |practice1_3_b|practice1_3:PLAYER_1|main:inst1|state                                 ;
++------------------+--------------+------------------+--------------+------------------+---------------+
+; Name             ; state.w_game ; state.start_game ; state.w_code ; state.enter_code ; state.s0_wait ;
++------------------+--------------+------------------+--------------+------------------+---------------+
+; state.s0_wait    ; 0            ; 0                ; 0            ; 0                ; 0             ;
+; state.enter_code ; 0            ; 0                ; 0            ; 1                ; 1             ;
+; state.w_code     ; 0            ; 0                ; 1            ; 0                ; 1             ;
+; state.start_game ; 0            ; 1                ; 0            ; 0                ; 1             ;
+; state.w_game     ; 1            ; 0                ; 0            ; 0                ; 1             ;
++------------------+--------------+------------------+--------------+------------------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                      ;
++------------------------------------------------------+------------------------------------------------------------------+
+; Register name                                        ; Reason for Removal                                               ;
++------------------------------------------------------+------------------------------------------------------------------+
+; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[3] ; Stuck at GND due to stuck port data_in                           ;
+; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[0] ; Stuck at VCC due to stuck port data_in                           ;
+; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[3] ; Stuck at GND due to stuck port data_in                           ;
+; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[0] ; Stuck at VCC due to stuck port data_in                           ;
+; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[5] ; Merged with practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[7] ;
+; practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[4] ; Merged with practice1_3:PLAYER_2|protocol_tx:inst5|frame_type[6] ;
+; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[5] ; Merged with practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[7] ;
+; practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[4] ; Merged with practice1_3:PLAYER_1|protocol_tx:inst5|frame_type[6] ;
+; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[5]    ; Merged with practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[7]    ;
+; practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[4]    ; Merged with practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[6]    ;
+; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[5]    ; Merged with practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[7]    ;
+; practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[4]    ; Merged with practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[6]    ;
+; Total Number of Removed Registers = 12               ;                                                                  ;
++------------------------------------------------------+------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 326   ;
+; Number of registers using Synchronous Clear  ; 4     ;
+; Number of registers using Synchronous Load   ; 4     ;
+; Number of registers using Asynchronous Clear ; 262   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 150   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------+
+; Inverted Register Statistics                                   ;
++------------------------------------------------------+---------+
+; Inverted Register                                    ; Fan out ;
++------------------------------------------------------+---------+
+; practice1_3:PLAYER_2|tx_module:inst6|tx              ; 15      ;
+; practice1_3:PLAYER_1|tx_module:inst6|tx              ; 15      ;
+; practice1_3:PLAYER_1|register_bank:inst9|bank_ready  ; 4       ;
+; practice1_3:PLAYER_1|protocol_tx:inst5|ready_to_TX   ; 10      ;
+; practice1_3:PLAYER_1|register_bank:inst10|bank_ready ; 5       ;
+; practice1_3:PLAYER_2|register_bank:inst9|bank_ready  ; 4       ;
+; practice1_3:PLAYER_2|register_bank:inst10|bank_ready ; 5       ;
+; practice1_3:PLAYER_2|protocol_tx:inst5|ready_to_TX   ; 9       ;
+; practice1_3:PLAYER_2|tx_module:inst6|tx_empty        ; 14      ;
+; practice1_3:PLAYER_1|tx_module:inst6|tx_empty        ; 14      ;
+; Total number of inverted registers = 10              ;         ;
++------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
+; 4:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst10|set_DataT[2] ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst9|set_DataT[1]  ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst10|set_DataU[0] ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst9|set_DataT[0]  ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_2|rx_module2:inst4|baud[1]          ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_1|rx_module2:inst4|baud[2]          ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[6]      ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 3 LEs                ; 15 LEs                 ; Yes        ; |practice1_3_b|practice1_3:PLAYER_2|rx_module2:inst4|bit_count[0]     ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[6]      ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 3 LEs                ; 15 LEs                 ; Yes        ; |practice1_3_b|practice1_3:PLAYER_1|rx_module2:inst4|bit_count[2]     ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_1|game:inst3|LightS                 ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_2|game:inst3|LightG                 ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[3]      ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_2|protocol_tx:inst5|tx_data[1]      ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[3]      ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |practice1_3_b|practice1_3:PLAYER_1|protocol_tx:inst5|tx_data[2]      ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|tx_module:inst6|bit_count         ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst9|state         ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|tx_module:inst6|bit_count         ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst9|state         ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|main:inst1|Selector0              ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|main:inst1|Selector0              ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst10|Selector1    ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|register_bank:inst9|Selector0     ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst10|Selector0    ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|register_bank:inst9|Selector1     ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|main:inst1|Selector2              ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|main:inst1|Selector2              ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|tx_module:inst6|Selector8         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|tx_module:inst6|Selector10        ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|tx_module:inst6|Selector9         ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|rx_module2:inst4|Selector9        ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_2|rx_module2:inst4|Selector8        ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|tx_module:inst6|Selector7         ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|rx_module2:inst4|Selector7        ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |practice1_3_b|practice1_3:PLAYER_1|rx_module2:inst4|Selector8        ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; No         ; |practice1_3_b|practice1_3:PLAYER_2|protocol_rx:inst|Selector6        ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; No         ; |practice1_3_b|practice1_3:PLAYER_1|protocol_rx:inst|Selector6        ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; No         ; |practice1_3_b|practice1_3:PLAYER_1|game:inst3|Selector11             ;
+; 24:1               ; 8 bits    ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; No         ; |practice1_3_b|practice1_3:PLAYER_2|game:inst3|Selector11             ;
+; 26:1               ; 2 bits    ; 34 LEs        ; 8 LEs                ; 26 LEs                 ; No         ; |practice1_3_b|practice1_3:PLAYER_1|game:inst3|Selector2              ;
+; 26:1               ; 2 bits    ; 34 LEs        ; 8 LEs                ; 26 LEs                 ; No         ; |practice1_3_b|practice1_3:PLAYER_2|game:inst3|Selector7              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Wed Oct 26 16:46:29 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off practice1 -c practice1
+Info: Found 1 design units, including 1 entities, in source file practice1_3.bdf
+    Info: Found entity 1: practice1_3
+Info: Found 2 design units, including 1 entities, in source file add_generator.vhd
+    Info: Found design unit 1: add_generator-a
+    Info: Found entity 1: add_generator
+Info: Found 2 design units, including 1 entities, in source file bcd7seg.vhd
+    Info: Found design unit 1: BCD7seg-behaviour
+    Info: Found entity 1: BCD7seg
+Info: Found 2 design units, including 1 entities, in source file clk_div_two.vhd
+    Info: Found design unit 1: clk_div_two-simple
+    Info: Found entity 1: clk_div_two
+Info: Found 4 design units, including 2 entities, in source file clk_video.vhd
+    Info: Found design unit 1: clk_video_altclkctrl_6df-RTL
+    Info: Found design unit 2: clk_video-RTL
+    Info: Found entity 1: clk_video_altclkctrl_6df
+    Info: Found entity 2: clk_video
+Info: Found 2 design units, including 1 entities, in source file count4b.vhd
+    Info: Found design unit 1: count4b-arc_count4b
+    Info: Found entity 1: count4b
+Info: Found 2 design units, including 1 entities, in source file f_div.vhd
+    Info: Found design unit 1: f_div-dni
+    Info: Found entity 1: f_div
+Info: Found 2 design units, including 1 entities, in source file protocol_rx.vhd
+    Info: Found design unit 1: protocol_rx-main
+    Info: Found entity 1: protocol_rx
+Info: Found 2 design units, including 1 entities, in source file hex_disps.vhd
+    Info: Found design unit 1: hex_disps-struct
+    Info: Found entity 1: hex_disps
+Info: Found 1 design units, including 1 entities, in source file i_o_manager_vga.bdf
+    Info: Found entity 1: I_O_Manager_VGA
+Info: Found 1 design units, including 1 entities, in source file keyboard.bdf
+    Info: Found entity 1: keyboard
+Info: Found 2 design units, including 1 entities, in source file keypad.vhd
+    Info: Found design unit 1: keypad-arc_keypad
+    Info: Found entity 1: keypad
+Info: Found 2 design units, including 1 entities, in source file keytest_h_v2.vhd
+    Info: Found design unit 1: keytest_h_v2-main
+    Info: Found entity 1: keytest_h_v2
+Info: Found 2 design units, including 1 entities, in source file protocol_tx.vhd
+    Info: Found design unit 1: protocol_tx-main
+    Info: Found entity 1: protocol_tx
+Info: Found 1 design units, including 1 entities, in source file p1_board_vga.bdf
+    Info: Found entity 1: P1_BOARD_vga
+Info: Found 2 design units, including 1 entities, in source file rx_module2.vhd
+    Info: Found design unit 1: rx_module2-main
+    Info: Found entity 1: rx_module2
+Info: Found 2 design units, including 1 entities, in source file tx_module.vhd
+    Info: Found design unit 1: tx_module-main
+    Info: Found entity 1: tx_module
+Info: Found 1 design units, including 1 entities, in source file tx_rx_block.bdf
+    Info: Found entity 1: TX_RX_BLOCK
+Info: Found 2 design units, including 1 entities, in source file rx_module.vhd
+    Info: Found design unit 1: rx_module-main
+    Info: Found entity 1: rx_module
+Info: Found 1 design units, including 1 entities, in source file rxmodule.bdf
+    Info: Found entity 1: RXmodule
+Info: Found 2 design units, including 1 entities, in source file square.vhd
+    Info: Found design unit 1: square-functional
+    Info: Found entity 1: square
+Info: Found 2 design units, including 1 entities, in source file register_bank.vhd
+    Info: Found design unit 1: register_bank-arc
+    Info: Found entity 1: register_bank
+Info: Found 2 design units, including 1 entities, in source file main.vhd
+    Info: Found design unit 1: main-arc
+    Info: Found entity 1: main
+Info: Found 1 design units, including 1 entities, in source file txmodule.bdf
+    Info: Found entity 1: TXmodule
+Info: Found 2 design units, including 1 entities, in source file vga_sync.vhd
+    Info: Found design unit 1: VGA_SYNC-a
+    Info: Found entity 1: VGA_SYNC
+Info: Found 1 design units, including 1 entities, in source file vga_test_board.bdf
+    Info: Found entity 1: VGA_TEST_BOARD
+Info: Found 1 design units, including 1 entities, in source file vga_visualisation.bdf
+    Info: Found entity 1: VGA_visualisation
+Info: Found 2 design units, including 1 entities, in source file video_memory.vhd
+    Info: Found design unit 1: video_memory-SYN
+    Info: Found entity 1: Video_Memory
+Info: Found 2 design units, including 1 entities, in source file wr_memory.vhd
+    Info: Found design unit 1: wr_memory-functional
+    Info: Found entity 1: wr_memory
+Info: Found 2 design units, including 1 entities, in source file game.vhd
+    Info: Found design unit 1: game-arc
+    Info: Found entity 1: game
+Info: Found 1 design units, including 1 entities, in source file practice1_2.bdf
+    Info: Found entity 1: practice1_2
+Info: Found 1 design units, including 1 entities, in source file practice1_3_b.bdf
+    Info: Found entity 1: practice1_3_b
+Info: Elaborating entity "practice1_3_b" for the top level hierarchy
+Info: Elaborating entity "practice1_3" for hierarchy "practice1_3:PLAYER_1"
+Info: Elaborating entity "main" for hierarchy "practice1_3:PLAYER_1|main:inst1"
+Info: Elaborating entity "keytest_h_v2" for hierarchy "practice1_3:PLAYER_1|keytest_h_v2:inst2"
+Info: Elaborating entity "register_bank" for hierarchy "practice1_3:PLAYER_1|register_bank:inst9"
+Info: Elaborating entity "game" for hierarchy "practice1_3:PLAYER_1|game:inst3"
+Info: Elaborating entity "protocol_rx" for hierarchy "practice1_3:PLAYER_1|protocol_rx:inst"
+Info: Elaborating entity "rx_module2" for hierarchy "practice1_3:PLAYER_1|rx_module2:inst4"
+Info: Elaborating entity "protocol_tx" for hierarchy "practice1_3:PLAYER_1|protocol_tx:inst5"
+Info: Elaborating entity "tx_module" for hierarchy "practice1_3:PLAYER_1|tx_module:inst6"
+Info: Registers with preset signals will power-up high
+Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info: Implemented 707 device resources after synthesis - the final resource count might be different
+    Info: Implemented 12 input pins
+    Info: Implemented 18 output pins
+    Info: Implemented 677 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 245 megabytes
+    Info: Processing ended: Wed Oct 26 16:46:36 2022
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:05
+
+

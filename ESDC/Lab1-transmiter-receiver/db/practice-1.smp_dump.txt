@@ -1,0 +1,55 @@
+
+State Machine - |Transmiter_Receiver|rx_module2:inst1|state
+Name state.rx_stop state.rx_shift state.rx_start state.rx_idle 
+state.rx_idle 0 0 0 0 
+state.rx_start 0 0 1 1 
+state.rx_shift 0 1 0 1 
+state.rx_stop 1 0 0 1 
+
+State Machine - |Transmiter_Receiver|protocol_rx:inst|state
+Name state.pr_s_dt state.pr_r5 state.pr_w5 state.pr_r4 state.pr_w4 state.pr_r3 state.pr_w3 state.pr_s_eq state.pr_s_sm state.pr_s_gr state.pr_s_rdy state.pr_f_type state.pr_r2 state.pr_w2 state.pr_r1 state.pr_w1 state.pr_ini 
+state.pr_ini 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.pr_w1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.pr_r1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.pr_w2 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.pr_r2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.pr_f_type 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.pr_s_rdy 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.pr_s_gr 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.pr_s_sm 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.pr_s_eq 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.pr_w3 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.pr_r3 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_w4 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_r4 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_w5 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_r5 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_s_dt 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Transmiter_Receiver|tx_module:inst3|state
+Name state.tx_stop state.tx_shift state.tx_start state.tx_idle 
+state.tx_idle 0 0 0 0 
+state.tx_start 0 0 1 1 
+state.tx_shift 0 1 0 1 
+state.tx_stop 1 0 0 1 
+
+State Machine - |Transmiter_Receiver|protocol_tx:inst2|state
+Name state.pr_set_TX state.pr_w5 state.pr_s5 state.pr_w4 state.pr_s4 state.pr_w3 state.pr_s3 state.pr_check_data state.pr_w2 state.pr_s2 state.pr_w1 state.pr_s1 state.pr_dt state.pr_eq state.pr_sm state.pr_gr state.pr_rdy state.pr_wait 
+state.pr_wait 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.pr_rdy 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.pr_gr 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.pr_sm 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.pr_eq 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.pr_dt 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.pr_s1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.pr_w1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.pr_s2 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.pr_w2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.pr_check_data 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.pr_s3 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_w3 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_s4 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_w4 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_s5 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_w5 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pr_set_TX 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
