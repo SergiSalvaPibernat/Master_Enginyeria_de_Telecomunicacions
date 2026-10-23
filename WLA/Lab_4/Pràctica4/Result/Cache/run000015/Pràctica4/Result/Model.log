@@ -1,0 +1,16 @@
+15/Dec/2022 11:51:57  Defined reference frequency for open boundary condition (4 GHz) is larger than
+                      the lowest relevant system frequency (monitor at 2.45 GHz).
+                      Please check open boundary settings to ensure accurate monitor results for the
+                      lowest frequency of interest.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:51:57  *** Warning ***
+                      
+                      This software is licensed for personal and educational purposes only.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:52:21  *** Error ***
+                      
+                      Adaptive port meshing failed.
+                      
+                      ------------------------------------------------------------------------------

@@ -1,0 +1,13 @@
+@CACHEFILEVERSION 2
+@DOUBLE
+-l_strip/2#+y_strip
+-5
+-w_strip/2# +x_strip
+-8.5
+h_antena
+9
+l_strip/2#+y_strip
+-5
+w_strip/2#+x_strip
+-5.5
+@LONG

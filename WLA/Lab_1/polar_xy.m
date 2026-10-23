@@ -1,0 +1,73 @@
+function hpol = polar_xy(ph,E,max_E,min_E,numcir,numlin,line_style)
+
+
+% polar_xy(ang,E,max_E,min_E,numcir,numlin,line_style)
+% 
+% ang: angle (radians)
+% E : values to be plotted
+% max_E : value at the maximum of the plot
+% min_E:  value at the center of the plot
+% numcir : number of magnitude divisons
+% numlin : number of angular divisions
+% line_style: line style as in the matlab plot function
+
+
+ph=ph(:)'*pi/180;
+E=E(:)';
+
+% normalización de Rho
+
+E=max([E;min_E*ones(size(E))]);
+E=(E-min_E)/(max_E-min_E);
+
+% complobamos el estado de hold
+cax = newplot;
+next = lower(get(cax,'NextPlot'));
+hold_state = ishold;
+
+% solo dibujamos la rejilla si hold esta desactivado
+if ~hold_state
+   
+    % dibujo de las lineas radiales
+	hold on;
+    for l=1:numlin/2
+        ang=(l-1)*2*pi/numlin;
+        plot([-cos(ang) cos(ang)],[-sin(ang) sin(ang)],'k:','linewidth',0.4);
+        h=text(1.12*cos(ang),1.12*sin(ang),sprintf('%3.1f',ang*180/pi));
+        set(h,'horizontalalignment','center','fontsize',11,'FontWeight','Demi');
+        h=text(-1.12*cos(ang),-1.12*sin(ang),sprintf('%3.1f',(ang+pi)*180/pi)); 
+        set(h,'horizontalalignment','center','fontsize',11,'FontWeight','Demi');
+    end
+    
+    % dibujo de los circulos concentricos
+	th =linspace(0,2*pi,101);
+    
+    plot(cos(th),sin(th),'k-','linewidth',0.4);
+    
+    text(.1,1.02,sprintf('%d',max_E),'verticalalignment','bottom','fontsize',10);
+    text(0,.02,sprintf('%d',min_E),'verticalalignment','bottom','fontsize',10);
+    
+    for l=1:numcir-1
+        plot(l/numcir*cos(th),l/numcir*sin(th),'k:','linewidth',0.4);
+        %text(l/numcir*.1,l/numcir+.02,sprintf('%d',l*(max_E-min_E)/numcir+min_E),'verticalalignment','bottom','fontsize',10);
+        text(l/numcir*.1,l/numcir+.02,sprintf('%0.1g',l*(max_E-min_E)/numcir+min_E),'verticalalignment','bottom','fontsize',10);
+    end
+
+	view(0,90);
+
+	axis([-1 1 -1.1 1.1]);
+end
+
+
+% transformar datos a coordenadas cartesianas
+xx = E.*cos(ph);
+yy = E.*sin(ph);
+
+% dibujar datos encima de la rejilla
+plot(xx,yy,line_style,'linewidth',2);
+if ~hold_state
+	axis('equal');axis('off');
+end
+
+% recuperar el estado de hold
+if ~hold_state, set(cax,'NextPlot',next); end

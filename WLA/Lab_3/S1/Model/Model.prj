@@ -1,0 +1,21 @@
+[Version]
+2
+[ProjectVersion]
+'# MWS Version: Version 2021.2 - Jan 06 2021 - ACIS 30.0.1 -
+[Author]
+user2
+[Mesh Cells]
+97,104
+[Mesh Type]
+Hexahedral
+[Last Problem Type]
+High Frequency
+[Last Solver Type]
+HF Time Domain
+[Last Solver Type Abb]
+t
+[Results]
+Time Domain: S-Parameter
+[Modeler Unique ID]
+5:s1.cst?2a9e4f5b7ca6f176e04f61d77e80494f?10061:numberofparameters=10:port=1>mode=1>zre=0>zim=0:::y0?l?w?h_substrate?l_coax?outer_width?coax_out?coax_in?l_ground?w_ground
+[Comment]

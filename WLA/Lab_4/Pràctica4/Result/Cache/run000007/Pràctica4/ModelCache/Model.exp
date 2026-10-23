@@ -1,0 +1,11 @@
+@CACHEFILEVERSION 2
+@DOUBLE
+-l_coax
+-10
+-y0
+-5
+coax_in/2#
+0.6
+h_antena
+9
+@LONG

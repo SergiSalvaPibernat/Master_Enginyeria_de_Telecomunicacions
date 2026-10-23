@@ -1,0 +1,176 @@
+15/Dec/2022 11:44:38  Defined reference frequency for open boundary condition (4 GHz) is larger than
+                      the lowest relevant system frequency (monitor at 2.45 GHz).
+                      Please check open boundary settings to ensure accurate monitor results for the
+                      lowest frequency of interest.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:44:38  *** Warning ***
+                      
+                      This software is licensed for personal and educational purposes only.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:00  *** Warning ***
+                      
+                      This software is licensed for personal and educational purposes only.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:00  The following farfield monitor(s) have been adjusted to model box [-21.6974,
+                      21.6974, -16.6975, 16.6975, -13.632, 9.69765].
+                        farfield (f=2.45). More...
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:00  
+                      Solver started at: 11:45 AM Thursday, 15. December 2022 (Romance Standard Time)
+                      
+                        Module:  Time Domain: S-Parameter (Win 64)
+                        Version: 2022.4 Release from 2022-04-26 (change 967892)
+                      
+
+                      ------------------------------------------------------------------------------
+
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:00  ======================================================================
+                       Solver cycle: 1
+                      ======================================================================
+                      
+                      Stimulation at port 1 (mode 1) 
+                      
+                      
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:01  Units settings: 
+                      
+                        Dimensions: mm
+                        Frequency:  GHz
+                        Time:       ns
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:01  The dispersive material update [Automatic] will be performed using the "Standard" update schema
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:12  Mesh statistics:
+                      
+                         Hexahedral mesh type: PERFECT BOUNDARY APPROXIMATION (PBA) (R)
+                            Version: default
+                      
+                         Parallelization type: domain decomposition
+                            Number of parallel working threads: 2
+                            Number of calculation domains used: 2
+                      
+                         Used point accuracy enhancement value: 75.00%.
+                         Acceleration mode: CPU
+                         Used point accuracy enhancement value: 61.00%.
+                         PBA fill limit: 98.81% (inverse)
+                         Used point accuracy enhancement value: 62.00%.
+                         Used point accuracy enhancement value: 63.00%.
+                         Used point accuracy enhancement value: 64.00%.
+                         PBA fill limit: 99.00% (inverse)
+                         Used point accuracy enhancement value: 65.00%.
+
+15/Dec/2022 11:45:13  Using generalized port mode solver.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:13  Boundary conditions: 
+                      
+                        YZsymmetry: none
+                        XZsymmetry: none
+                        XYsymmetry: none
+                      
+                        Xmin: expanded open, 4 Layer, depth 18.4089 mm
+                        Xmax: expanded open, 4 Layer, depth 18.4089 mm
+                      
+                        Ymin: expanded open, 4 Layer, depth 18.4283 mm
+                        Ymax: expanded open, 4 Layer, depth 18.4283 mm
+                      
+                        Zmin: expanded open, 4 Layer, depth 16.1543 mm
+                        Zmax: expanded open, 4 Layer, depth 18.4573 mm
+                      
+                        PML-Type: Convolution PML
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:13  Frequency settings: 
+                      
+                        Fmin:         1
+                        Fmax:         7
+                        Nfsteps(lin): 1001
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:13  Field update statistics:
+                      
+                        Number of components in total: 	558852
+                        Number of TST elements:		191
+                      
+                      Subcycling state:      Automatically deactivated
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:13  Waveguide boundaries:
+                      
+15/Dec/2022 11:45:13  Port: 1
+                      
+15/Dec/2022 11:45:13    --------------------------------- F-Calc 4 ---------------------------------
+                        Port   Mode   Type        Z-Wave        Z-Wave-Sigma  Z-Line        F-Cutoff
+                        1      1      TEM         260           1.03e-005     51.1          0.0
+                        ----------------------------------------------------------------------------
+                      
+15/Dec/2022 11:45:33  
+                      --------------------------------------------------------------------------------
+15/Dec/2022 11:45:33  Steady state energy criterion met, solver finished successfully.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:33  Frequency domain results normalized to default signal.
+                      
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:33  
+                        ----------------------------------------------------------------------------
+                                            Peak memory used (kB)         Free physical memory (kB) 
+                                                                          At begin     Minimum      
+                        ----------------------------------------------------------------------------
+                        Matrices calc.      119443                        7483398      7427734      
+                        Solver run total    73852                         8269352      8154220      
+                        ----------------------------------------------------------------------------
+                      
+                      --------------------------------------------------------------------------------
+                      Solver Statistics:
+                      
+                        Hardware:
+                           Computer name:                 	Portatil-SergiSP 
+                      
+                           Number of CPU threads:               4
+                           Hardware info:                  	Hardware Accelerator Device not activated
+                      
+                        Number of mesh cells:             	89856
+                        Excitation duration:              	1.18484958e+000 ns 
+                        Calculation time for excitation:  	0 	s
+                        Number of calculated pulse widths:	3.28792 
+                        Steady state accuracy limit:      	-40	dB 
+                        Simulated number of time steps:   	10496 
+                        Maximum number of time steps:     	63845 
+                        Time step width:
+                           without subcycles:             	3.711592648e-004 ns
+                           used:                          	3.711592648e-004 ns
+                      
+                        Matrix calculation time:          	11 	s
+                        Solver setup time:                	2 	s
+                        Solver loop time:                 	18 	s
+                        Solver post-processing time:      	0 	s
+                                                          	------------
+                        Total solver time:                	31 	s
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:33  
+                        Adaptive port meshing time:          	22     	s
+                        Total solver time (all cycles):      	31     	s
+                        Solver initialization and clean-up:  	1      	s
+                                                             	------------
+                        Total simulation time:               	54     	s
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:33  Solver finished at: 11:45 AM Thursday, 15. December 2022
+                      
+                      
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 11:45:37  Creating parametric 1D results for Run ID 6
+                      
+                      ------------------------------------------------------------------------------

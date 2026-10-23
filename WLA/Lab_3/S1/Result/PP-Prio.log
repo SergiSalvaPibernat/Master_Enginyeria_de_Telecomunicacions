@@ -1,0 +1,21 @@
+==========================================================================================================================================================================================================================
+== CST Matrix Calculation Priority Log                                                                                                                                                                                  ==
+==========================================================================================================================================================================================================================
+ 
+Priorities are sorted in ascending order beginning with the lowest priority
+ 
+Priority-group:   1, shape   7: </cst/Boundaries/> Low^X,   material: $NFSMaterial$,  user-priority: 0,  material-attributes: normal.vacuum,  shape-attributes: boundary,   
+Priority-group:   1, shape   8: </cst/Boundaries/> Low^Y,   material: $NFSMaterial$,  user-priority: 0,  material-attributes: normal.vacuum,  shape-attributes: boundary,   
+Priority-group:   1, shape   9: </cst/Boundaries/> Low^Z,   material: $NFSMaterial$,  user-priority: 0,  material-attributes: normal.vacuum,  shape-attributes: boundary,   
+Priority-group:   1, shape  10: </cst/Boundaries/> Up^X,    material: $NFSMaterial$,  user-priority: 0,  material-attributes: normal.vacuum,  shape-attributes: boundary,   
+Priority-group:   1, shape  11: </cst/Boundaries/> Up^Y,    material: $NFSMaterial$,  user-priority: 0,  material-attributes: normal.vacuum,  shape-attributes: boundary,   
+Priority-group:   1, shape  12: </cst/Boundaries/> Up^Z,    material: $NFSMaterial$,  user-priority: 0,  material-attributes: normal.vacuum,  shape-attributes: boundary,   
+Priority-group:   2, shape   3: component1:substrate,   material: Rogers RT5880 (lossy),  user-priority: 0,  2D/3D-geometry: true, material-attributes: dispersive-eps.dispersive-mue.normal,   shape-attributes: solid,  
+Priority-group:   2, shape   6: component2:coax_teflon, material: PTFE (lossy),   user-priority: 0,  2D/3D-geometry: true, material-attributes: dispersive-eps.dispersive-mue.normal.rho,   shape-attributes: solid,  
+Priority-group:   3, shape   4: component2:coax_inner,  material: PEC,    user-priority: 0,  2D/3D-geometry: true, material-attributes: pec,    shape-attributes: solid,  
+Priority-group:   3, shape   5: component2:coax_outer,  material: PEC,    user-priority: 0,  2D/3D-geometry: true, material-attributes: pec,    shape-attributes: solid,  
+Priority-group:   4, shape   1: component1:Groundplane, material: PEC,    user-priority: 0,  2D/3D-geometry: true, material-attributes: pec,    shape-attributes: sheet,  
+Priority-group:   4, shape   2: component1:patch,   material: PEC,    user-priority: 0,  2D/3D-geometry: true, material-attributes: pec,    shape-attributes: sheet,  
+ 
+==========================================================================================================================================================================================================================
+ 

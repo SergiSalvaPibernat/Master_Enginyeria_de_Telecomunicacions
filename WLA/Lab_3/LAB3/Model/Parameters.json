@@ -1,0 +1,54 @@
+{
+    "parameters": [
+        {
+            "expr": "100",
+            "name": "W_ground",
+            "value": "100"
+        },
+        {
+            "expr": "100",
+            "name": "L_ground",
+            "value": "100"
+        },
+        {
+            "expr": "1.2",
+            "name": "coax_in",
+            "value": "1.2"
+        },
+        {
+            "expr": "4.1",
+            "name": "coax_out",
+            "value": "4.1"
+        },
+        {
+            "expr": "1",
+            "name": "outer_width",
+            "value": "1"
+        },
+        {
+            "expr": "10",
+            "name": "l_coax",
+            "value": "10"
+        },
+        {
+            "expr": "1.5*2",
+            "name": "h_substrate",
+            "value": "3"
+        },
+        {
+            "expr": "32",
+            "name": "W",
+            "value": "32"
+        },
+        {
+            "expr": "32*(2.8803/2.45)*(",
+            "name": "L"
+        },
+        {
+            "expr": "5-0.2",
+            "name": "y0",
+            "value": "4.8"
+        }
+    ],
+    "version": 1
+}

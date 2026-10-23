@@ -1,0 +1,34 @@
+15/Dec/2022 10:56:02  Defined reference frequency for open boundary condition (4 GHz) is larger than
+                      the lowest relevant system frequency (monitor at 2.45 GHz).
+                      Please check open boundary settings to ensure accurate monitor results for the
+                      lowest frequency of interest.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 10:56:02  *** Warning ***
+                      
+                      This software is licensed for personal and educational purposes only.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 10:56:02  *** Error ***
+                      
+                      This software is licensed for up to 100000 mesh cells only. The current mesh
+                      size exceeds this limit. Please reduce the mesh size accordingly.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 10:57:19  Defined reference frequency for open boundary condition (4 GHz) is larger than
+                      the lowest relevant system frequency (monitor at 2.45 GHz).
+                      Please check open boundary settings to ensure accurate monitor results for the
+                      lowest frequency of interest.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 10:57:19  *** Warning ***
+                      
+                      This software is licensed for personal and educational purposes only.
+                      
+                      ------------------------------------------------------------------------------
+15/Dec/2022 10:57:19  *** Error ***
+                      
+                      This software is licensed for up to 100000 mesh cells only. The current mesh
+                      size exceeds this limit. Please reduce the mesh size accordingly.
+                      
+                      ------------------------------------------------------------------------------

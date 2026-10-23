@@ -1,0 +1,114 @@
+{
+   "execution": {
+      "classname": "SMAPowerByEmagHPCFrame",
+      "libname": "SMAPowerByEmagUI"
+   },
+   "inputVariables": [
+      {
+         "name": "W_ground",
+         "type": "float",
+         "value": 42.0
+      },
+      {
+         "name": "L_ground",
+         "type": "float",
+         "value": 32.0
+      },
+      {
+         "name": "H_antena",
+         "type": "float",
+         "value": 9.0
+      },
+      {
+         "name": "W_strip",
+         "type": "float",
+         "value": 3.0
+      },
+      {
+         "name": "W_patch",
+         "type": "float",
+         "value": 22.0
+      },
+      {
+         "name": "L_patch",
+         "type": "float",
+         "value": 15.0
+      },
+      {
+         "name": "y0",
+         "type": "float",
+         "value": 6.0
+      },
+      {
+         "name": "coax_in",
+         "type": "float",
+         "value": 1.2
+      },
+      {
+         "name": "coax_out",
+         "type": "float",
+         "value": 4.1
+      },
+      {
+         "name": "outer_width",
+         "type": "float",
+         "value": 1.0
+      },
+      {
+         "name": "l_coax",
+         "type": "float",
+         "value": 10.0
+      },
+      {
+         "name": "l_strip",
+         "type": "float",
+         "value": 0.0
+      },
+      {
+         "name": "x_strip",
+         "type": "float",
+         "value": -5.0
+      },
+      {
+         "name": "y_strip",
+         "type": "float",
+         "value": -4.0
+      },
+      {
+         "name": "G1",
+         "type": "float",
+         "value": 2.3
+      },
+      {
+         "name": "G2",
+         "type": "float",
+         "value": 1.4
+      },
+      {
+         "name": "L1",
+         "type": "float",
+         "value": 2.0
+      },
+      {
+         "name": "L2",
+         "type": "float",
+         "value": 6.6
+      },
+      {
+         "name": "W2",
+         "type": "float",
+         "value": 5.0
+      },
+      {
+         "name": "W1",
+         "type": "float",
+         "value": 8.0
+      },
+      {
+         "name": "x0",
+         "type": "float",
+         "value": -5.0
+      }
+   ],
+   "outputVariables": []
+}

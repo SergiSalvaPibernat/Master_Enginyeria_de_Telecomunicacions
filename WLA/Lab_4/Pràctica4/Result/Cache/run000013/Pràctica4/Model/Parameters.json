@@ -1,0 +1,115 @@
+{
+    "parameters": [
+        {
+            "expr": "42",
+            "name": "W_ground",
+            "value": "42"
+        },
+        {
+            "expr": "32",
+            "name": "L_ground",
+            "value": "32"
+        },
+        {
+            "expr": "9",
+            "name": "H_antena",
+            "value": "9"
+        },
+        {
+            "expr": "3",
+            "name": "W_strip",
+            "value": "3"
+        },
+        {
+            "expr": "22",
+            "name": "W_patch",
+            "value": "22"
+        },
+        {
+            "expr": "15",
+            "name": "L_patch",
+            "value": "15"
+        },
+        {
+            "expr": "5",
+            "name": "y0",
+            "value": "5"
+        },
+        {
+            "expr": "1.2",
+            "name": "coax_in",
+            "value": "1.2"
+        },
+        {
+            "expr": "4.1",
+            "name": "coax_out",
+            "value": "4.1"
+        },
+        {
+            "expr": "1",
+            "name": "outer_width",
+            "value": "1"
+        },
+        {
+            "expr": "10",
+            "name": "l_coax",
+            "value": "10"
+        },
+        {
+            "expr": "0",
+            "name": "l_strip",
+            "value": "0"
+        },
+        {
+            "expr": "-7",
+            "name": "x_strip",
+            "value": "-7"
+        },
+        {
+            "expr": "-4",
+            "name": "y_strip",
+            "value": "-4"
+        },
+        {
+            "expr": "2.3",
+            "name": "G1",
+            "value": "2.3"
+        },
+        {
+            "expr": "1.4",
+            "name": "G2",
+            "value": "1.4"
+        },
+        {
+            "expr": "2",
+            "name": "L1",
+            "value": "2"
+        },
+        {
+            "expr": "6.6",
+            "name": "L2",
+            "value": "6.6"
+        },
+        {
+            "expr": "3",
+            "name": "W2",
+            "value": "3"
+        },
+        {
+            "expr": "11",
+            "name": "W1",
+            "value": "11"
+        },
+        {
+            "expr": "L_patch-L1-G2-L2",
+            "name": "L3",
+            "value": "5"
+        },
+        {
+            "expr": "-5",
+            "name": "x0",
+            "value": "-5"
+        }
+    ],
+    "version": 1
+}
