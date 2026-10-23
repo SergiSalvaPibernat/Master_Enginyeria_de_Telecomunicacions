@@ -1,0 +1,13 @@
+# IDE and editor folders
+.idea/
+.vscode/
+*.iml
+
+# Gradle / build output
+.gradle/
+**/build/
+local.properties
+
+# OS files
+.DS_Store
+Thumbs.db
